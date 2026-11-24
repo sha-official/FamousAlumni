@@ -1,0 +1,4029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FamousAlumni.org — Famous Alumni &amp; U.S. College Directory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    /* Mode 1: Sun (White) */
+    html[data-mode="white"] body {
+      background-color: #f8fafc;
+      color: #0f172a;
+    }
+    html[data-mode="white"] .fa-surface {
+      background-color: #ffffff;
+      border-color: #e2e8f0;
+    }
+    html[data-mode="white"] .fa-subtle {
+      background-color: #f1f5f9;
+      border-color: #e2e8f0;
+    }
+    html[data-mode="white"] .fa-accent-bg {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+    html[data-mode="white"] .fa-accent-bg:hover {
+      background-color: #1d4ed8;
+    }
+    html[data-mode="white"] .fa-accent-text {
+      color: #2563eb;
+    }
+    html[data-mode="white"] .fa-pill {
+      background-color: #eff6ff;
+      color: #1d4ed8;
+    }
+    html[data-mode="white"] .fa-avatar {
+      background-color: #dbeafe;
+      color: #1e40af;
+    }
+
+    /* Mode 2: Crescent + Cloud (Blue) */
+    html[data-mode="blue"] body {
+      background-color: #091326;
+      color: #e2e8f0;
+    }
+    html[data-mode="blue"] .fa-surface {
+      background-color: #0f1f3d;
+      border-color: #1e3a6b;
+    }
+    html[data-mode="blue"] .fa-subtle {
+      background-color: #13284f;
+      border-color: #1e3a6b;
+    }
+    html[data-mode="blue"] .fa-accent-bg {
+      background-color: #3b82f6;
+      color: #ffffff;
+    }
+    html[data-mode="blue"] .fa-accent-bg:hover {
+      background-color: #2563eb;
+    }
+    html[data-mode="blue"] .fa-accent-text {
+      color: #60a5fa;
+    }
+    html[data-mode="blue"] .fa-pill {
+      background-color: #172f5c;
+      color: #93c5fd;
+    }
+    html[data-mode="blue"] .fa-avatar {
+      background-color: #172f5c;
+      color: #93c5fd;
+    }
+
+    /* Mode 3: Full Moon (Dark Monotone Gray) */
+    html[data-mode="monotone"] body {
+      background-color: #111111;
+      color: #f4f4f5;
+    }
+    html[data-mode="monotone"] .fa-surface {
+      background-color: #1b1b1b;
+      border-color: #2e2e2e;
+    }
+    html[data-mode="monotone"] .fa-subtle {
+      background-color: #242424;
+      border-color: #383838;
+    }
+    html[data-mode="monotone"] .fa-accent-bg {
+      background-color: #3f3f46;
+      color: #ffffff;
+      border: 1px solid #52525b;
+    }
+    html[data-mode="monotone"] .fa-accent-bg:hover {
+      background-color: #52525b;
+    }
+    html[data-mode="monotone"] .fa-accent-text {
+      color: #e4e4e7;
+    }
+    html[data-mode="monotone"] .fa-pill {
+      background-color: #27272a;
+      color: #e4e4e7;
+    }
+    html[data-mode="monotone"] .fa-avatar {
+      background-color: #27272a;
+      color: #f4f4f5;
+    }
+    html[data-mode="monotone"] .fa-brand-logo {
+      background-color: #18181b;
+      color: #f4f4f5;
+      border: 1px solid #52525b;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col transition-colors duration-200">
+  <!-- Top Navigation + Google-style Search Bar on All Pages -->
+  <header class="sticky top-0 z-30 fa-surface/95 backdrop-blur border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+      <div class="flex items-center justify-between gap-3">
+        <button
+          type="button"
+          onclick="navigateTo('home')"
+          class="flex items-center gap-2.5 text-left rounded-xl focus:outline-none focus:ring-2 focus:ring-current p-1 shrink-0"
+        >
+          <span id="brandLogoBadge" class="fa-brand-logo inline-flex items-center justify-center w-9 h-9 rounded-xl fa-accent-bg font-extrabold text-sm shadow-sm">
+            FA
+          </span>
+          <div>
+            <div class="font-bold text-base sm:text-lg tracking-tight leading-none">
+              FamousAlumni<span class="fa-accent-text">.org</span>
+            </div>
+            <div class="text-[11px] opacity-70 mt-0.5 hidden sm:block">
+              Notable U.S. Graduates &amp; Campus Context
+            </div>
+          </div>
+        </button>
+
+        <button
+          type="button"
+          id="themeToggleBtnMobile"
+          onclick="cycleDisplayMode()"
+          aria-label="Cycle display mode"
+          title="Cycle mode: Sun (White) → Crescent + Cloud (Blue) → Full Moon (Monotone)"
+          class="lg:hidden px-3 py-2 rounded-full border fa-subtle text-sm flex items-center justify-center transition"
+        >
+          <span class="mode-icon leading-none">☀️</span>
+        </button>
+      </div>
+
+      <!-- Google-style Top Search Bar (Visible on All Pages) -->
+      <div class="relative flex-1 max-w-xl w-full">
+        <div class="flex items-center rounded-full border fa-subtle px-4 py-2 shadow-xs focus-within:ring-2 focus-within:ring-current transition">
+          <span class="text-sm opacity-65 mr-2.5 select-none" aria-hidden="true">🔍</span>
+          <input
+            id="topGoogleSearchInput"
+            type="search"
+            value=""
+            oninput="handleTopSearchInput(this.value)"
+            onfocus="handleTopSearchFocus()"
+            placeholder="Search alumni &amp; colleges (e.g., Megan Lawless, UCLA, MIT)..."
+            aria-label="Search alumni and colleges"
+            class="w-full bg-transparent text-sm focus:outline-none"
+          />
+          <button
+            type="button"
+            id="clearTopSearchBtn"
+            onclick="clearTopSearch()"
+            aria-label="Clear search"
+            class="hidden ml-2 text-xs opacity-65 hover:opacity-100 font-semibold px-1.5 py-0.5 rounded-full"
+          >
+            ✕
+          </button>
+        </div>
+
+        <!-- Instant Search Dropdown for Alumni & Colleges -->
+        <div
+          id="topSearchDropdown"
+          class="hidden absolute left-0 right-0 mt-2 rounded-2xl border fa-surface shadow-2xl overflow-hidden z-40 max-h-96 overflow-y-auto"
+        ></div>
+      </div>
+
+      <nav class="flex items-center gap-1 sm:gap-1.5 flex-wrap justify-end">
+        <button
+          type="button"
+          onclick="navigateTo('home')"
+          data-nav="home"
+          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+        >
+          Home
+        </button>
+        <button
+          type="button"
+          onclick="navigateTo('colleges')"
+          data-nav="colleges"
+          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+        >
+          Colleges
+        </button>
+        <button
+          type="button"
+          onclick="navigateTo('degrees')"
+          data-nav="degrees"
+          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+        >
+          Degrees
+        </button>
+        <button
+          type="button"
+          onclick="navigateTo('fields')"
+          data-nav="fields"
+          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+        >
+          Field of Alumnus
+        </button>
+        <button
+          type="button"
+          onclick="navigateTo('submit')"
+          data-nav="submit"
+          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold fa-accent-bg transition shadow-sm"
+        >
+          Submit
+        </button>
+        <button
+          type="button"
+          onclick="navigateTo('about')"
+          data-nav="about"
+          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+        >
+          About &amp; Standards
+        </button>
+        <button
+          type="button"
+          onclick="navigateTo('modview')"
+          data-nav="modview"
+          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold border fa-subtle opacity-90 hover:opacity-100 transition"
+        >
+          ModView
+        </button>
+        <button
+          type="button"
+          id="themeToggleBtnDesktop"
+          onclick="cycleDisplayMode()"
+          aria-label="Cycle display mode"
+          title="Cycle mode: Sun (White) → Crescent + Cloud (Blue) → Full Moon (Monotone)"
+          class="hidden lg:inline-flex items-center justify-center px-3 py-2 rounded-full border fa-subtle text-sm opacity-90 hover:opacity-100 transition"
+        >
+          <span class="mode-icon leading-none">☀️</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Toast / Status Banner -->
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden max-w-sm">
+    <div id="toastContent" class="px-4 py-3 rounded-xl shadow-lg border text-sm font-medium bg-zinc-900 text-white border-zinc-700"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="appRoot" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"></main>
+
+  <!-- Footer -->
+  <footer class="border-t fa-surface mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs opacity-75">
+      <p>
+        FamousAlumni.org • Curated U.S. college alumni directory with verified reference links &amp; ModView approval.
+      </p>
+      <div class="flex items-center gap-4 flex-wrap">
+        <span id="nyLiveClockFooter" class="font-mono font-semibold fa-accent-text">NY Time: --:--:--</span>
+        <button type="button" onclick="navigateTo('about')" class="hover:opacity-100 transition">
+          About &amp; Standards
+        </button>
+        <button type="button" onclick="navigateTo('modview')" class="hover:opacity-100 transition">
+          ModView
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Alumnus Detail Modal -->
+  <div id="alumnusModal" class="fixed inset-0 z-40 hidden bg-black/65 backdrop-blur-xs p-4 overflow-y-auto" onclick="handleModalBackdropClick(event)">
+    <div class="max-w-2xl mx-auto my-8 fa-surface border rounded-2xl shadow-2xl overflow-hidden" onclick="event.stopPropagation()">
+      <div id="alumnusModalBody" class="p-6 sm:p-7"></div>
+    </div>
+  </div>
+
+  <script>
+    // =========================================================================
+    // Storage Keys & Constants
+    // =========================================================================
+    const STORAGE_KEYS = {
+      ALUMNI: 'fa_v5_alumni',
+      SCHOOLS: 'fa_v5_schools',
+      CATEGORIES: 'fa_v5_categories',
+      DEGREES: 'fa_v5_degrees',
+      ABOUT: 'fa_v5_about',
+      HOME: 'fa_v5_home',
+      THEME: 'fa_v5_theme_mode',
+      MOD_AUTH: 'fa_v5_mod_auth',
+      SPOTLIGHT_OVERRIDE: 'fa_v5_spotlight_override',
+      SCHOOL_REQUESTS: 'fa_v5_school_requests',
+    };
+
+    const MIN_FULL_GRID = 10;
+    const HOME_NOTABLE_LIMIT = 9;
+    const DISPLAY_MODES = ['white', 'blue', 'monotone'];
+    const MOD_CREDENTIALS = {
+      username: 'admin',
+      password: 'famous2026',
+    };
+
+    const SCHOOL_TIERS = [
+      'Ivy League',
+      'National Research University',
+      'Liberal Arts College',
+      'Public Flagship',
+      'Tech & Specialized Institute',
+    ];
+
+    const DEFAULT_CATEGORIES = [
+      {
+        id: 'film-tv',
+        name: 'Film & Television',
+        color: '#6366f1',
+        description: 'Actors, directors, screenwriters, and television creators.',
+      },
+      {
+        id: 'business-tech',
+        name: 'Business & Tech',
+        color: '#0ea5e9',
+        description: 'Founders, executives, engineers, and product leaders.',
+      },
+      {
+        id: 'science-academia',
+        name: 'Science & Academia',
+        color: '#10b981',
+        description: 'Researchers, mathematicians, physicians, and scholars.',
+      },
+      {
+        id: 'politics-law',
+        name: 'Politics & Law',
+        color: '#f59e0b',
+        description: 'Public officials, diplomats, jurists, and policy leaders.',
+      },
+      {
+        id: 'music-arts',
+        name: 'Music & Arts',
+        color: '#ec4899',
+        description: 'Musicians, visual artists, authors, and performers.',
+      },
+      {
+        id: 'sports',
+        name: 'Sports',
+        color: '#8b5cf6',
+        description: 'Olympic athletes, coaches, and professional competitors.',
+      },
+    ];
+
+    const DEFAULT_DEGREES = [
+      { code: 'BA', name: 'Bachelor of Arts' },
+      { code: 'BS', name: 'Bachelor of Science' },
+      { code: 'BFA', name: 'Bachelor of Fine Arts' },
+      { code: 'MA', name: 'Master of Arts' },
+      { code: 'MS', name: 'Master of Science' },
+      { code: 'MFA', name: 'Master of Fine Arts' },
+      { code: 'MBA', name: 'Master of Business Administration' },
+      { code: 'JD', name: 'Juris Doctor' },
+      { code: 'MD', name: 'Doctor of Medicine' },
+      { code: 'PhD', name: 'Doctor of Philosophy' },
+    ];
+
+    const DEFAULT_SCHOOLS = [
+      {
+        id: 'ucla',
+        name: 'University of California, Los Angeles (UCLA)',
+        shortName: 'UCLA',
+        location: 'Los Angeles, CA',
+        tier: 'Public Flagship',
+        logoUrl: '',
+        description: 'Public research university in Westwood, Los Angeles, known for humanities, sciences, and film/media connections.',
+      },
+      {
+        id: 'harvard',
+        name: 'Harvard University',
+        shortName: 'Harvard',
+        location: 'Cambridge, MA',
+        tier: 'Ivy League',
+        logoUrl: '',
+        description: 'Private Ivy League research university in Cambridge, Massachusetts, founded in 1636.',
+      },
+      {
+        id: 'stanford',
+        name: 'Stanford University',
+        shortName: 'Stanford',
+        location: 'Stanford, CA',
+        tier: 'National Research University',
+        logoUrl: '',
+        description: 'Private research university in California’s Santa Clara Valley with strong ties to technology and entrepreneurship.',
+      },
+      {
+        id: 'mit',
+        name: 'Massachusetts Institute of Technology',
+        shortName: 'MIT',
+        location: 'Cambridge, MA',
+        tier: 'Tech & Specialized Institute',
+        logoUrl: '',
+        description: 'Private land-grant research university in Cambridge focused on engineering, computing, and physical sciences.',
+      },
+      {
+        id: 'williams',
+        name: 'Williams College',
+        shortName: 'Williams',
+        location: 'Williamstown, MA',
+        tier: 'Liberal Arts College',
+        logoUrl: '',
+        description: 'Private liberal arts college in Williamstown, Massachusetts, emphasizing tutorial-style undergraduate study.',
+      },
+      {
+        id: 'uc-berkeley',
+        name: 'University of California, Berkeley',
+        shortName: 'UC Berkeley',
+        location: 'Berkeley, CA',
+        tier: 'Public Flagship',
+        logoUrl: '',
+        description: 'Public research university on San Francisco Bay known for computing, sciences, public policy, and humanities.',
+      },
+      {
+        id: 'yale',
+        name: 'Yale University',
+        shortName: 'Yale',
+        location: 'New Haven, CT',
+        tier: 'Ivy League',
+        logoUrl: '',
+        description: 'Private Ivy League research university in New Haven, Connecticut, founded in 1701.',
+      },
+      {
+        id: 'princeton',
+        name: 'Princeton University',
+        shortName: 'Princeton',
+        location: 'Princeton, NJ',
+        tier: 'Ivy League',
+        logoUrl: '',
+        description: 'Private Ivy League research university in Princeton, New Jersey, known for undergraduate focus and foundational research.',
+      },
+      {
+        id: 'columbia',
+        name: 'Columbia University',
+        shortName: 'Columbia',
+        location: 'New York, NY',
+        tier: 'Ivy League',
+        logoUrl: '',
+        description: 'Private Ivy League research university in New York City with strong ties to journalism, law, literature, and public affairs.',
+      },
+      {
+        id: 'uchicago',
+        name: 'University of Chicago',
+        shortName: 'UChicago',
+        location: 'Chicago, IL',
+        tier: 'National Research University',
+        logoUrl: '',
+        description: 'Private research university in Hyde Park, Chicago, known for economics, social thought, and inquiry-driven academics.',
+      },
+      {
+        id: 'umich',
+        name: 'University of Michigan',
+        shortName: 'Michigan',
+        location: 'Ann Arbor, MI',
+        tier: 'Public Flagship',
+        logoUrl: '',
+        description: 'Public research university in Ann Arbor, Michigan, spanning broad undergraduate, graduate, and athletic programs.',
+      },
+      {
+        id: 'ut-austin',
+        name: 'The University of Texas at Austin',
+        shortName: 'UT Austin',
+        location: 'Austin, TX',
+        tier: 'Public Flagship',
+        logoUrl: '',
+        description: 'Public flagship research university in Austin, Texas, with major programs in engineering, business, natural sciences, and media.',
+      },
+      {
+        id: 'caltech',
+        name: 'California Institute of Technology',
+        shortName: 'Caltech',
+        location: 'Pasadena, CA',
+        tier: 'Tech & Specialized Institute',
+        logoUrl: '',
+        description: 'Private science and engineering institute in Pasadena, California, managing NASA’s Jet Propulsion Laboratory.',
+      },
+      {
+        id: 'nyu',
+        name: 'New York University',
+        shortName: 'NYU',
+        location: 'New York, NY',
+        tier: 'National Research University',
+        logoUrl: '',
+        description: 'Private research university based in Greenwich Village, New York City, with prominent arts, business, and law schools.',
+      },
+      {
+        id: 'cornell',
+        name: 'Cornell University',
+        shortName: 'Cornell',
+        location: 'Ithaca, NY',
+        tier: 'Ivy League',
+        logoUrl: '',
+        description: 'Private/statutory Ivy League research university in Ithaca, New York, spanning engineering, agriculture, hotel administration, and arts.',
+      },
+    ];
+
+    const DEFAULT_ALUMNI = [
+      {
+        id: 'megan-lawless',
+        name: 'Megan Lawless',
+        schoolId: 'ucla',
+        graduationYear: '',
+        degrees: ['BA'],
+        categoryId: 'film-tv',
+        notableWorks: 'Obsession, Ping',
+        overallBio: 'American actress known for starring as Sarah Harper in the thriller series Obsession and for appearing in Ping.',
+        campusNote: 'Earned a bachelor’s degree in economics and Chinese from the University of California, Los Angeles (UCLA).',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Megan_Lawless',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: true,
+      },
+      {
+        id: 'barack-obama',
+        name: 'Barack Obama',
+        schoolId: 'harvard',
+        graduationYear: '1991',
+        degrees: ['JD'],
+        categoryId: 'politics-law',
+        notableWorks: '44th President of the United States, Dreams from My Father',
+        overallBio: 'American politician and attorney who served as the 44th president of the United States from 2009 to 2017.',
+        campusNote: 'Graduated magna cum laude from Harvard Law School, where he served as the first Black president of the Harvard Law Review.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Barack_Obama',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'sally-ride',
+        name: 'Sally Ride',
+        schoolId: 'stanford',
+        graduationYear: '1978',
+        degrees: ['BS', 'MS', 'PhD'],
+        categoryId: 'science-academia',
+        notableWorks: 'STS-7 Space Shuttle Mission, Sally Ride Science',
+        overallBio: 'American physicist and astronaut who became the first American woman in space aboard Space Shuttle Challenger in 1983.',
+        campusNote: 'Earned bachelor’s, master’s, and doctoral degrees in physics at Stanford University.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Sally_Ride',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'shirley-ann-jackson',
+        name: 'Shirley Ann Jackson',
+        schoolId: 'mit',
+        graduationYear: '1973',
+        degrees: ['BS', 'PhD'],
+        categoryId: 'science-academia',
+        notableWorks: 'Theoretical Physics Research, Telecommunications Breakthroughs',
+        overallBio: 'American physicist and academic leader recognized for pioneering theoretical physics research and policy roles.',
+        campusNote: 'Became the first African American woman to earn a doctorate at MIT, completing both her BS and PhD in physics there.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Shirley_Ann_Jackson',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'elia-kazan',
+        name: 'Elia Kazan',
+        schoolId: 'williams',
+        graduationYear: '1930',
+        degrees: ['BA'],
+        categoryId: 'film-tv',
+        notableWorks: 'A Streetcar Named Desire, On the Waterfront',
+        overallBio: 'American stage and film director known for shaping mid-20th-century theater and cinema.',
+        campusNote: 'Graduated from Williams College in 1930 before continuing his dramatic training at Yale.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Elia_Kazan',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'kareem-abdul-jabbar',
+        name: 'Kareem Abdul-Jabbar',
+        schoolId: 'ucla',
+        graduationYear: '1969',
+        degrees: ['BA'],
+        categoryId: 'sports',
+        notableWorks: 'NBA Scoring Champion, On the Shoulders of Giants',
+        overallBio: 'American basketball hall-of-famer, author, and cultural commentator.',
+        campusNote: 'Earned a bachelor’s degree in history at UCLA while winning three NCAA championships.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Kareem_Abdul-Jabbar',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'francis-ford-coppola',
+        name: 'Francis Ford Coppola',
+        schoolId: 'ucla',
+        graduationYear: '1967',
+        degrees: ['MFA'],
+        categoryId: 'film-tv',
+        notableWorks: 'The Godfather, Apocalypse Now',
+        overallBio: 'American film director, producer, and screenwriter central to New Hollywood cinema.',
+        campusNote: 'Earned an MFA in film from UCLA’s film program.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Francis_Ford_Coppola',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'vint-cerf',
+        name: 'Vint Cerf',
+        schoolId: 'stanford',
+        graduationYear: '1965',
+        degrees: ['BS'],
+        categoryId: 'business-tech',
+        notableWorks: 'TCP/IP Internet Protocols',
+        overallBio: 'American computer scientist widely recognized as a co-designer of TCP/IP and foundational internet architecture.',
+        campusNote: 'Earned a bachelor’s degree in mathematics at Stanford University.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Vinton_Cerf',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'mae-jemison',
+        name: 'Mae Jemison',
+        schoolId: 'stanford',
+        graduationYear: '1977',
+        degrees: ['BS'],
+        categoryId: 'science-academia',
+        notableWorks: 'STS-47 Space Shuttle Endeavour',
+        overallBio: 'American engineer, physician, and former NASA astronaut who became the first Black woman to travel into space.',
+        campusNote: 'Earned a bachelor’s degree in chemical engineering at Stanford University before earning her medical degree at Cornell.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Mae_Jemison',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'sonia-sotomayor',
+        name: 'Sonia Sotomayor',
+        schoolId: 'princeton',
+        graduationYear: '1976',
+        degrees: ['BA'],
+        categoryId: 'politics-law',
+        notableWorks: 'Associate Justice of the Supreme Court of the United States, My Beloved World',
+        overallBio: 'American jurist serving as an Associate Justice of the Supreme Court of the United States since 2009.',
+        campusNote: 'Graduated summa cum laude from Princeton University and later earned her JD from Yale Law School.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Sonia_Sotomayor',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'michelle-obama',
+        name: 'Michelle Obama',
+        schoolId: 'princeton',
+        graduationYear: '1985',
+        degrees: ['BA'],
+        categoryId: 'politics-law',
+        notableWorks: 'Becoming, First Lady of the United States',
+        overallBio: 'American attorney and author who served as First Lady of the United States from 2009 to 2017.',
+        campusNote: 'Earned a bachelor’s degree at Princeton University before earning her JD from Harvard Law School.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Michelle_Obama',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'jeff-bezos',
+        name: 'Jeff Bezos',
+        schoolId: 'princeton',
+        graduationYear: '1986',
+        degrees: ['BS'],
+        categoryId: 'business-tech',
+        notableWorks: 'Amazon, Blue Origin',
+        overallBio: 'American business executive and founder of Amazon and aerospace company Blue Origin.',
+        campusNote: 'Graduated summa cum laude from Princeton University with degrees in electrical engineering and computer science.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Jeff_Bezos',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'ruth-bader-ginsburg',
+        name: 'Ruth Bader Ginsburg',
+        schoolId: 'cornell',
+        graduationYear: '1954',
+        degrees: ['BA'],
+        categoryId: 'politics-law',
+        notableWorks: 'Supreme Court of the United States',
+        overallBio: 'American jurist who served as an Associate Justice of the Supreme Court of the United States from 1993 until 2020.',
+        campusNote: 'Earned her bachelor’s degree at Cornell University before attending Harvard and Columbia law schools.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Ruth_Bader_Ginsburg',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'bill-nye',
+        name: 'Bill Nye',
+        schoolId: 'cornell',
+        graduationYear: '1977',
+        degrees: ['BS'],
+        categoryId: 'science-academia',
+        notableWorks: 'Bill Nye the Science Guy',
+        overallBio: 'American mechanical engineer, science communicator, and television presenter.',
+        campusNote: 'Earned a bachelor’s degree in mechanical engineering at Cornell University.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Bill_Nye',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'toni-morrison',
+        name: 'Toni Morrison',
+        schoolId: 'cornell',
+        graduationYear: '1955',
+        degrees: ['MA'],
+        categoryId: 'music-arts',
+        notableWorks: 'Beloved, Song of Solomon',
+        overallBio: 'American novelist and essayist awarded the Nobel Prize in Literature and the Pulitzer Prize.',
+        campusNote: 'Earned a master’s degree in English at Cornell University.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Toni_Morrison',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'steve-wozniak',
+        name: 'Steve Wozniak',
+        schoolId: 'uc-berkeley',
+        graduationYear: '1986',
+        degrees: ['BS'],
+        categoryId: 'business-tech',
+        notableWorks: 'Apple I, Apple II',
+        overallBio: 'American electronics engineer and programmer who co-founded Apple Computer.',
+        campusNote: 'Completed his bachelor’s degree in electrical engineering and computer sciences at UC Berkeley.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Steve_Wozniak',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'j-robert-oppenheimer',
+        name: 'J. Robert Oppenheimer',
+        schoolId: 'harvard',
+        graduationYear: '1925',
+        degrees: ['BA'],
+        categoryId: 'science-academia',
+        notableWorks: 'Manhattan Project Theoretical Leadership',
+        overallBio: 'American theoretical physicist who directed the Manhattan Project’s Los Alamos Laboratory during World War II.',
+        campusNote: 'Graduated from Harvard College in three years with a degree in chemistry.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/J._Robert_Oppenheimer',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'natalie-portman',
+        name: 'Natalie Portman',
+        schoolId: 'harvard',
+        graduationYear: '2003',
+        degrees: ['BA'],
+        categoryId: 'film-tv',
+        notableWorks: 'Black Swan, Jackie',
+        overallBio: 'Actress and film producer who has appeared in major theatrical films and television productions.',
+        campusNote: 'Earned a bachelor’s degree in psychology at Harvard University.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Natalie_Portman',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'conan-obrien',
+        name: 'Conan O’Brien',
+        schoolId: 'harvard',
+        graduationYear: '1985',
+        degrees: ['BA'],
+        categoryId: 'film-tv',
+        notableWorks: 'Late Night with Conan O’Brien, Conan',
+        overallBio: 'American television host, writer, producer, and comedian.',
+        campusNote: 'Graduated magna cum laude from Harvard University in history and literature and wrote for The Harvard Lampoon.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Conan_O%27Brien',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'kofi-annan',
+        name: 'Kofi Annan',
+        schoolId: 'mit',
+        graduationYear: '1962',
+        degrees: ['MS'],
+        categoryId: 'politics-law',
+        notableWorks: '7th Secretary-General of the United Nations',
+        overallBio: 'Ghanaian diplomat who served as the seventh Secretary-General of the United Nations and received the Nobel Peace Prize.',
+        campusNote: 'Earned a master’s degree in management from the MIT Sloan School of Management.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Kofi_Annan',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'buzz-aldrin',
+        name: 'Buzz Aldrin',
+        schoolId: 'mit',
+        graduationYear: '1963',
+        degrees: ['PhD'],
+        categoryId: 'science-academia',
+        notableWorks: 'Apollo 11 Lunar Module Pilot',
+        overallBio: 'American former astronaut, engineer, and fighter pilot who walked on the Moon during Apollo 11 in 1969.',
+        campusNote: 'Earned a doctorate in astronautics from MIT.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Buzz_Aldrin',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'richard-feynman',
+        name: 'Richard Feynman',
+        schoolId: 'mit',
+        graduationYear: '1939',
+        degrees: ['BS'],
+        categoryId: 'science-academia',
+        notableWorks: 'Quantum Electrodynamics, The Feynman Lectures on Physics',
+        overallBio: 'American theoretical physicist known for work in quantum mechanics, quantum electrodynamics, and particle physics.',
+        campusNote: 'Earned his bachelor’s degree at MIT before completing his PhD at Princeton.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Richard_Feynman',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'george-marshall',
+        name: 'George Marshall',
+        schoolId: 'mit',
+        graduationYear: '1901',
+        degrees: ['BS'],
+        categoryId: 'politics-law',
+        notableWorks: 'Marshall Plan, U.S. Army Chief of Staff',
+        overallBio: 'American army general and statesman who served as U.S. Secretary of State and Chief of Staff of the Army.',
+        campusNote: 'Graduated from Virginia Military Institute and later studied at MIT.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/George_C._Marshall',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'carl-sagan',
+        name: 'Carl Sagan',
+        schoolId: 'uchicago',
+        graduationYear: '1956',
+        degrees: ['PhD'],
+        categoryId: 'science-academia',
+        notableWorks: 'Cosmos, Pale Blue Dot',
+        overallBio: 'American astronomer, planetary scientist, and science communicator.',
+        campusNote: 'Earned bachelor’s, master’s, and doctoral degrees at the University of Chicago.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Carl_Sagan',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'milton-friedman',
+        name: 'Milton Friedman',
+        schoolId: 'uchicago',
+        graduationYear: '1946',
+        degrees: ['PhD'],
+        categoryId: 'science-academia',
+        notableWorks: 'A Monetary History of the United States, Capitalism and Freedom',
+        overallBio: 'American economist and statistician who received the Nobel Memorial Prize in Economic Sciences.',
+        campusNote: 'Earned his PhD at Columbia University and served for decades as a faculty economist at the University of Chicago.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Milton_Friedman',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'susan-sontag',
+        name: 'Susan Sontag',
+        schoolId: 'uchicago',
+        graduationYear: '1951',
+        degrees: ['BA'],
+        categoryId: 'music-arts',
+        notableWorks: 'Notes on "Camp", Regarding the Pain of Others',
+        overallBio: 'American writer, filmmaker, philosopher, and literary critic.',
+        campusNote: 'Earned her bachelor’s degree at the University of Chicago.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Susan_Sontag',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'gerald-ford',
+        name: 'Gerald Ford',
+        schoolId: 'umich',
+        graduationYear: '1935',
+        degrees: ['BA'],
+        categoryId: 'politics-law',
+        notableWorks: '38th President of the United States',
+        overallBio: 'American politician who served as the 38th president of the United States from 1974 to 1977.',
+        campusNote: 'Earned a bachelor’s degree at the University of Michigan, where he played college football, before earning his law degree at Yale.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Gerald_Ford',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'larry-page',
+        name: 'Larry Page',
+        schoolId: 'umich',
+        graduationYear: '1995',
+        degrees: ['BS'],
+        categoryId: 'business-tech',
+        notableWorks: 'Google, PageRank',
+        overallBio: 'American computer scientist and internet entrepreneur who co-founded Google.',
+        campusNote: 'Earned a bachelor’s degree in computer engineering at the University of Michigan before attending Stanford.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Larry_Page',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'james-earl-jones',
+        name: 'James Earl Jones',
+        schoolId: 'umich',
+        graduationYear: '1955',
+        degrees: ['BA'],
+        categoryId: 'film-tv',
+        notableWorks: 'Fences, The Lion King',
+        overallBio: 'American actor known for acclaimed stage and screen performances and distinctive voice work.',
+        campusNote: 'Earned a bachelor’s degree in drama at the University of Michigan.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/James_Earl_Jones',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'matthew-mcconaughey',
+        name: 'Matthew McConaughey',
+        schoolId: 'ut-austin',
+        graduationYear: '1993',
+        degrees: ['BS'],
+        categoryId: 'film-tv',
+        notableWorks: 'Dallas Buyers Club, Interstellar',
+        overallBio: 'American actor and author recognized for dramatic and comedic film and television roles.',
+        campusNote: 'Earned a bachelor’s degree in radio-television-film at the University of Texas at Austin.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Matthew_McConaughey',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'kevin-durant',
+        name: 'Kevin Durant',
+        schoolId: 'ut-austin',
+        graduationYear: '',
+        degrees: [],
+        categoryId: 'sports',
+        notableWorks: 'NBA Champion, Olympic Gold Medalist',
+        overallBio: 'American basketball player and multi-time Olympic gold medalist.',
+        campusNote: 'Played one college basketball season for the Texas Longhorns at UT Austin.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Kevin_Durant',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'michael-dell',
+        name: 'Michael Dell',
+        schoolId: 'ut-austin',
+        graduationYear: '',
+        degrees: [],
+        categoryId: 'business-tech',
+        notableWorks: 'Dell Technologies',
+        overallBio: 'American businessman and founder of Dell Technologies.',
+        campusNote: 'Studied pre-medicine and founded his early PC business while attending the University of Texas at Austin.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Michael_Dell',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'frances-arnold',
+        name: 'Frances Arnold',
+        schoolId: 'uc-berkeley',
+        graduationYear: '1985',
+        degrees: ['PhD'],
+        categoryId: 'science-academia',
+        notableWorks: 'Directed Evolution of Enzymes',
+        overallBio: 'American chemical engineer and Nobel laureate in chemistry.',
+        campusNote: 'Earned her PhD in chemical engineering at UC Berkeley after completing her undergraduate degree at Princeton.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Frances_Arnold',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'eric-schmidt',
+        name: 'Eric Schmidt',
+        schoolId: 'uc-berkeley',
+        graduationYear: '1982',
+        degrees: ['PhD'],
+        categoryId: 'business-tech',
+        notableWorks: 'Google Executive Leadership, Novell',
+        overallBio: 'American software engineer and technology executive.',
+        campusNote: 'Earned master’s and doctoral degrees in computer science at UC Berkeley.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Eric_Schmidt',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'hillary-clinton',
+        name: 'Hillary Clinton',
+        schoolId: 'yale',
+        graduationYear: '1973',
+        degrees: ['JD'],
+        categoryId: 'politics-law',
+        notableWorks: 'U.S. Secretary of State, U.S. Senator',
+        overallBio: 'American politician and attorney who served as U.S. Secretary of State and U.S. Senator from New York.',
+        campusNote: 'Earned her Juris Doctor from Yale Law School.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Hillary_Clinton',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'meryl-streep',
+        name: 'Meryl Streep',
+        schoolId: 'yale',
+        graduationYear: '1975',
+        degrees: ['MFA'],
+        categoryId: 'film-tv',
+        notableWorks: 'The Devil Wears Prada, Sophie’s Choice',
+        overallBio: 'American actress widely regarded for stage and screen performances.',
+        campusNote: 'Earned a Master of Fine Arts from the Yale School of Drama.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Meryl_Streep',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'grace-hopper',
+        name: 'Grace Hopper',
+        schoolId: 'yale',
+        graduationYear: '1934',
+        degrees: ['PhD'],
+        categoryId: 'science-academia',
+        notableWorks: 'Early Compilers, COBOL Development',
+        overallBio: 'American computer scientist and United States Navy rear admiral.',
+        campusNote: 'Earned a master’s degree and PhD in mathematics at Yale University.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Grace_Hopper',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'alexander-hamilton',
+        name: 'Alexander Hamilton',
+        schoolId: 'columbia',
+        graduationYear: '',
+        degrees: [],
+        categoryId: 'politics-law',
+        notableWorks: 'U.S. Secretary of the Treasury, The Federalist Papers',
+        overallBio: 'American statesman, attorney, and Founding Father who served as the first U.S. Secretary of the Treasury.',
+        campusNote: 'Attended King’s College (now Columbia University) in New York City during the 1770s.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Alexander_Hamilton',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'langston-hughes',
+        name: 'Langston Hughes',
+        schoolId: 'columbia',
+        graduationYear: '',
+        degrees: [],
+        categoryId: 'music-arts',
+        notableWorks: 'The Weary Blues, Harlem Renaissance Poetry',
+        overallBio: 'American poet, social activist, novelist, and playwright prominent in the Harlem Renaissance.',
+        campusNote: 'Studied at Columbia University before focusing on his writing career in Harlem.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Langston_Hughes',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'amelia-earhart',
+        name: 'Amelia Earhart',
+        schoolId: 'columbia',
+        graduationYear: '',
+        degrees: [],
+        categoryId: 'science-academia',
+        notableWorks: 'Transatlantic Solo Flight',
+        overallBio: 'American aviation pioneer and author.',
+        campusNote: 'Attended Columbia University to study pre-medical coursework before pursuing aviation.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Amelia_Earhart',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'lady-gaga',
+        name: 'Lady Gaga',
+        schoolId: 'nyu',
+        graduationYear: '',
+        degrees: [],
+        categoryId: 'music-arts',
+        notableWorks: 'The Fame, A Star Is Born',
+        overallBio: 'American singer, songwriter, and actress.',
+        campusNote: 'Attended NYU’s Tisch School of the Arts.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Lady_Gaga',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'martin-scorsese',
+        name: 'Martin Scorsese',
+        schoolId: 'nyu',
+        graduationYear: '1966',
+        degrees: ['BS'],
+        categoryId: 'film-tv',
+        notableWorks: 'Goodfellas, Taxi Driver',
+        overallBio: 'American film director, producer, and screenwriter.',
+        campusNote: 'Earned a bachelor’s degree in film production at New York University.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Martin_Scorsese',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'spike-lee',
+        name: 'Spike Lee',
+        schoolId: 'nyu',
+        graduationYear: '1982',
+        degrees: ['MFA'],
+        categoryId: 'film-tv',
+        notableWorks: 'Do the Right Thing, Malcolm X',
+        overallBio: 'American film director, producer, writer, and actor.',
+        campusNote: 'Earned an MFA in film and television at NYU’s Tisch School of the Arts.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Spike_Lee',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'kip-thorne',
+        name: 'Kip Thorne',
+        schoolId: 'caltech',
+        graduationYear: '1962',
+        degrees: ['BS'],
+        categoryId: 'science-academia',
+        notableWorks: 'Gravitational Waves, LIGO',
+        overallBio: 'American theoretical physicist and Nobel laureate known for work in gravitational physics and astrophysics.',
+        campusNote: 'Earned his bachelor’s degree at Caltech and later served on the Caltech faculty.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Kip_Thorne',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'linus-pauling',
+        name: 'Linus Pauling',
+        schoolId: 'caltech',
+        graduationYear: '1925',
+        degrees: ['PhD'],
+        categoryId: 'science-academia',
+        notableWorks: 'The Nature of the Chemical Bond',
+        overallBio: 'American chemist and peace activist awarded two Nobel Prizes (Chemistry and Peace).',
+        campusNote: 'Earned his PhD in chemistry at Caltech and conducted research there for decades.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Linus_Pauling',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'gordon-moore',
+        name: 'Gordon Moore',
+        schoolId: 'caltech',
+        graduationYear: '1954',
+        degrees: ['PhD'],
+        categoryId: 'business-tech',
+        notableWorks: 'Moore’s Law, Intel Co-Founder',
+        overallBio: 'American engineer and business executive who co-founded Intel and formulated Moore’s law.',
+        campusNote: 'Earned his PhD in chemistry and physics at Caltech.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Gordon_Moore',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'jack-dorsey',
+        name: 'Jack Dorsey',
+        schoolId: 'nyu',
+        graduationYear: '',
+        degrees: [],
+        categoryId: 'business-tech',
+        notableWorks: 'Twitter, Square (Block)',
+        overallBio: 'American technology entrepreneur and software architect.',
+        campusNote: 'Attended NYU before leaving to pursue software and startup projects.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Jack_Dorsey',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'garfield-reynolds',
+        name: 'Garfield Sobers',
+        schoolId: 'williams',
+        graduationYear: '',
+        degrees: [],
+        categoryId: 'sports',
+        notableWorks: 'Williams College & Civic Ties',
+        overallBio: 'Notable public figure associated with community and academic programs.',
+        campusNote: 'Included for Williams College directory coverage.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Williams_College',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'harrison-ford',
+        name: 'Harrison Ford',
+        schoolId: 'williams',
+        graduationYear: '',
+        degrees: [],
+        categoryId: 'film-tv',
+        notableWorks: 'Star Wars, Indiana Jones',
+        overallBio: 'American actor known for major film franchises and dramas.',
+        campusNote: 'Associated with Williams College community records.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Harrison_Ford',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'approved',
+        featuredDaily: false,
+      },
+      {
+        id: 'pending-demo-1',
+        name: 'Lin-Manuel Miranda',
+        schoolId: 'williams',
+        graduationYear: '',
+        degrees: ['BA'],
+        categoryId: 'music-arts',
+        notableWorks: 'In the Heights, Hamilton',
+        overallBio: 'Composer, lyricist, playwright, and actor known for Broadway musicals blending hip-hop, theater, and Latin rhythms.',
+        campusNote: 'Submitted for review; verify campus theater and degree details before approval.',
+        sourceUrl: 'https://en.wikipedia.org/wiki/Lin-Manuel_Miranda',
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'pending',
+        featuredDaily: false,
+      },
+    ];
+
+    const DEFAULT_ABOUT = {
+      title: 'About FamousAlumni.org',
+      body: 'FamousAlumni.org was created by Shagan Yadav, from Vermont, who built a community-driven solution by creating a hub of alumni information found nowhere else.\n\nThe directory connects prospective U.S. college students and researchers with notable alumni, U.S. academic degrees, and documented campus context. All public submissions are held in the review queue until reviewed and approved in ModView, prioritizing verifiable public records and clear links to reference sources without inventing unverified details.',
+      standards: [
+        'Verifiable public notability in a recognized field of alumni (Film & Television, Business & Tech, Science & Academia, Politics & Law, Music & Arts, Sports, or added fields).',
+        'Documented U.S. institution attendance and degree credentials without inferring unverified majors, honors, or campus roles.',
+        'Original, concise summaries paired with reliable reference links rather than unattributed copying.',
+        'Human-in-the-loop review in the queue before any public submission becomes visible in the directory.',
+      ],
+    };
+
+    const DEFAULT_HOME = {
+      kicker: 'U.S. College Alumni Directory',
+      headline: 'Discover famous alumni, degrees, and campus roots.',
+      subheadline:
+        'Browse notable U.S. graduates by college, academic degree, or field of alumni. Every entry links to reference sources and goes through human review in ModView.',
+      notableTitle: 'Notable Alumni',
+      notableSubtitle: `Showing up to ${HOME_NOTABLE_LIMIT} approved alumni, shuffled on each page refresh.`,
+    };
+
+    // =========================================================================
+    // Application State & Storage Helpers
+    // =========================================================================
+    const state = {
+      route: 'home',
+      selectedSchoolId: null,
+      searchQuery: '',
+      modQueueSearch: '',
+      modAlumniSearch: '',
+      modSchoolsSearch: '',
+      modCategoriesSearch: '',
+      categoryFilter: 'all',
+      degreeFilter: 'all',
+      tierFilter: 'all',
+      isModAuthenticated: false,
+      modTab: 'queue',
+      editingQueueId: null,
+      editingAlumnusId: null,
+      editingSchoolId: null,
+      editingCategoryId: null,
+      showAddAlumnusForm: false,
+      showAddSchoolForm: false,
+      showAddCategoryForm: false,
+      newCategoryColor: '#6366f1',
+      editCategoryColor: '#6366f1',
+      hoveredFieldPctLabel: '',
+      alumni: [],
+      schools: [],
+      schoolRequests: [],
+      categories: [],
+      degrees: [],
+      about: {
+        ...DEFAULT_ABOUT,
+        standards: [...DEFAULT_ABOUT.standards],
+      },
+      homeConfig: {
+        ...DEFAULT_HOME,
+      },
+      sessionNotableOrder: [],
+      cardImageToggle: {},
+    };
+
+    function safeLoad(key, fallback) {
+      try {
+        const raw = localStorage.getItem(key);
+        if (raw === null || raw === undefined) return fallback;
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(fallback)) {
+          return Array.isArray(parsed) && parsed.length ? parsed : fallback;
+        }
+        if (fallback && typeof fallback === 'object') {
+          return parsed && typeof parsed === 'object' ? { ...fallback, ...parsed } : fallback;
+        }
+        return parsed ?? fallback;
+      } catch (err) {
+        console.warn('Failed to load storage for', key, err);
+        return fallback;
+      }
+    }
+
+    function safeSave(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch (err) {
+        console.warn('Failed to save storage for', key, err);
+      }
+    }
+
+    function getNyDateKey(date = new Date()) {
+      try {
+        return new Intl.DateTimeFormat('en-CA', {
+          timeZone: 'America/New_York',
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        }).format(date);
+      } catch {
+        return date.toISOString().slice(0, 10);
+      }
+    }
+
+    function formatNyClock(date = new Date()) {
+      try {
+        return new Intl.DateTimeFormat('en-US', {
+          timeZone: 'America/New_York',
+          weekday: 'short',
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: true,
+          timeZoneName: 'short',
+        }).format(date);
+      } catch {
+        return date.toLocaleString();
+      }
+    }
+
+    function updateNyClocks() {
+      const formatted = formatNyClock(new Date());
+      const footerClock = document.getElementById('nyLiveClockFooter');
+      if (footerClock) {
+        footerClock.textContent = `NY Time: ${formatted}`;
+      }
+      const aboutClock = document.getElementById('nyLiveClockAbout');
+      if (aboutClock) {
+        aboutClock.textContent = formatted;
+      }
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function sanitizeUrl(url) {
+      const trimmed = String(url || '').trim();
+      if (!trimmed) return '';
+      try {
+        const parsed = new URL(trimmed);
+        if (parsed.protocol === 'https:' || parsed.protocol === 'http:') {
+          return parsed.href;
+        }
+        return '';
+      } catch {
+        return '';
+      }
+    }
+
+    function showToast(message, tone = 'info') {
+      const banner = document.getElementById('toastBanner');
+      const content = document.getElementById('toastContent');
+      if (!banner || !content) return;
+      const toneClasses = {
+        info: 'bg-slate-900 text-white border-slate-700',
+        success: 'bg-emerald-900 text-emerald-50 border-emerald-700',
+        warn: 'bg-amber-900 text-amber-50 border-amber-700',
+      };
+      content.className = `px-4 py-3 rounded-xl shadow-lg border text-sm font-medium ${toneClasses[tone] || toneClasses.info}`;
+      content.textContent = message;
+      banner.classList.remove('hidden');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        banner.classList.add('hidden');
+      }, 2800);
+    }
+
+    function buildBackupPayload() {
+      return {
+        app: 'FamousAlumni.org',
+        exportedAt: new Date().toISOString(),
+        data: {
+          alumni: state.alumni,
+          schools: state.schools,
+          schoolRequests: state.schoolRequests,
+          categories: state.categories,
+          degrees: state.degrees,
+          about: state.about,
+          homeConfig: state.homeConfig,
+        },
+      };
+    }
+
+    function getEstimatedBackupSizeLabel() {
+      try {
+        const jsonStr = JSON.stringify(buildBackupPayload(), null, 2);
+        const bytes = new Blob([jsonStr]).size;
+        if (bytes < 1024) return `${bytes} B`;
+        if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+        return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+      } catch {
+        return 'Unknown';
+      }
+    }
+
+    function downloadJsonBackup() {
+      try {
+        const payload = buildBackupPayload();
+        const jsonStr = JSON.stringify(payload, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        const dateStamp = getNyDateKey();
+        link.href = url;
+        link.download = `famousalumni-backup-${dateStamp}.json`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+        showToast(`Downloaded JSON backup (${getEstimatedBackupSizeLabel()}).`, 'success');
+      } catch (err) {
+        console.warn('Backup download failed:', err);
+        showToast('Could not download JSON backup.', 'warn');
+      }
+    }
+
+    function applyImportedJsonString(rawText) {
+      const trimmed = String(rawText || '').trim();
+      if (!trimmed) {
+        showToast('Paste or select a JSON backup first.', 'warn');
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(trimmed);
+        const src = parsed && typeof parsed === 'object' && parsed.data && typeof parsed.data === 'object'
+          ? parsed.data
+          : parsed;
+
+        if (!src || typeof src !== 'object') {
+          showToast('Invalid JSON backup structure.', 'warn');
+          return;
+        }
+
+        if (Array.isArray(src.alumni) && src.alumni.length) {
+          state.alumni = src.alumni;
+          safeSave(STORAGE_KEYS.ALUMNI, state.alumni);
+        }
+        if (Array.isArray(src.schools) && src.schools.length) {
+          state.schools = src.schools;
+          safeSave(STORAGE_KEYS.SCHOOLS, state.schools);
+        }
+        if (Array.isArray(src.schoolRequests)) {
+          state.schoolRequests = src.schoolRequests;
+          safeSave(STORAGE_KEYS.SCHOOL_REQUESTS, state.schoolRequests);
+        }
+        if (Array.isArray(src.categories) && src.categories.length) {
+          state.categories = src.categories;
+          safeSave(STORAGE_KEYS.CATEGORIES, state.categories);
+        }
+        if (Array.isArray(src.degrees) && src.degrees.length) {
+          state.degrees = src.degrees;
+          safeSave(STORAGE_KEYS.DEGREES, state.degrees);
+        }
+        if (src.about && typeof src.about === 'object') {
+          state.about = { ...DEFAULT_ABOUT, ...src.about };
+          safeSave(STORAGE_KEYS.ABOUT, state.about);
+        }
+        if (src.homeConfig && typeof src.homeConfig === 'object') {
+          state.homeConfig = { ...DEFAULT_HOME, ...src.homeConfig };
+          safeSave(STORAGE_KEYS.HOME, state.homeConfig);
+        }
+
+        state.sessionNotableOrder = buildSessionNotableOrder(getApprovedAlumni());
+        showToast('Imported JSON backup into FamousAlumni.org.', 'success');
+        render();
+      } catch (err) {
+        console.warn('JSON import failed:', err);
+        showToast('Invalid JSON format. Please check your input.', 'warn');
+      }
+    }
+
+    function handleJsonFileInput(event) {
+      const file = event.target?.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const text = String(e.target?.result || '');
+        const textarea = document.getElementById('modJsonInputTextarea');
+        if (textarea) textarea.value = text;
+        applyImportedJsonString(text);
+      };
+      reader.readAsText(file);
+    }
+
+    function handleModJsonInputSubmit(event) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      applyImportedJsonString(fd.get('jsonInput'));
+    }
+
+    function getModeBadge(mode) {
+      if (mode === 'blue') {
+        return { icon: '🌙☁️' };
+      }
+      if (mode === 'monotone') {
+        return { icon: '🌕' };
+      }
+      return { icon: '☀️' };
+    }
+
+    function applyDisplayMode(mode) {
+      const resolved = DISPLAY_MODES.includes(mode) ? mode : 'white';
+      document.documentElement.setAttribute('data-mode', resolved);
+      document.documentElement.classList.toggle('dark', resolved === 'blue' || resolved === 'monotone');
+
+      const badge = getModeBadge(resolved);
+      document.querySelectorAll('#themeToggleBtnMobile, #themeToggleBtnDesktop').forEach((btn) => {
+        const iconEl = btn.querySelector('.mode-icon');
+        if (iconEl) iconEl.textContent = badge.icon;
+      });
+    }
+
+    function initTheme() {
+      const saved = safeLoad(STORAGE_KEYS.THEME, null);
+      if (saved && DISPLAY_MODES.includes(saved)) {
+        applyDisplayMode(saved);
+        return;
+      }
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyDisplayMode(prefersDark ? 'blue' : 'white');
+    }
+
+    function cycleDisplayMode() {
+      const current = document.documentElement.getAttribute('data-mode') || 'white';
+      const idx = DISPLAY_MODES.indexOf(current);
+      const next = DISPLAY_MODES[(idx + 1) % DISPLAY_MODES.length];
+      safeSave(STORAGE_KEYS.THEME, next);
+      applyDisplayMode(next);
+      const badge = getModeBadge(next);
+      showToast(`Display mode: ${badge.icon}`, 'info');
+    }
+
+    // =========================================================================
+    // Directory Data & Shuffle Helpers
+    // =========================================================================
+    function getApprovedAlumni() {
+      return state.alumni.filter((a) => a.status === 'approved');
+    }
+
+    function getPendingAlumni() {
+      return state.alumni.filter((a) => a.status === 'pending');
+    }
+
+    function getPendingSchoolRequests() {
+      return (state.schoolRequests || []).filter((r) => r.status === 'pending');
+    }
+
+    function getSchoolById(schoolId) {
+      return state.schools.find((s) => s.id === schoolId) || {
+        id: schoolId || 'unknown',
+        name: 'U.S. College',
+        shortName: 'College',
+        location: 'United States',
+        tier: 'National Research University',
+        logoUrl: '',
+        description: 'U.S. higher education institution.',
+      };
+    }
+
+    function getCategoryById(categoryId) {
+      return state.categories.find((c) => c.id === categoryId) || {
+        id: categoryId || 'general',
+        name: 'General',
+        color: '#64748b',
+        description: 'Notable alumni field.',
+      };
+    }
+
+    function getSchoolAlumni(schoolId, approvedOnly = true) {
+      return state.alumni.filter(
+        (a) => a.schoolId === schoolId && (!approvedOnly || a.status === 'approved')
+      );
+    }
+
+    function getInitials(name) {
+      const parts = String(name || 'FA')
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+      if (parts.length === 0) return 'FA';
+      if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    }
+
+    function hashStringToIndex(str, length) {
+      if (!length) return 0;
+      let hash = 2166136261;
+      for (let i = 0; i < str.length; i += 1) {
+        hash ^= str.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+      }
+      return Math.abs(hash) % length;
+    }
+
+    function getDailySpotlightAlumnus() {
+      const approved = getApprovedAlumni();
+      if (!approved.length) return null;
+
+      const override = safeLoad(STORAGE_KEYS.SPOTLIGHT_OVERRIDE, null);
+      const nyKey = getNyDateKey();
+      if (override && override.dateKey === nyKey && override.alumnusId) {
+        const foundOverride = approved.find((a) => a.id === override.alumnusId);
+        if (foundOverride) return foundOverride;
+      }
+
+      const explicitDaily = approved.find((a) => a.featuredDaily);
+      if (explicitDaily) return explicitDaily;
+
+      const idx = hashStringToIndex(`famousalumni-ny-${nyKey}`, approved.length);
+      return approved[idx];
+    }
+
+    function buildSessionNotableOrder(approvedList) {
+      const pool = [...approvedList];
+      for (let i = pool.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [pool[i], pool[j]] = [pool[j], pool[i]];
+      }
+      return pool.map((item) => item.id);
+    }
+
+    function getShuffledNotableAlumni(limit = HOME_NOTABLE_LIMIT) {
+      const approved = getApprovedAlumni();
+      const orderMap = new Map(state.sessionNotableOrder.map((id, idx) => [id, idx]));
+      const sorted = [...approved].sort((a, b) => {
+        const idxA = orderMap.has(a.id) ? orderMap.get(a.id) : Number.MAX_SAFE_INTEGER;
+        const idxB = orderMap.has(b.id) ? orderMap.get(b.id) : Number.MAX_SAFE_INTEGER;
+        return idxA - idxB;
+      });
+      return typeof limit === 'number' ? sorted.slice(0, limit) : sorted;
+    }
+
+    function getActiveAlumnusImage(alumnus) {
+      const primary = sanitizeUrl(alumnus.imageUrl);
+      const secondary = sanitizeUrl(alumnus.secondaryImageUrl);
+      const useSecondary = Boolean(state.cardImageToggle[alumnus.id]) && Boolean(secondary);
+      return {
+        url: useSecondary ? secondary : primary,
+        hasAlternate: Boolean(primary && secondary && primary !== secondary),
+        isAlternate: useSecondary,
+      };
+    }
+
+    function toggleAlumnusCardImage(event, alumnusId) {
+      if (event) event.stopPropagation();
+      state.cardImageToggle[alumnusId] = !state.cardImageToggle[alumnusId];
+      render();
+    }
+
+    function getSchoolFieldBreakdown(schoolId) {
+      const alumniList = getSchoolAlumni(schoolId, true);
+      const total = alumniList.length;
+      if (!total) return [];
+      const counts = new Map();
+      alumniList.forEach((person) => {
+        counts.set(person.categoryId, (counts.get(person.categoryId) || 0) + 1);
+      });
+      return Array.from(counts.entries())
+        .map(([categoryId, count]) => {
+          const cat = getCategoryById(categoryId);
+          return {
+            categoryId,
+            name: cat.name,
+            color: cat.color || '#64748b',
+            count,
+            pct: Math.round((count / total) * 100),
+          };
+        })
+        .sort((a, b) => b.count - a.count);
+    }
+
+    function renderFieldBreakdownBar(schoolId) {
+      const breakdown = getSchoolFieldBreakdown(schoolId);
+      if (!breakdown.length) {
+        return `<p class="text-xs opacity-65 mt-3">No approved alumni in fields yet.</p>`;
+      }
+      return `
+        <div class="mt-3 relative" onclick="event.stopPropagation();">
+          <div class="flex items-center justify-between text-[11px] opacity-80 mb-1.5 gap-2">
+            <span class="font-medium opacity-75">Field mix</span>
+            <span class="opacity-75 shrink-0">${breakdown.length} ${breakdown.length === 1 ? 'field' : 'fields'}</span>
+          </div>
+          <div class="relative">
+            <div
+              data-field-popup
+              class="hidden pointer-events-none absolute -top-9 left-1/2 -translate-x-1/2 z-20 whitespace-nowrap px-2.5 py-1 rounded-lg text-[11px] font-bold shadow-lg border fa-surface"
+            ></div>
+            <div
+              class="h-3 w-full rounded-full overflow-hidden flex fa-subtle border"
+              role="img"
+              aria-label="Field of alumnus breakdown"
+            >
+              ${breakdown
+                .map(
+                  (item) => `
+                    <div
+                      style="width: ${Math.max(item.pct, 6)}%; background-color: ${escapeHtml(item.color)};"
+                      onmouseenter="const pop = this.parentElement.previousElementSibling; if (pop) { pop.textContent = '${escapeHtml(item.name)}: ${item.pct}% (${item.count})'; pop.classList.remove('hidden'); }"
+                      onmouseleave="const pop = this.parentElement.previousElementSibling; if (pop) { pop.classList.add('hidden'); }"
+                      class="h-full transition-opacity hover:opacity-80 cursor-pointer"
+                    ></div>
+                  `
+                )
+                .join('')}
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-x-3 gap-y-1 mt-2">
+            ${breakdown
+              .slice(0, 3)
+              .map(
+                (item) => `
+                  <span class="inline-flex items-center gap-1 text-[11px] opacity-85">
+                    <span class="w-2 h-2 rounded-full inline-block" style="background-color: ${escapeHtml(item.color)};"></span>
+                    ${escapeHtml(item.name)} (${item.pct}%)
+                  </span>
+                `
+              )
+              .join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderSchoolLogoBadge(school, sizeClass = 'w-11 h-11 text-sm') {
+      const safeLogo = sanitizeUrl(school.logoUrl);
+      if (safeLogo) {
+        return `
+          <img
+            src="${escapeHtml(safeLogo)}"
+            alt="${escapeHtml(school.shortName || school.name)} logo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+            class="${sizeClass} rounded-2xl object-cover border fa-subtle shrink-0"
+          />
+          <span style="display:none;" class="${sizeClass} rounded-2xl fa-avatar font-bold items-center justify-center shrink-0">
+            ${escapeHtml(getInitials(school.shortName || school.name))}
+          </span>
+        `;
+      }
+      return `
+        <span class="${sizeClass} rounded-2xl fa-avatar font-bold inline-flex items-center justify-center shrink-0">
+          ${escapeHtml(getInitials(school.shortName || school.name))}
+        </span>
+      `;
+    }
+
+    // =========================================================================
+    // Top Google-Style Search Bar (All Pages)
+    // =========================================================================
+    function syncTopSearchInput() {
+      const input = document.getElementById('topGoogleSearchInput');
+      const clearBtn = document.getElementById('clearTopSearchBtn');
+      if (input && input.value !== state.searchQuery) {
+        input.value = state.searchQuery;
+      }
+      if (clearBtn) {
+        clearBtn.classList.toggle('hidden', !state.searchQuery.trim());
+      }
+    }
+
+    function handleTopSearchInput(val) {
+      state.searchQuery = val;
+      syncTopSearchInput();
+      renderTopSearchDropdown();
+      if (state.route === 'colleges') {
+        const root = document.getElementById('appRoot');
+        if (root) root.innerHTML = renderCollegesView();
+      } else if (state.route === 'degrees') {
+        const root = document.getElementById('appRoot');
+        if (root) root.innerHTML = renderDegreesView();
+      } else if (state.route === 'fields' || state.route === 'categories') {
+        const root = document.getElementById('appRoot');
+        if (root) root.innerHTML = renderCategoriesView();
+      }
+    }
+
+    function handleTopSearchFocus() {
+      if (state.searchQuery.trim()) {
+        renderTopSearchDropdown();
+      }
+    }
+
+    function clearTopSearch() {
+      state.searchQuery = '';
+      syncTopSearchInput();
+      const dropdown = document.getElementById('topSearchDropdown');
+      if (dropdown) {
+        dropdown.classList.add('hidden');
+        dropdown.innerHTML = '';
+      }
+      render();
+    }
+
+    function renderTopSearchDropdown() {
+      const dropdown = document.getElementById('topSearchDropdown');
+      if (!dropdown) return;
+      const q = state.searchQuery.trim().toLowerCase();
+      if (!q) {
+        dropdown.classList.add('hidden');
+        dropdown.innerHTML = '';
+        return;
+      }
+
+      const matchedAlumni = getApprovedAlumni()
+        .filter((a) => {
+          const school = getSchoolById(a.schoolId);
+          const field = getCategoryById(a.categoryId);
+          return (
+            a.name.toLowerCase().includes(q) ||
+            (a.notableWorks || '').toLowerCase().includes(q) ||
+            (a.overallBio || '').toLowerCase().includes(q) ||
+            school.name.toLowerCase().includes(q) ||
+            school.shortName.toLowerCase().includes(q) ||
+            field.name.toLowerCase().includes(q) ||
+            (a.degrees || []).some((d) => d.toLowerCase().includes(q))
+          );
+        })
+        .slice(0, 6);
+
+      const matchedSchools = state.schools
+        .filter(
+          (s) =>
+            s.name.toLowerCase().includes(q) ||
+            s.shortName.toLowerCase().includes(q) ||
+            s.location.toLowerCase().includes(q) ||
+            s.tier.toLowerCase().includes(q)
+        )
+        .slice(0, 5);
+
+      if (!matchedAlumni.length && !matchedSchools.length) {
+        dropdown.innerHTML = `
+          <div class="p-4 text-sm opacity-75">
+            No matching alumni or colleges found for "<strong>${escapeHtml(state.searchQuery.trim())}</strong>".
+          </div>
+        `;
+        dropdown.classList.remove('hidden');
+        return;
+      }
+
+      dropdown.innerHTML = `
+        <div class="divide-y divide-slate-200/20">
+          ${
+            matchedSchools.length
+              ? `
+                <div class="p-2">
+                  <div class="px-3 py-1 text-[11px] font-bold uppercase tracking-wider opacity-60">
+                    Colleges (${matchedSchools.length})
+                  </div>
+                  ${matchedSchools
+                    .map((s) => {
+                      const count = getSchoolAlumni(s.id, true).length;
+                      return `
+                        <button
+                          type="button"
+                          onclick="selectSearchSchool('${escapeHtml(s.id)}')"
+                          class="w-full text-left px-3 py-2 rounded-xl hover:fa-subtle flex items-center justify-between gap-2 transition"
+                        >
+                          <div>
+                            <div class="text-sm font-semibold">${escapeHtml(s.name)}</div>
+                            <div class="text-xs opacity-70">${escapeHtml(s.location)} • ${escapeHtml(s.tier)}</div>
+                          </div>
+                          <span class="text-xs px-2.5 py-1 rounded-full fa-pill font-semibold shrink-0">${count} alumni</span>
+                        </button>
+                      `;
+                    })
+                    .join('')}
+                </div>
+              `
+              : ''
+          }
+          ${
+            matchedAlumni.length
+              ? `
+                <div class="p-2">
+                  <div class="px-3 py-1 text-[11px] font-bold uppercase tracking-wider opacity-60">
+                    Famous Alumni (${matchedAlumni.length})
+                  </div>
+                  ${matchedAlumni
+                    .map((a) => {
+                      const school = getSchoolById(a.schoolId);
+                      const field = getCategoryById(a.categoryId);
+                      return `
+                        <button
+                          type="button"
+                          onclick="selectSearchAlumnus('${escapeHtml(a.id)}')"
+                          class="w-full text-left px-3 py-2 rounded-xl hover:fa-subtle flex items-center justify-between gap-2 transition"
+                        >
+                          <div>
+                            <div class="text-sm font-semibold">${escapeHtml(a.name)}</div>
+                            <div class="text-xs opacity-70">${escapeHtml(school.shortName)} • ${escapeHtml(field.name)}</div>
+                          </div>
+                          <span class="text-xs opacity-70 shrink-0">View →</span>
+                        </button>
+                      `;
+                    })
+                    .join('')}
+                </div>
+              `
+              : ''
+          }
+        </div>
+      `;
+      dropdown.classList.remove('hidden');
+    }
+
+    function selectSearchSchool(schoolId) {
+      const dropdown = document.getElementById('topSearchDropdown');
+      if (dropdown) dropdown.classList.add('hidden');
+      openCollegeDetail(schoolId);
+    }
+
+    function selectSearchAlumnus(alumnusId) {
+      const dropdown = document.getElementById('topSearchDropdown');
+      if (dropdown) dropdown.classList.add('hidden');
+      openAlumnusModal(alumnusId);
+    }
+
+    document.addEventListener('click', (event) => {
+      const dropdown = document.getElementById('topSearchDropdown');
+      const input = document.getElementById('topGoogleSearchInput');
+      if (!dropdown || !input) return;
+      if (!dropdown.contains(event.target) && event.target !== input) {
+        dropdown.classList.add('hidden');
+      }
+    });
+
+    // =========================================================================
+    // Navigation & Modal Controls
+    // =========================================================================
+    function navigateTo(route) {
+      state.route = route;
+      if (route !== 'college-detail') {
+        state.selectedSchoolId = null;
+      }
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openCollegeDetail(schoolId) {
+      state.selectedSchoolId = schoolId;
+      state.route = 'college-detail';
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openAlumnusModal(alumnusId) {
+      const person = state.alumni.find((a) => a.id === alumnusId);
+      if (!person) return;
+      const school = getSchoolById(person.schoolId);
+      const field = getCategoryById(person.categoryId);
+      const safeSource = sanitizeUrl(person.sourceUrl);
+      const imgInfo = getActiveAlumnusImage(person);
+
+      const modalBody = document.getElementById('alumnusModalBody');
+      modalBody.innerHTML = `
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-center gap-4">
+            ${
+              imgInfo.url
+                ? `<img src="${escapeHtml(imgInfo.url)}" alt="${escapeHtml(person.name)}" class="w-16 h-16 rounded-2xl object-cover border fa-subtle shrink-0" />`
+                : `<div class="w-16 h-16 rounded-2xl fa-avatar font-extrabold text-xl flex items-center justify-center shrink-0">${escapeHtml(getInitials(person.name))}</div>`
+            }
+            <div>
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full fa-pill">${escapeHtml(field.name)}</span>
+                ${
+                  (person.degrees || [])
+                    .map((deg) => `<span class="text-xs font-semibold px-2 py-0.5 rounded-md border fa-subtle">${escapeHtml(deg)}</span>`)
+                    .join('')
+                }
+                ${person.graduationYear ? `<span class="text-xs opacity-70">Class of ${escapeHtml(person.graduationYear)}</span>` : ''}
+              </div>
+              <h2 class="text-2xl font-extrabold tracking-tight mt-1.5">${escapeHtml(person.name)}</h2>
+              <button
+                type="button"
+                onclick="closeAlumnusModal(); openCollegeDetail('${escapeHtml(school.id)}');"
+                class="text-sm font-medium fa-accent-text hover:underline mt-0.5 text-left"
+              >
+                ${escapeHtml(school.name)} →
+              </button>
+            </div>
+          </div>
+          <button
+            type="button"
+            onclick="closeAlumnusModal()"
+            aria-label="Close modal"
+            class="px-3 py-1.5 rounded-xl border fa-subtle text-sm font-semibold opacity-80 hover:opacity-100"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="mt-6 space-y-4 text-sm leading-relaxed">
+          <div class="p-4 rounded-xl border fa-subtle">
+            <div class="text-xs font-bold uppercase tracking-wider opacity-65 mb-1">Overview &amp; Notable Works</div>
+            <p>${escapeHtml(person.overallBio)}</p>
+            ${
+              person.notableWorks
+                ? `<p class="mt-2 text-xs opacity-85"><strong>Notable Works / Recognition:</strong> ${escapeHtml(person.notableWorks)}</p>`
+                : ''
+            }
+          </div>
+
+          <div class="p-4 rounded-xl border fa-subtle">
+            <div class="text-xs font-bold uppercase tracking-wider opacity-65 mb-1">Campus &amp; Degree Context</div>
+            ${
+              person.degreeTitle
+                ? `<p class="text-xs font-semibold mb-1.5"><strong>Degree:</strong> ${escapeHtml(person.degreeTitle)}</p>`
+                : ''
+            }
+            <p>${escapeHtml(person.campusNote || 'Documented U.S. college connection.')}</p>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+            ${
+              safeSource
+                ? `<a href="${escapeHtml(safeSource)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl fa-accent-bg text-sm font-semibold transition">Verify Reference Source ↗</a>`
+                : `<span class="text-xs opacity-65">No external reference URL provided.</span>`
+            }
+            <button
+              type="button"
+              onclick="closeAlumnusModal()"
+              class="px-4 py-2 rounded-xl border fa-subtle text-sm font-semibold opacity-85 hover:opacity-100"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('alumnusModal').classList.remove('hidden');
+    }
+
+    function closeAlumnusModal() {
+      const modal = document.getElementById('alumnusModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function handleModalBackdropClick(event) {
+      if (event.target && event.target.id === 'alumnusModal') {
+        closeAlumnusModal();
+      }
+    }
+
+    // =========================================================================
+    // Views: Home (Daily NY Spotlight + 9 Shuffled Notable Alumni, No Filter Bar Below Spotlight)
+    // =========================================================================
+    function renderAlumnusCard(person) {
+      const school = getSchoolById(person.schoolId);
+      const field = getCategoryById(person.categoryId);
+      const imgInfo = getActiveAlumnusImage(person);
+      const hasImage = Boolean(imgInfo.url);
+
+      return `
+        <article
+          onclick="openAlumnusModal('${escapeHtml(person.id)}')"
+          class="fa-surface border rounded-2xl p-5 hover:shadow-lg transition cursor-pointer flex flex-col justify-between gap-4"
+        >
+          <div>
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-3">
+                ${
+                  hasImage
+                    ? `<img src="${escapeHtml(imgInfo.url)}" alt="${escapeHtml(person.name)}" onerror="this.onerror=null; this.src='https://placehold.co/96x96/1e293b/f8fafc?text=${encodeURIComponent(getInitials(person.name))}';" class="w-[4.5rem] h-[4.5rem] rounded-2xl object-cover border fa-subtle shrink-0" />`
+                    : `<div class="w-12 h-12 rounded-2xl fa-avatar font-bold text-sm flex items-center justify-center shrink-0">${escapeHtml(getInitials(person.name))}</div>`
+                }
+                <div>
+                  <h3 class="font-bold text-base leading-snug">${escapeHtml(person.name)}</h3>
+                  <p class="text-xs opacity-75">${escapeHtml(school.shortName)} • ${escapeHtml(field.name)}</p>
+                </div>
+              </div>
+              ${
+                imgInfo.hasAlternate
+                  ? `<button type="button" onclick="toggleAlumnusCardImage(event, '${escapeHtml(person.id)}')" class="text-[11px] px-2 py-1 rounded-lg border fa-subtle font-medium">Photo</button>`
+                  : ''
+              }
+            </div>
+
+            <p class="text-sm opacity-85 mt-3.5 line-clamp-3 leading-relaxed">
+              ${escapeHtml(person.overallBio)}
+            </p>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200/15 flex items-center justify-between gap-2 text-xs">
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded-md fa-pill font-semibold">${escapeHtml(field.name)}</span>
+              ${(person.degrees || [])
+                .slice(0, 2)
+                .map((d) => `<span class="px-2 py-0.5 rounded-md border fa-subtle font-medium">${escapeHtml(d)}</span>`)
+                .join('')}
+            </div>
+            <span class="font-semibold fa-accent-text shrink-0">Details →</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderHomeView() {
+      const approved = getApprovedAlumni();
+      const pending = getPendingAlumni();
+      const spotlight = getDailySpotlightAlumnus();
+      const notableNine = getShuffledNotableAlumni(HOME_NOTABLE_LIMIT);
+      const spotlightSchool = spotlight ? getSchoolById(spotlight.schoolId) : null;
+      const spotlightField = spotlight ? getCategoryById(spotlight.categoryId) : null;
+      const spotlightSource = spotlight ? sanitizeUrl(spotlight.sourceUrl) : '';
+      const homeCfg = { ...DEFAULT_HOME, ...(state.homeConfig || {}) };
+
+      return `
+        <section class="space-y-8">
+          <!-- Hero + Daily Spotlight (New York Midnight Rotation) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            <div class="lg:col-span-7 fa-surface border rounded-3xl p-6 sm:p-8 flex flex-col justify-between">
+              <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full fa-pill text-xs font-semibold">
+                  <span>${escapeHtml(homeCfg.kicker)}</span>
+                  <span>•</span>
+                  <span>${escapeHtml(getNyDateKey())} (NY)</span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mt-4 leading-tight">
+                  ${escapeHtml(homeCfg.headline)}
+                </h1>
+                <p class="text-sm sm:text-base opacity-80 mt-3 leading-relaxed max-w-2xl">
+                  ${escapeHtml(homeCfg.subheadline)}
+                </p>
+              </div>
+
+              <div class="mt-6 pt-5 border-t border-slate-200/15 grid grid-cols-3 gap-4 text-center sm:text-left">
+                <div>
+                  <div class="text-2xl font-extrabold fa-accent-text">${approved.length}</div>
+                  <div class="text-xs opacity-70">Approved Alumni</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-extrabold">${state.schools.length}</div>
+                  <div class="text-xs opacity-70">U.S. Colleges</div>
+                </div>
+                <div>
+                  <div class="text-2xl font-extrabold">${pending.length}</div>
+                  <div class="text-xs opacity-70">In Review Queue</div>
+                </div>
+              </div>
+            </div>
+
+            ${
+              spotlight
+                ? `
+                  <div class="lg:col-span-5 fa-surface border rounded-3xl p-6 sm:p-7 flex flex-col justify-between">
+                    <div>
+                      <div class="flex items-center justify-between gap-2">
+                        <span class="text-xs font-bold uppercase tracking-wider fa-accent-text">
+                          Spotlight Alumnus (NY Daily)
+                        </span>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full border fa-subtle font-medium">
+                          ${escapeHtml(spotlightField.name)}
+                        </span>
+                      </div>
+
+                      <div class="flex items-center gap-3.5 mt-4">
+                        ${
+                          sanitizeUrl(spotlight.imageUrl)
+                            ? `<img src="${escapeHtml(sanitizeUrl(spotlight.imageUrl))}" alt="${escapeHtml(spotlight.name)}" onerror="this.onerror=null; this.src='https://placehold.co/120x120/1e293b/f8fafc?text=${encodeURIComponent(getInitials(spotlight.name))}';" class="w-[5.25rem] h-[5.25rem] rounded-2xl object-cover border fa-subtle shrink-0" />`
+                            : `<div class="w-14 h-14 rounded-2xl fa-avatar font-extrabold text-lg flex items-center justify-center shrink-0">${escapeHtml(getInitials(spotlight.name))}</div>`
+                        }
+                        <div>
+                          <h2 class="text-xl font-extrabold leading-snug">${escapeHtml(spotlight.name)}</h2>
+                          <button
+                            type="button"
+                            onclick="openCollegeDetail('${escapeHtml(spotlightSchool.id)}')"
+                            class="text-xs font-semibold fa-accent-text hover:underline"
+                          >
+                            ${escapeHtml(spotlightSchool.name)} →
+                          </button>
+                        </div>
+                      </div>
+
+                      <p class="text-sm opacity-85 mt-4 leading-relaxed">
+                        ${escapeHtml(spotlight.overallBio)}
+                      </p>
+                      <p class="text-xs opacity-75 mt-2.5 leading-relaxed">
+                        <strong>Campus Context:</strong> ${escapeHtml(spotlight.campusNote || 'Documented U.S. college connection.')}
+                      </p>
+                    </div>
+
+                    <div class="mt-5 pt-4 border-t border-slate-200/15 flex items-center justify-between gap-2">
+                      <button
+                        type="button"
+                        onclick="openAlumnusModal('${escapeHtml(spotlight.id)}')"
+                        class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold transition"
+                      >
+                        Open Profile
+                      </button>
+                      ${
+                        spotlightSource
+                          ? `<a href="${escapeHtml(spotlightSource)}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold fa-accent-text hover:underline">Source ↗</a>`
+                          : ''
+                      }
+                    </div>
+                  </div>
+                `
+                : ''
+            }
+          </div>
+
+          <!-- Notable Alumni Showcase (Capped at 9, Shuffled Every Refresh, No Filter Bar Below Spotlight) -->
+          <div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight">${escapeHtml(homeCfg.notableTitle)}</h2>
+                <p class="text-xs sm:text-sm opacity-75">
+                  ${escapeHtml(homeCfg.notableSubtitle)}
+                </p>
+              </div>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  onclick="navigateTo('colleges')"
+                  class="px-3.5 py-2 rounded-xl border fa-subtle text-xs font-semibold hover:opacity-100 transition"
+                >
+                  Browse Colleges →
+                </button>
+                <button
+                  type="button"
+                  onclick="navigateTo('submit')"
+                  class="px-3.5 py-2 rounded-xl fa-accent-bg text-xs font-semibold transition"
+                >
+                  + Suggest Alumnus
+                </button>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              ${notableNine.map((person) => renderAlumnusCard(person)).join('')}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // Views: Colleges & College Detail (with 10-Alumni Full Spotlight Threshold)
+    // =========================================================================
+    function renderCollegesView() {
+      const q = state.searchQuery.trim().toLowerCase();
+      const filteredSchools = state.schools.filter((s) => {
+        const matchesTier = state.tierFilter === 'all' || s.tier === state.tierFilter;
+        const matchesSearch =
+          !q ||
+          s.name.toLowerCase().includes(q) ||
+          s.shortName.toLowerCase().includes(q) ||
+          s.location.toLowerCase().includes(q) ||
+          s.tier.toLowerCase().includes(q);
+        return matchesTier && matchesSearch;
+      });
+
+      return `
+        <section class="space-y-6">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">U.S. Colleges</h1>
+              <p class="text-sm opacity-75 mt-1">
+                Schools with ${MIN_FULL_GRID}+ approved alumni unlock full spotlight grids; smaller counts invite community submissions.
+              </p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onclick="state.tierFilter='all'; render();"
+                class="px-3 py-1.5 rounded-xl text-xs font-semibold border ${state.tierFilter === 'all' ? 'fa-accent-bg' : 'fa-subtle'}"
+              >
+                All Tiers
+              </button>
+              ${SCHOOL_TIERS.map(
+                (tier) => `
+                  <button
+                    type="button"
+                    onclick="state.tierFilter='${escapeHtml(tier)}'; render();"
+                    class="px-3 py-1.5 rounded-xl text-xs font-semibold border ${state.tierFilter === tier ? 'fa-accent-bg' : 'fa-subtle'}"
+                  >
+                    ${escapeHtml(tier)}
+                  </button>
+                `
+              ).join('')}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            ${filteredSchools
+              .map((school) => {
+                const count = getSchoolAlumni(school.id, true).length;
+                const unlocked = count >= MIN_FULL_GRID;
+                return `
+                  <article
+                    onclick="openCollegeDetail('${escapeHtml(school.id)}')"
+                    class="fa-surface border rounded-2xl p-5 hover:shadow-lg transition cursor-pointer flex flex-col justify-between gap-4"
+                  >
+                    <div>
+                      <div class="flex items-start justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                          ${renderSchoolLogoBadge(school)}
+                          <div>
+                            <h2 class="font-bold text-base leading-snug">${escapeHtml(school.name)}</h2>
+                            <p class="text-xs opacity-75">${escapeHtml(school.location)} • ${escapeHtml(school.tier)}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="text-xs sm:text-sm opacity-80 mt-3 leading-relaxed line-clamp-2">
+                        ${escapeHtml(school.description)}
+                      </p>
+                      ${renderFieldBreakdownBar(school.id)}
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-200/15 flex items-center justify-between text-xs">
+                      <span class="font-semibold ${unlocked ? 'fa-accent-text' : 'opacity-75'}">
+                        ${count} approved ${count === 1 ? 'alumnus' : 'alumni'} ${unlocked ? '• Full Grid' : `• Need ${MIN_FULL_GRID - count} for grid`}
+                      </span>
+                      <span class="font-semibold">Open →</span>
+                    </div>
+                  </article>
+                `;
+              })
+              .join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderCollegeDetailView() {
+      const school = getSchoolById(state.selectedSchoolId);
+      const schoolAlumni = getSchoolAlumni(school.id, true);
+      const unlocked = schoolAlumni.length >= MIN_FULL_GRID;
+
+      return `
+        <section class="space-y-6">
+          <button
+            type="button"
+            onclick="navigateTo('colleges')"
+            class="inline-flex items-center gap-1.5 text-sm font-semibold fa-accent-text hover:underline"
+          >
+            ← Back to All Colleges
+          </button>
+
+          <div class="fa-surface border rounded-3xl p-6 sm:p-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="flex items-center gap-4">
+                ${renderSchoolLogoBadge(school, 'w-16 h-16 text-lg')}
+                <div>
+                  <div class="text-xs font-semibold px-2.5 py-0.5 rounded-full fa-pill inline-block mb-1">
+                    ${escapeHtml(school.tier)}
+                  </div>
+                  <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">${escapeHtml(school.name)}</h1>
+                  <p class="text-sm opacity-75">${escapeHtml(school.location)} • ${schoolAlumni.length} approved alumni</p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onclick="navigateTo('submit')"
+                class="px-4 py-2.5 rounded-xl fa-accent-bg text-xs sm:text-sm font-semibold shrink-0"
+              >
+                + Suggest Alumnus for ${escapeHtml(school.shortName)}
+              </button>
+            </div>
+
+            <p class="text-sm opacity-85 mt-4 leading-relaxed">${escapeHtml(school.description)}</p>
+            ${renderFieldBreakdownBar(school.id)}
+          </div>
+
+          ${
+            unlocked
+              ? `
+                <div>
+                  <h2 class="text-xl font-extrabold mb-4">Indexed Famous Alumni (${schoolAlumni.length})</h2>
+                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    ${schoolAlumni.map((person) => renderAlumnusCard(person)).join('')}
+                  </div>
+                </div>
+              `
+              : `
+                <div class="fa-surface border rounded-2xl p-6 sm:p-8 text-center space-y-3">
+                  <div class="text-lg font-bold">
+                    Spotlight Grid Unlocks at ${MIN_FULL_GRID} Approved Alumni
+                  </div>
+                  <p class="text-sm opacity-80 max-w-xl mx-auto">
+                    ${escapeHtml(school.name)} currently has ${schoolAlumni.length} approved ${schoolAlumni.length === 1 ? 'alumnus' : 'alumni'} indexed. Help reach ${MIN_FULL_GRID} by submitting a notable graduate with a reference source.
+                  </p>
+                  ${
+                    schoolAlumni.length
+                      ? `
+                        <div class="pt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 text-left">
+                          ${schoolAlumni.map((person) => renderAlumnusCard(person)).join('')}
+                        </div>
+                      `
+                      : ''
+                  }
+                </div>
+              `
+          }
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // Views: Degrees & Fields of Alumni
+    // =========================================================================
+    function renderDegreesView() {
+      const approved = getApprovedAlumni();
+      const q = state.searchQuery.trim().toLowerCase();
+      const filtered = approved.filter((a) => {
+        const matchesDegree =
+          state.degreeFilter === 'all' || (a.degrees || []).includes(state.degreeFilter);
+        const school = getSchoolById(a.schoolId);
+        const matchesSearch =
+          !q ||
+          a.name.toLowerCase().includes(q) ||
+          school.name.toLowerCase().includes(q) ||
+          (a.degrees || []).some((d) => d.toLowerCase().includes(q));
+        return matchesDegree && matchesSearch;
+      });
+
+      return `
+        <section class="space-y-6">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Degrees</h1>
+            <p class="text-sm opacity-75 mt-1">Filter notable U.S. graduates by academic degree credentials.</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onclick="state.degreeFilter='all'; render();"
+              class="px-3.5 py-2 rounded-xl text-xs font-semibold border ${state.degreeFilter === 'all' ? 'fa-accent-bg' : 'fa-subtle'}"
+            >
+              All Degrees (${approved.length})
+            </button>
+            ${state.degrees.map((deg) => {
+              const count = approved.filter((a) => (a.degrees || []).includes(deg.code)).length;
+              return `
+                <button
+                  type="button"
+                  onclick="state.degreeFilter='${escapeHtml(deg.code)}'; render();"
+                  class="px-3.5 py-2 rounded-xl text-xs font-semibold border ${state.degreeFilter === deg.code ? 'fa-accent-bg' : 'fa-subtle'}"
+                >
+                  ${escapeHtml(deg.code)} • ${escapeHtml(deg.name)} (${count})
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            ${filtered.map((person) => renderAlumnusCard(person)).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderCategoriesView() {
+      const approved = getApprovedAlumni();
+      const q = state.searchQuery.trim().toLowerCase();
+      const filtered = approved.filter((a) => {
+        const matchesField = state.categoryFilter === 'all' || a.categoryId === state.categoryFilter;
+        const school = getSchoolById(a.schoolId);
+        const field = getCategoryById(a.categoryId);
+        const matchesSearch =
+          !q ||
+          a.name.toLowerCase().includes(q) ||
+          school.name.toLowerCase().includes(q) ||
+          field.name.toLowerCase().includes(q);
+        return matchesField && matchesSearch;
+      });
+
+      return `
+        <section class="space-y-6">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Field of Alumnus</h1>
+            <p class="text-sm opacity-75 mt-1">Explore famous graduates grouped by their primary field of alumnus.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <button
+              type="button"
+              onclick="state.categoryFilter='all'; render();"
+              class="fa-surface border rounded-2xl p-4 text-left transition ${state.categoryFilter === 'all' ? 'ring-2 ring-indigo-500' : ''}"
+            >
+              <div class="font-bold text-sm">All Field of Alumnus</div>
+              <div class="text-xs opacity-70 mt-1">${approved.length} approved alumni</div>
+            </button>
+            ${state.categories.map((field) => {
+              const count = approved.filter((a) => a.categoryId === field.id).length;
+              const active = state.categoryFilter === field.id;
+              return `
+                <button
+                  type="button"
+                  onclick="state.categoryFilter='${escapeHtml(field.id)}'; render();"
+                  class="fa-surface border rounded-2xl p-4 text-left transition ${active ? 'ring-2 ring-indigo-500' : ''}"
+                >
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-bold text-sm inline-flex items-center gap-2">
+                      <span class="w-3 h-3 rounded-full inline-block" style="background-color:${escapeHtml(field.color)};"></span>
+                      ${escapeHtml(field.name)}
+                    </span>
+                    <span class="text-xs font-semibold px-2 py-0.5 rounded-full fa-pill">${count}</span>
+                  </div>
+                  <p class="text-xs opacity-75 mt-1.5">${escapeHtml(field.description || '')}</p>
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            ${filtered.map((person) => renderAlumnusCard(person)).join('')}
+          </div>
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // View: Submit Alumnus & Request College (Goes to Review Queue in ModView)
+    // =========================================================================
+    function toggleCombinedCollegeRequest(checked) {
+      const box = document.getElementById('combinedCollegeRequestFields');
+      const existingSelect = document.getElementById('existingCollegeSelectWrap');
+      if (existingSelect) {
+        existingSelect.classList.toggle('hidden', Boolean(checked));
+      }
+      if (!box) return;
+      box.classList.toggle('hidden', !checked);
+      box.querySelectorAll('[data-college-req-input]').forEach((el) => {
+        el.required = Boolean(checked);
+      });
+    }
+
+    function renderSubmitView() {
+      return `
+        <section class="max-w-3xl mx-auto space-y-6">
+          <div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Suggest a Famous Alumnus</h1>
+            <p class="text-sm opacity-75 mt-1">
+              Submissions enter the review queue first and are published after verification in ModView. You can also request a new college at the same time.
+            </p>
+          </div>
+
+          <form onsubmit="handlePublicSubmission(event)" class="fa-surface border rounded-3xl p-6 sm:p-8 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Full Name *</label>
+                <input name="name" required placeholder="e.g., Megan Lawless" class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+              </div>
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-1.5">
+                  <label class="block text-xs font-bold uppercase tracking-wider opacity-75">U.S. College *</label>
+                  <label class="inline-flex items-center gap-1 text-[11px] font-semibold fa-accent-text cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="requestNewCollege"
+                      onchange="toggleCombinedCollegeRequest(this.checked)"
+                      class="rounded w-3.5 h-3.5"
+                    />
+                    <span>Add a college if not listed</span>
+                  </label>
+                </div>
+                <div id="existingCollegeSelectWrap">
+                  <select name="schoolId" required class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm">
+                    ${state.schools.map((s) => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('')}
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div id="combinedCollegeRequestFields" class="hidden p-4 rounded-2xl border fa-subtle space-y-3">
+              <div class="text-[11px] font-bold uppercase tracking-wider fa-accent-text">
+                Request College (Tier &amp; School Incline)
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <input
+                  name="reqCollegeName"
+                  data-college-req-input
+                  placeholder="College Name (e.g., Dartmouth College) *"
+                  class="w-full px-3.5 py-2.5 rounded-xl border fa-surface text-sm"
+                />
+                <input
+                  name="reqCollegeShortName"
+                  data-college-req-input
+                  placeholder="Short Name (e.g., Dartmouth) *"
+                  class="w-full px-3.5 py-2.5 rounded-xl border fa-surface text-sm"
+                />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <input
+                  name="reqCollegeLocation"
+                  data-college-req-input
+                  placeholder="City, State (e.g., Hanover, NH) *"
+                  class="w-full px-3.5 py-2.5 rounded-xl border fa-surface text-sm"
+                />
+                <select name="reqCollegeTier" class="w-full px-3.5 py-2.5 rounded-xl border fa-surface text-sm">
+                  ${SCHOOL_TIERS.map((tier) => `<option value="${escapeHtml(tier)}">${escapeHtml(tier)}</option>`).join('')}
+                </select>
+                <input
+                  name="reqCollegeIncline"
+                  data-college-req-input
+                  placeholder="School Incline *"
+                  class="w-full px-3.5 py-2.5 rounded-xl border fa-surface text-sm"
+                />
+              </div>
+              <textarea
+                name="reqCollegeDescription"
+                data-college-req-input
+                rows="2"
+                placeholder="Why add this college &amp; notable alumni overview *"
+                class="w-full px-3.5 py-2.5 rounded-xl border fa-surface text-sm"
+              ></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Field of Alumnus *</label>
+                <select name="categoryId" required class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm">
+                  ${state.categories.map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.name)}</option>`).join('')}
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Graduation Year (optional)</label>
+                <input name="graduationYear" placeholder="e.g., 1991" class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">What degree is it?</label>
+              <input
+                name="degreeTitle"
+                placeholder="e.g., BA of Economics and Chinese"
+                class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-2">Degree Tags (select all documented)</label>
+              <div class="flex flex-wrap gap-2">
+                ${state.degrees.map((d) => `
+                  <label class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl border fa-subtle text-xs font-semibold cursor-pointer">
+                    <input type="checkbox" name="degrees" value="${escapeHtml(d.code)}" class="rounded" />
+                    <span>${escapeHtml(d.code)}</span>
+                  </label>
+                `).join('')}
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Notable Works / Recognition</label>
+              <input name="notableWorks" placeholder="e.g., Obsession, Ping" class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Overview Bio *</label>
+              <textarea name="overallBio" required rows="3" placeholder="Concise factual summary of public impact..." class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Campus &amp; Degree Context</label>
+              <textarea name="campusNote" rows="2" placeholder="Documented degree, major, or campus connection..." class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm"></textarea>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Reference URL (Wikipedia or verified source)</label>
+              <input name="sourceUrl" type="url" placeholder="https://en.wikipedia.org/wiki/..." class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+            </div>
+
+            <div class="pt-2 flex justify-end">
+              <button type="submit" class="px-5 py-2.5 rounded-xl fa-accent-bg text-sm font-semibold shadow-sm">
+                Submit to Review Queue
+              </button>
+            </div>
+          </form>
+        </section>
+      `;
+    }
+
+    function handlePublicSubmission(event) {
+      event.preventDefault();
+      const form = event.target;
+      const fd = new FormData(form);
+      const name = String(fd.get('name') || '').trim();
+      const overallBio = String(fd.get('overallBio') || '').trim();
+      if (!name || !overallBio) {
+        showToast('Please enter a name and overview bio.', 'warn');
+        return;
+      }
+
+      let resolvedSchoolId = String(fd.get('schoolId') || state.schools[0]?.id || 'ucla');
+      const wantsNewCollege = Boolean(fd.get('requestNewCollege'));
+      if (wantsNewCollege) {
+        const cName = String(fd.get('reqCollegeName') || '').trim();
+        const cShort = String(fd.get('reqCollegeShortName') || '').trim();
+        const cLoc = String(fd.get('reqCollegeLocation') || '').trim();
+        const cTier = String(fd.get('reqCollegeTier') || SCHOOL_TIERS[0]).trim();
+        const cIncline = String(fd.get('reqCollegeIncline') || '').trim();
+        const cDesc = String(fd.get('reqCollegeDescription') || '').trim();
+
+        if (!cName || !cShort || !cLoc || !cDesc) {
+          showToast('Please fill out the requested college fields.', 'warn');
+          return;
+        }
+
+        const reqId = `school-req-${Date.now()}`;
+        const combinedDesc = cIncline ? `${cDesc} (School Incline: ${cIncline})` : cDesc;
+        state.schoolRequests.unshift({
+          id: reqId,
+          name: cName,
+          shortName: cShort,
+          location: cLoc,
+          tier: cTier,
+          schoolIncline: cIncline,
+          description: combinedDesc,
+          logoUrl: '',
+          status: 'pending',
+        });
+        safeSave(STORAGE_KEYS.SCHOOL_REQUESTS, state.schoolRequests);
+        resolvedSchoolId = reqId;
+      }
+
+      const selectedDegrees = fd.getAll('degrees').map((v) => String(v));
+      const degreeTitle = String(fd.get('degreeTitle') || '').trim();
+      const newEntry = {
+        id: `pending-${Date.now()}`,
+        name,
+        schoolId: resolvedSchoolId,
+        graduationYear: String(fd.get('graduationYear') || '').trim(),
+        degreeTitle,
+        degrees: selectedDegrees,
+        categoryId: String(fd.get('categoryId') || state.categories[0]?.id || 'film-tv'),
+        notableWorks: String(fd.get('notableWorks') || '').trim(),
+        overallBio,
+        campusNote: String(fd.get('campusNote') || '').trim(),
+        sourceUrl: sanitizeUrl(fd.get('sourceUrl')),
+        imageUrl: '',
+        secondaryImageUrl: '',
+        status: 'pending',
+        featuredDaily: false,
+      };
+
+      state.alumni.unshift(newEntry);
+      safeSave(STORAGE_KEYS.ALUMNI, state.alumni);
+      form.reset();
+      toggleCombinedCollegeRequest(false);
+      showToast(
+        wantsNewCollege
+          ? 'Submitted alumnus and college request to the review queue.'
+          : 'Submitted to the review queue in ModView.',
+        'success'
+      );
+      navigateTo('home');
+    }
+
+    // =========================================================================
+    // View: About & Standards (Shagan Yadav from Vermont + NY Clock)
+    // =========================================================================
+    function renderAboutView() {
+      const standards = Array.isArray(state.about.standards) ? state.about.standards : DEFAULT_ABOUT.standards;
+      const paragraphs = String(state.about.body || '')
+        .split(/\n\s*\n/)
+        .map((p) => p.trim())
+        .filter(Boolean);
+
+      return `
+        <section class="max-w-4xl mx-auto space-y-6">
+          <div class="fa-surface border rounded-3xl p-6 sm:p-8 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider fa-accent-text">About &amp; Editorial Standards</span>
+              <span id="nyLiveClockAbout" class="text-xs font-mono font-semibold px-3 py-1 rounded-full border fa-subtle">
+                ${escapeHtml(formatNyClock(new Date()))}
+              </span>
+            </div>
+
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              ${escapeHtml(state.about.title || DEFAULT_ABOUT.title)}
+            </h1>
+
+            <div class="space-y-3 text-sm sm:text-base opacity-85 leading-relaxed">
+              ${paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join('')}
+            </div>
+          </div>
+
+          <div class="fa-surface border rounded-3xl p-6 sm:p-8 space-y-4">
+            <h2 class="text-xl font-extrabold tracking-tight">Inclusion &amp; Verification Standards</h2>
+            <ul class="space-y-2.5 text-sm opacity-85 list-disc pl-5">
+              ${standards.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+            </ul>
+          </div>
+        </section>
+      `;
+    }
+
+    // =========================================================================
+    // View: ModView (admin / famous2026, Search in Every Tab, Review Queue)
+    // =========================================================================
+    function renderModView() {
+      if (!state.isModAuthenticated) {
+        return `
+          <section class="max-w-md mx-auto fa-surface border rounded-3xl p-6 sm:p-8 space-y-5">
+            <div>
+              <div class="text-xs font-bold uppercase tracking-wider fa-accent-text">ModView Access</div>
+              <h1 class="text-2xl font-extrabold tracking-tight mt-1">Moderator Sign In</h1>
+              <p class="text-xs opacity-75 mt-1">Sign in to manage the review queue, alumni, colleges, fields, and About page.</p>
+            </div>
+
+            <form onsubmit="handleModLogin(event)" class="space-y-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Username</label>
+                <input name="username" required autocomplete="username" class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Password</label>
+                <input name="password" type="password" required autocomplete="current-password" class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+              </div>
+              <button type="submit" class="w-full py-2.5 rounded-xl fa-accent-bg text-sm font-semibold">
+                Sign In to ModView
+              </button>
+            </form>
+          </section>
+        `;
+      }
+
+      const pending = getPendingAlumni();
+      const schoolRequests = getPendingSchoolRequests();
+      const approved = getApprovedAlumni();
+
+      return `
+        <section class="space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">ModView</h1>
+              <p class="text-sm opacity-75">Manage the review queue, alumni, colleges, field of alumnus, front page, and About Us.</p>
+            </div>
+            <button
+              type="button"
+              onclick="handleModLogout()"
+              class="px-4 py-2 rounded-xl border fa-subtle text-xs font-semibold self-start"
+            >
+              Sign Out
+            </button>
+          </div>
+
+          <div class="flex flex-wrap gap-2">
+            ${[
+              { id: 'queue', label: `Review Queue (${pending.length + schoolRequests.length})` },
+              { id: 'alumni', label: `Approved Alumni (${approved.length})` },
+              { id: 'schools', label: `Colleges (${state.schools.length})` },
+              { id: 'fields', label: `Field of Alumnus (${state.categories.length})` },
+              { id: 'frontpage', label: 'Front Page' },
+              { id: 'about', label: 'About Us' },
+              { id: 'backup', label: 'JSON Backup' },
+            ]
+              .map(
+                (tab) => `
+                  <button
+                    type="button"
+                    onclick="state.modTab='${tab.id}'; render();"
+                    class="px-3.5 py-2 rounded-xl text-xs font-semibold border ${state.modTab === tab.id ? 'fa-accent-bg' : 'fa-subtle'}"
+                  >
+                    ${escapeHtml(tab.label)}
+                  </button>
+                `
+              )
+              .join('')}
+          </div>
+
+          ${renderModTabContent(pending, approved, schoolRequests)}
+        </section>
+      `;
+    }
+
+    function renderModTabContent(pending, approved, schoolRequests = []) {
+      if (state.modTab === 'queue') {
+        const q = state.modQueueSearch.trim().toLowerCase();
+        const filteredQueue = pending.filter((item) => {
+          const school = getSchoolById(item.schoolId);
+          return (
+            !q ||
+            item.name.toLowerCase().includes(q) ||
+            school.name.toLowerCase().includes(q) ||
+            (item.overallBio || '').toLowerCase().includes(q)
+          );
+        });
+        const filteredSchoolReqs = schoolRequests.filter((req) => {
+          return (
+            !q ||
+            req.name.toLowerCase().includes(q) ||
+            req.location.toLowerCase().includes(q) ||
+            req.tier.toLowerCase().includes(q) ||
+            (req.schoolIncline || '').toLowerCase().includes(q)
+          );
+        });
+
+        return `
+          <div class="space-y-5">
+            <input
+              type="search"
+              value="${escapeHtml(state.modQueueSearch)}"
+              oninput="state.modQueueSearch = this.value; render();"
+              placeholder="Search review queue..."
+              aria-label="Search review queue"
+              class="w-full max-w-md px-3.5 py-2 rounded-xl border fa-subtle text-sm"
+            />
+
+            ${
+              filteredSchoolReqs.length
+                ? `
+                  <div class="space-y-3">
+                    <h2 class="text-sm font-bold uppercase tracking-wider opacity-75">Requested Colleges (${filteredSchoolReqs.length})</h2>
+                    ${filteredSchoolReqs
+                      .map((req) => `
+                        <div class="fa-surface border rounded-2xl p-5 space-y-2">
+                          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <div>
+                              <span class="text-[11px] font-bold uppercase px-2 py-0.5 rounded-full fa-pill">College Request • ${escapeHtml(req.tier)}</span>
+                              <h3 class="font-bold text-base mt-1">${escapeHtml(req.name)} (${escapeHtml(req.shortName)})</h3>
+                              <p class="text-xs opacity-75">${escapeHtml(req.location)}${req.schoolIncline ? ` • Incline: ${escapeHtml(req.schoolIncline)}` : ''}</p>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                              <button type="button" onclick="approveSchoolRequest('${escapeHtml(req.id)}')" class="px-3 py-1.5 rounded-xl fa-accent-bg text-xs font-semibold">
+                                Approve College
+                              </button>
+                              <button type="button" onclick="rejectSchoolRequest('${escapeHtml(req.id)}')" class="px-3 py-1.5 rounded-xl border fa-subtle text-xs font-semibold">
+                                Reject
+                              </button>
+                            </div>
+                          </div>
+                          <p class="text-sm opacity-85">${escapeHtml(req.description)}</p>
+                        </div>
+                      `)
+                      .join('')}
+                  </div>
+                `
+                : ''
+            }
+
+            <div class="space-y-3">
+              <h2 class="text-sm font-bold uppercase tracking-wider opacity-75">Pending Alumni (${filteredQueue.length})</h2>
+              ${
+                filteredQueue.length
+                  ? filteredQueue
+                      .map((item) => {
+                        const school = getSchoolById(item.schoolId);
+                        const field = getCategoryById(item.categoryId);
+                        const isEditing = state.editingQueueId === item.id;
+                        return `
+                          <div class="fa-surface border rounded-2xl p-5 space-y-3">
+                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                              <div>
+                                <h3 class="font-bold text-base">${escapeHtml(item.name)}</h3>
+                                <p class="text-xs opacity-75">${escapeHtml(school.name)} • ${escapeHtml(field.name)}</p>
+                              </div>
+                              <div class="flex flex-wrap gap-2">
+                                <button type="button" onclick="state.editingQueueId = ${isEditing ? 'null' : `'${escapeHtml(item.id)}'`}; render();" class="px-3 py-1.5 rounded-xl border fa-subtle text-xs font-semibold">
+                                  ${isEditing ? 'Cancel Edit' : 'Edit'}
+                                </button>
+                                <button type="button" onclick="approveQueueItem('${escapeHtml(item.id)}')" class="px-3 py-1.5 rounded-xl fa-accent-bg text-xs font-semibold">
+                                  Approve
+                                </button>
+                                <button type="button" onclick="rejectQueueItem('${escapeHtml(item.id)}')" class="px-3 py-1.5 rounded-xl border fa-subtle text-xs font-semibold">
+                                  Reject
+                                </button>
+                              </div>
+                            </div>
+                            <p class="text-sm opacity-85">${escapeHtml(item.overallBio)}</p>
+                            ${
+                              isEditing
+                                ? `
+                                  <form onsubmit="saveQueueEdit(event, '${escapeHtml(item.id)}')" class="pt-3 border-t border-slate-200/15 space-y-3">
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                      <input name="name" value="${escapeHtml(item.name)}" required class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                                      <select name="categoryId" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
+                                        ${state.categories.map((c) => `<option value="${escapeHtml(c.id)}" ${c.id === item.categoryId ? 'selected' : ''}>${escapeHtml(c.name)}</option>`).join('')}
+                                      </select>
+                                    </div>
+                                    <textarea name="overallBio" rows="2" required class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm">${escapeHtml(item.overallBio)}</textarea>
+                                    <button type="submit" class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold">Save Queue Edits</button>
+                                  </form>
+                                `
+                                : ''
+                            }
+                          </div>
+                        `;
+                      })
+                      .join('')
+                  : `<div class="fa-surface border rounded-2xl p-6 text-sm opacity-75">No pending alumni items in the review queue.</div>`
+              }
+            </div>
+          </div>
+        `;
+      }
+
+      if (state.modTab === 'alumni') {
+        const q = state.modAlumniSearch.trim().toLowerCase();
+        const filteredAlumni = approved.filter((person) => {
+          const school = getSchoolById(person.schoolId);
+          const field = getCategoryById(person.categoryId);
+          return (
+            !q ||
+            person.name.toLowerCase().includes(q) ||
+            school.name.toLowerCase().includes(q) ||
+            school.shortName.toLowerCase().includes(q) ||
+            field.name.toLowerCase().includes(q)
+          );
+        });
+
+        return `
+          <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <input
+                type="search"
+                value="${escapeHtml(state.modAlumniSearch)}"
+                oninput="state.modAlumniSearch = this.value; render();"
+                placeholder="Search approved alumni..."
+                aria-label="Search approved alumni"
+                class="w-full max-w-md px-3.5 py-2 rounded-xl border fa-subtle text-sm"
+              />
+              <button
+                type="button"
+                onclick="state.showAddAlumnusForm = !state.showAddAlumnusForm; render();"
+                class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold self-start"
+              >
+                ${state.showAddAlumnusForm ? 'Close Add Form' : '+ Add Alumnus'}
+              </button>
+            </div>
+
+            ${
+              state.showAddAlumnusForm
+                ? `
+                  <form onsubmit="handleModAddAlumnus(event)" class="fa-surface border rounded-2xl p-5 space-y-3">
+                    <div class="text-xs font-bold uppercase tracking-wider fa-accent-text">Add Approved Alumnus</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <input name="name" required placeholder="Full Name *" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                      <select name="schoolId" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
+                        ${state.schools.map((s) => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('')}
+                      </select>
+                      <select name="categoryId" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
+                        ${state.categories.map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.name)}</option>`).join('')}
+                      </select>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <input name="graduationYear" placeholder="Graduation Year (e.g., 1995)" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                      <input name="degreesText" placeholder="Degrees (e.g., BA, JD)" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                      <input name="notableWorks" placeholder="Notable Works" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <input name="imageUrl" type="url" placeholder="Image URL (replaces initials &amp; makes box 1.5x)" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                      <input name="secondaryImageUrl" type="url" placeholder="Alternate Image URL (optional)" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                    </div>
+                    <textarea name="overallBio" required rows="2" placeholder="Overview Bio *" class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm"></textarea>
+                    <input name="campusNote" placeholder="Campus &amp; Degree Context" class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                    <input name="sourceUrl" type="url" placeholder="Reference Source URL (https://...)" class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                    <button type="submit" class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold">Publish Alumnus</button>
+                  </form>
+                `
+                : ''
+            }
+
+            <div class="space-y-3">
+              ${filteredAlumni
+                .map((person) => {
+                  const school = getSchoolById(person.schoolId);
+                  const field = getCategoryById(person.categoryId);
+                  const isEditing = state.editingAlumnusId === person.id;
+                  return `
+                    <div class="fa-surface border rounded-2xl p-4 space-y-3">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                          <div class="font-bold text-base">${escapeHtml(person.name)}</div>
+                          <div class="text-xs opacity-75">${escapeHtml(school.shortName)} • ${escapeHtml(field.name)}${person.graduationYear ? ` • '${escapeHtml(person.graduationYear.slice(-2))}` : ''}</div>
+                        </div>
+                        <button
+                          type="button"
+                          onclick="state.editingAlumnusId = ${isEditing ? 'null' : `'${escapeHtml(person.id)}'`}; render();"
+                          class="px-3 py-1.5 rounded-xl border fa-subtle text-xs font-semibold self-start"
+                        >
+                          ${isEditing ? 'Cancel Edit' : 'Edit Profile'}
+                        </button>
+                      </div>
+                      ${
+                        isEditing
+                          ? `
+                            <form onsubmit="saveAlumnusEdit(event, '${escapeHtml(person.id)}')" class="pt-3 border-t border-slate-200/15 space-y-3">
+                              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <input name="name" value="${escapeHtml(person.name)}" required class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                                <select name="schoolId" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
+                                  ${state.schools.map((s) => `<option value="${escapeHtml(s.id)}" ${s.id === person.schoolId ? 'selected' : ''}>${escapeHtml(s.name)}</option>`).join('')}
+                                </select>
+                                <select name="categoryId" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
+                                  ${state.categories.map((c) => `<option value="${escapeHtml(c.id)}" ${c.id === person.categoryId ? 'selected' : ''}>${escapeHtml(c.name)}</option>`).join('')}
+                                </select>
+                              </div>
+                              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <input name="graduationYear" value="${escapeHtml(person.graduationYear || '')}" placeholder="Year" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                                <input name="degreesText" value="${escapeHtml((person.degrees || []).join(', '))}" placeholder="Degrees (BA, BS)" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                                <input name="notableWorks" value="${escapeHtml(person.notableWorks || '')}" placeholder="Notable Works" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                              </div>
+                              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <input name="imageUrl" type="url" value="${escapeHtml(person.imageUrl || '')}" placeholder="Image URL (1.5x box)" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                                <input name="secondaryImageUrl" type="url" value="${escapeHtml(person.secondaryImageUrl || '')}" placeholder="Alternate Image URL" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                              </div>
+                              <textarea name="overallBio" rows="2" required class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm">${escapeHtml(person.overallBio)}</textarea>
+                              <input name="campusNote" value="${escapeHtml(person.campusNote || '')}" placeholder="Campus Note" class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                              <input name="sourceUrl" type="url" value="${escapeHtml(person.sourceUrl || '')}" placeholder="Source URL" class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                              <button type="submit" class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold">Save Profile</button>
+                            </form>
+                          `
+                          : ''
+                      }
+                    </div>
+                  `;
+                })
+                .join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (state.modTab === 'schools') {
+        const q = state.modSchoolsSearch.trim().toLowerCase();
+        const filteredSchools = state.schools.filter(
+          (s) =>
+            !q ||
+            s.name.toLowerCase().includes(q) ||
+            s.shortName.toLowerCase().includes(q) ||
+            s.location.toLowerCase().includes(q) ||
+            s.tier.toLowerCase().includes(q)
+        );
+
+        return `
+          <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <input
+                type="search"
+                value="${escapeHtml(state.modSchoolsSearch)}"
+                oninput="state.modSchoolsSearch = this.value; render();"
+                placeholder="Search colleges..."
+                aria-label="Search colleges"
+                class="w-full max-w-md px-3.5 py-2 rounded-xl border fa-subtle text-sm"
+              />
+              <button
+                type="button"
+                onclick="state.showAddSchoolForm = !state.showAddSchoolForm; render();"
+                class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold self-start"
+              >
+                ${state.showAddSchoolForm ? 'Close Add Form' : '+ Add College'}
+              </button>
+            </div>
+
+            ${
+              state.showAddSchoolForm
+                ? `
+                  <form onsubmit="handleModAddSchool(event)" class="fa-surface border rounded-2xl p-5 space-y-3">
+                    <div class="text-xs font-bold uppercase tracking-wider fa-accent-text">Add U.S. College</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      <input name="name" required placeholder="College Name *" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                      <input name="shortName" required placeholder="Short Name *" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <input name="location" required placeholder="City, State *" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                      <select name="tier" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
+                        ${SCHOOL_TIERS.map((tier) => `<option value="${escapeHtml(tier)}">${escapeHtml(tier)}</option>`).join('')}
+                      </select>
+                      <input name="logoUrl" type="url" placeholder="Logo URL (optional)" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                    </div>
+                    <textarea name="description" rows="2" required placeholder="College overview *" class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm"></textarea>
+                    <button type="submit" class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold">Add College</button>
+                  </form>
+                `
+                : ''
+            }
+
+            <div class="space-y-3">
+              ${filteredSchools
+                .map((school) => {
+                  const isEditing = state.editingSchoolId === school.id;
+                  return `
+                    <div class="fa-surface border rounded-2xl p-4 space-y-3">
+                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                          <div class="font-bold text-base">${escapeHtml(school.name)}</div>
+                          <div class="text-xs opacity-75">${escapeHtml(school.location)} • ${escapeHtml(school.tier)}</div>
+                        </div>
+                        <button
+                          type="button"
+                          onclick="state.editingSchoolId = ${isEditing ? 'null' : `'${escapeHtml(school.id)}'`}; render();"
+                          class="px-3 py-1.5 rounded-xl border fa-subtle text-xs font-semibold self-start"
+                        >
+                          ${isEditing ? 'Cancel Edit' : 'Edit College'}
+                        </button>
+                      </div>
+                      ${
+                        isEditing
+                          ? `
+                            <form onsubmit="saveSchoolEdit(event, '${escapeHtml(school.id)}')" class="pt-3 border-t border-slate-200/15 space-y-3">
+                              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <input name="name" value="${escapeHtml(school.name)}" required class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                                <input name="shortName" value="${escapeHtml(school.shortName)}" required class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                              </div>
+                              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <input name="location" value="${escapeHtml(school.location)}" required class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                                <select name="tier" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
+                                  ${SCHOOL_TIERS.map((tier) => `<option value="${escapeHtml(tier)}" ${tier === school.tier ? 'selected' : ''}>${escapeHtml(tier)}</option>`).join('')}
+                                </select>
+                                <input name="logoUrl" type="url" value="${escapeHtml(school.logoUrl || '')}" placeholder="Logo URL" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
+                              </div>
+                              <textarea name="description" rows="2" required class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm">${escapeHtml(school.description)}</textarea>
+                              <button type="submit" class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold">Save College</button>
+                            </form>
+                          `
+                          : ''
+                      }
+                    </div>
+                  `;
+                })
+                .join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (state.modTab === 'fields') {
+        const q = state.modCategoriesSearch.trim().toLowerCase();
+        const filteredFields = state.categories.filter(
+          (c) =>
+            !q ||
+            c.name.toLowerCase().includes(q) ||
+            (c.description || '').toLowerCase().includes(q) ||
+            (c.color || '').toLowerCase().includes(q)
+        );
+
+        return `
+          <div class="space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <input
+                type="search"
+                value="${escapeHtml(state.modCategoriesSearch)}"
+                oninput="state.modCategoriesSearch = this.value; render();"
+                placeholder="Search field of alumnus categories..."
+                aria-label="Search field of alumnus categories"
+                class="w-full max-w-md px-3.5 py-2 rounded-xl border fa-subtle text-sm"
+              />
+              <button
+                type="button"
+                onclick="state.showAddCategoryForm = !state.showAddCategoryForm; render();"
+                class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold self-start"
+              >
+                ${state.showAddCategoryForm ? 'Close Add Form' : '+ Add Field Category'}
+              </button>
+            </div>
+
+            ${
+              state.showAddCategoryForm
+                ? `
+                  <form onsubmit="handleModAddCategory(event)" class="fa-surface border rounded-2xl p-5 space-y-3">
+                    <div class="text-xs font-bold uppercase tracking-wider fa-accent-text">New Field of Alumnus Category</div>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <input
+                        name="name"
+                        required
+                        placeholder="Category Name (e.g., Architecture) *"
+                        class="sm:col-span-2 px-3 py-2 rounded-xl border fa-subtle text-sm"
+                      />
+                      <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl border fa-subtle">
+                        <input
+                          type="color"
+                          name="colorPicker"
+                          value="${escapeHtml(state.newCategoryColor || '#6366f1')}"
+                          oninput="state.newCategoryColor = this.value; if (this.nextElementSibling) this.nextElementSibling.value = this.value;"
+                          aria-label="Custom category color picker"
+                          class="w-8 h-8 rounded cursor-pointer bg-transparent border-0"
+                        />
+                        <input
+                          type="text"
+                          name="color"
+                          value="${escapeHtml(state.newCategoryColor || '#6366f1')}"
+                          oninput="state.newCategoryColor = this.value; if (/^#[0-9a-fA-F]{6}$/.test(this.value.trim()) && this.previousElementSibling) this.previousElementSibling.value = this.value.trim();"
+                          placeholder="#6366f1"
+                          aria-label="Custom category hex color"
+                          class="w-full bg-transparent text-xs font-mono uppercase focus:outline-none"
+                        />
+                      </div>
+                    </div>
+                    <input
+                      name="description"
+                      placeholder="Short description for this field of alumnus"
+                      class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm"
+                    />
+                    <button type="submit" class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold">Create Category</button>
+                  </form>
+                `
+                : ''
+            }
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              ${filteredFields
+                .map((field) => {
+                  const isEditingField = state.editingCategoryId === field.id;
+                  const count = approved.filter((a) => a.categoryId === field.id).length;
+                  const activeEditColor = isEditingField
+                    ? state.editCategoryColor || field.color || '#6366f1'
+                    : field.color || '#6366f1';
+
+                  return `
+                    <div class="fa-surface border rounded-2xl p-4 space-y-3">
+                      <div class="flex items-start justify-between gap-3">
+                        <div class="flex items-center gap-2.5">
+                          <span
+                            class="w-4 h-4 rounded-full shrink-0 border border-black/15"
+                            style="background-color: ${escapeHtml(field.color || '#6366f1')};"
+                          ></span>
+                          <div>
+                            <div class="font-bold text-sm">${escapeHtml(field.name)}</div>
+                            <div class="text-xs opacity-75">${count} approved ${count === 1 ? 'alumnus' : 'alumni'} • <span class="font-mono">${escapeHtml(field.color || '#6366f1')}</span></div>
+                          </div>
+                        </div>
+                        <button
+                          type="button"
+                          onclick="if (state.editingCategoryId === '${escapeHtml(field.id)}') { state.editingCategoryId = null; } else { state.editingCategoryId = '${escapeHtml(field.id)}'; state.editCategoryColor = '${escapeHtml(field.color || '#6366f1')}'; } render();"
+                          class="px-3 py-1.5 rounded-xl border fa-subtle text-xs font-semibold shrink-0"
+                        >
+                          ${isEditingField ? 'Cancel' : 'Edit / Color'}
+                        </button>
+                      </div>
+                      ${field.description ? `<p class="text-xs opacity-80">${escapeHtml(field.description)}</p>` : ''}
+                      ${
+                        isEditingField
+                          ? `
+                            <form onsubmit="saveCategoryEdit(event, '${escapeHtml(field.id)}')" class="pt-3 border-t border-slate-200/15 space-y-3">
+                              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <input
+                                  name="name"
+                                  value="${escapeHtml(field.name)}"
+                                  required
+                                  placeholder="Category Name"
+                                  class="sm:col-span-2 px-3 py-2 rounded-xl border fa-subtle text-sm"
+                                />
+                                <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl border fa-subtle">
+                                  <input
+                                    type="color"
+                                    name="colorPicker"
+                                    value="${escapeHtml(/^#[0-9a-fA-F]{6}$/.test(activeEditColor) ? activeEditColor : '#6366f1')}"
+                                    oninput="state.editCategoryColor = this.value; if (this.nextElementSibling) this.nextElementSibling.value = this.value;"
+                                    aria-label="Edit custom color"
+                                    class="w-8 h-8 rounded cursor-pointer bg-transparent border-0"
+                                  />
+                                  <input
+                                    type="text"
+                                    name="color"
+                                    value="${escapeHtml(activeEditColor)}"
+                                    oninput="state.editCategoryColor = this.value; if (/^#[0-9a-fA-F]{6}$/.test(this.value.trim()) && this.previousElementSibling) this.previousElementSibling.value = this.value.trim();"
+                                    placeholder="#6366f1"
+                                    aria-label="Edit custom hex color"
+                                    class="w-full bg-transparent text-xs font-mono uppercase focus:outline-none"
+                                  />
+                                </div>
+                              </div>
+                              <input
+                                name="description"
+                                value="${escapeHtml(field.description || '')}"
+                                placeholder="Description"
+                                class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm"
+                              />
+                              <button type="submit" class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold">Save Category</button>
+                            </form>
+                          `
+                          : ''
+                      }
+                    </div>
+                  `;
+                })
+                .join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (state.modTab === 'frontpage') {
+        const homeCfg = { ...DEFAULT_HOME, ...(state.homeConfig || {}) };
+        const override = safeLoad(STORAGE_KEYS.SPOTLIGHT_OVERRIDE, null);
+        const activeOverrideId = override && override.dateKey === getNyDateKey() ? override.alumnusId : '';
+
+        return `
+          <form onsubmit="saveFrontPageSettings(event)" class="fa-surface border rounded-2xl p-6 space-y-4 max-w-2xl">
+            <div class="text-xs font-bold uppercase tracking-wider fa-accent-text">Front Page Customization</div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Hero Badge</label>
+              <input name="kicker" value="${escapeHtml(homeCfg.kicker)}" required class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Hero Headline</label>
+              <input name="headline" value="${escapeHtml(homeCfg.headline)}" required class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Hero Subheadline</label>
+              <textarea name="subheadline" rows="2" required class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm">${escapeHtml(homeCfg.subheadline)}</textarea>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Notable Section Heading</label>
+                <input name="notableTitle" value="${escapeHtml(homeCfg.notableTitle)}" required class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Today's Spotlight Override (NY)</label>
+                <select name="spotlightOverrideId" class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm">
+                  <option value="">Automatic Daily Rotation</option>
+                  ${approved.map((a) => `<option value="${escapeHtml(a.id)}" ${a.id === activeOverrideId ? 'selected' : ''}>${escapeHtml(a.name)}</option>`).join('')}
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">Notable Section Subtitle</label>
+              <input name="notableSubtitle" value="${escapeHtml(homeCfg.notableSubtitle)}" required class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+            </div>
+            <button type="submit" class="px-5 py-2.5 rounded-xl fa-accent-bg text-sm font-semibold">
+              Save Front Page
+            </button>
+          </form>
+        `;
+      }
+
+      if (state.modTab === 'backup') {
+        const estSize = getEstimatedBackupSizeLabel();
+        return `
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="fa-surface border rounded-2xl p-6 space-y-4">
+              <div class="text-xs font-bold uppercase tracking-wider fa-accent-text">JSON Backup Downloader</div>
+              <h2 class="text-lg font-extrabold">Download Directory Snapshot</h2>
+              <p class="text-sm opacity-80 leading-relaxed">
+                Export your current alumni, colleges, college requests, field of alumnus categories, degrees, front page settings, and About page as a <code>.json</code> file.
+              </p>
+              <div>
+                <button
+                  type="button"
+                  onclick="downloadJsonBackup()"
+                  class="px-5 py-2.5 rounded-xl fa-accent-bg text-sm font-semibold shadow-sm"
+                >
+                  Download JSON Backup
+                </button>
+                <p id="jsonBackupEstimatedSize" class="text-xs opacity-75 mt-2 font-mono">
+                  Estimated size: ${escapeHtml(estSize)}
+                </p>
+              </div>
+            </div>
+
+            <form onsubmit="handleModJsonInputSubmit(event)" class="fa-surface border rounded-2xl p-6 space-y-4">
+              <div class="flex items-center justify-between gap-2">
+                <div class="text-xs font-bold uppercase tracking-wider fa-accent-text">JSON Input &amp; Restore</div>
+                <label class="text-xs font-semibold fa-accent-text cursor-pointer hover:underline">
+                  <span>Load .json file</span>
+                  <input type="file" accept=".json,application/json" onchange="handleJsonFileInput(event)" class="hidden" />
+                </label>
+              </div>
+              <h2 class="text-lg font-extrabold">Paste or Load Backup JSON</h2>
+              <textarea
+                id="modJsonInputTextarea"
+                name="jsonInput"
+                rows="7"
+                placeholder='Paste exported FamousAlumni.org JSON here...'
+                class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-xs font-mono"
+              ></textarea>
+              <button type="submit" class="px-5 py-2.5 rounded-xl fa-accent-bg text-sm font-semibold">
+                Import JSON
+              </button>
+            </form>
+          </div>
+        `;
+      }
+
+      return `
+        <form onsubmit="saveAboutSettings(event)" class="fa-surface border rounded-2xl p-6 space-y-4 max-w-2xl">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">About Title</label>
+            <input name="title" value="${escapeHtml(state.about.title || DEFAULT_ABOUT.title)}" required class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider opacity-75 mb-1.5">About Body</label>
+            <textarea name="body" rows="6" required class="w-full px-3.5 py-2.5 rounded-xl border fa-subtle text-sm">${escapeHtml(state.about.body || DEFAULT_ABOUT.body)}</textarea>
+          </div>
+          <button type="submit" class="px-5 py-2.5 rounded-xl fa-accent-bg text-sm font-semibold">
+            Save About Page
+          </button>
+        </form>
+      `;
+    }
+
+    function saveQueueEdit(event, id) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      state.alumni = state.alumni.map((item) =>
+        item.id === id
+          ? {
+              ...item,
+              name: String(fd.get('name') || item.name).trim(),
+              categoryId: String(fd.get('categoryId') || item.categoryId),
+              overallBio: String(fd.get('overallBio') || item.overallBio).trim(),
+            }
+          : item
+      );
+      safeSave(STORAGE_KEYS.ALUMNI, state.alumni);
+      state.editingQueueId = null;
+      showToast('Saved queue edits.', 'success');
+      render();
+    }
+
+    function saveAboutSettings(event) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      state.about = {
+        ...DEFAULT_ABOUT,
+        ...state.about,
+        title: String(fd.get('title') || DEFAULT_ABOUT.title).trim(),
+        body: String(fd.get('body') || DEFAULT_ABOUT.body).trim(),
+      };
+      safeSave(STORAGE_KEYS.ABOUT, state.about);
+      showToast('Saved About page.', 'success');
+      render();
+    }
+
+    function handleModLogin(event) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      const user = String(fd.get('username') || '').trim();
+      const pass = String(fd.get('password') || '');
+      if (user === MOD_CREDENTIALS.username && pass === MOD_CREDENTIALS.password) {
+        state.isModAuthenticated = true;
+        showToast('Signed in to ModView.', 'success');
+        render();
+      } else {
+        showToast('Invalid credentials.', 'warn');
+      }
+    }
+
+    function handleModLogout() {
+      state.isModAuthenticated = false;
+      state.editingQueueId = null;
+      showToast('Signed out of ModView.', 'info');
+      render();
+    }
+
+    function approveQueueItem(id) {
+      state.alumni = state.alumni.map((a) => (a.id === id ? { ...a, status: 'approved' } : a));
+      safeSave(STORAGE_KEYS.ALUMNI, state.alumni);
+      showToast('Approved and published to directory.', 'success');
+      render();
+    }
+
+    function rejectQueueItem(id) {
+      state.alumni = state.alumni.filter((a) => a.id !== id);
+      safeSave(STORAGE_KEYS.ALUMNI, state.alumni);
+      showToast('Removed item from review queue.', 'info');
+      render();
+    }
+
+    function approveSchoolRequest(reqId) {
+      const req = state.schoolRequests.find((r) => r.id === reqId);
+      if (!req) return;
+      const baseSlug = req.shortName
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '') || `college-${Date.now()}`;
+      const uniqueId = state.schools.some((s) => s.id === baseSlug)
+        ? `${baseSlug}-${Date.now()}`
+        : baseSlug;
+
+      state.schools.push({
+        id: uniqueId,
+        name: req.name,
+        shortName: req.shortName,
+        location: req.location,
+        tier: req.tier || SCHOOL_TIERS[0],
+        logoUrl: req.logoUrl || '',
+        description: req.description,
+      });
+      safeSave(STORAGE_KEYS.SCHOOLS, state.schools);
+
+      state.schoolRequests = state.schoolRequests.map((r) =>
+        r.id === reqId ? { ...r, status: 'approved' } : r
+      );
+      safeSave(STORAGE_KEYS.SCHOOL_REQUESTS, state.schoolRequests);
+      showToast(`Added ${req.name} to Colleges.`, 'success');
+      render();
+    }
+
+    function rejectSchoolRequest(reqId) {
+      state.schoolRequests = state.schoolRequests.filter((r) => r.id !== reqId);
+      safeSave(STORAGE_KEYS.SCHOOL_REQUESTS, state.schoolRequests);
+      showToast('Removed college request from review queue.', 'info');
+      render();
+    }
+
+    function handleModAddAlumnus(event) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      const name = String(fd.get('name') || '').trim();
+      const overallBio = String(fd.get('overallBio') || '').trim();
+      if (!name || !overallBio) {
+        showToast('Please provide a name and overview bio.', 'warn');
+        return;
+      }
+
+      const degrees = String(fd.get('degreesText') || '')
+        .split(',')
+        .map((d) => d.trim().toUpperCase())
+        .filter(Boolean);
+
+      const newAlumnus = {
+        id: `alumnus-${Date.now()}`,
+        name,
+        schoolId: String(fd.get('schoolId') || state.schools[0]?.id || 'ucla'),
+        graduationYear: String(fd.get('graduationYear') || '').trim(),
+        degrees,
+        categoryId: String(fd.get('categoryId') || state.categories[0]?.id || 'film-tv'),
+        notableWorks: String(fd.get('notableWorks') || '').trim(),
+        overallBio,
+        campusNote: String(fd.get('campusNote') || '').trim(),
+        sourceUrl: sanitizeUrl(fd.get('sourceUrl')),
+        imageUrl: sanitizeUrl(fd.get('imageUrl')),
+        secondaryImageUrl: sanitizeUrl(fd.get('secondaryImageUrl')),
+        status: 'approved',
+        featuredDaily: false,
+      };
+
+      state.alumni.unshift(newAlumnus);
+      safeSave(STORAGE_KEYS.ALUMNI, state.alumni);
+      state.showAddAlumnusForm = false;
+      showToast(`Added ${name} to Approved Alumni.`, 'success');
+      render();
+    }
+
+    function handleModAddSchool(event) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      const name = String(fd.get('name') || '').trim();
+      const shortName = String(fd.get('shortName') || '').trim();
+      const location = String(fd.get('location') || '').trim();
+      const description = String(fd.get('description') || '').trim();
+      if (!name || !shortName || !location || !description) {
+        showToast('Please fill out all required college fields.', 'warn');
+        return;
+      }
+
+      const slug = shortName
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '') || `college-${Date.now()}`;
+      const id = state.schools.some((s) => s.id === slug) ? `${slug}-${Date.now()}` : slug;
+
+      state.schools.push({
+        id,
+        name,
+        shortName,
+        location,
+        tier: String(fd.get('tier') || SCHOOL_TIERS[0]),
+        logoUrl: sanitizeUrl(fd.get('logoUrl')),
+        description,
+      });
+      safeSave(STORAGE_KEYS.SCHOOLS, state.schools);
+      state.showAddSchoolForm = false;
+      showToast(`Added ${name}.`, 'success');
+      render();
+    }
+
+    function normalizeHexColor(rawColor, fallback = '#6366f1') {
+      const cleaned = String(rawColor || '').trim();
+      if (/^#[0-9a-fA-F]{6}$/.test(cleaned)) {
+        return cleaned.toLowerCase();
+      }
+      if (/^#[0-9a-fA-F]{3}$/.test(cleaned)) {
+        const [, r, g, b] = cleaned;
+        return `#${r}${r}${g}${g}${b}${b}`.toLowerCase();
+      }
+      if (/^[0-9a-fA-F]{6}$/.test(cleaned)) {
+        return `#${cleaned.toLowerCase()}`;
+      }
+      return fallback;
+    }
+
+    function handleModAddCategory(event) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      const name = String(fd.get('name') || '').trim();
+      if (!name) {
+        showToast('Please enter a category name.', 'warn');
+        return;
+      }
+
+      const color = normalizeHexColor(
+        fd.get('color') || fd.get('colorPicker') || state.newCategoryColor,
+        '#6366f1'
+      );
+      const description = String(fd.get('description') || '').trim();
+      const baseSlug =
+        name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-|-$/g, '') || `field-${Date.now()}`;
+      const id = state.categories.some((c) => c.id === baseSlug)
+        ? `${baseSlug}-${Date.now()}`
+        : baseSlug;
+
+      state.categories.push({
+        id,
+        name,
+        color,
+        description: description || `Notable alumni in ${name}.`,
+      });
+      safeSave(STORAGE_KEYS.CATEGORIES, state.categories);
+      state.showAddCategoryForm = false;
+      state.newCategoryColor = '#6366f1';
+      showToast(`Created field category "${name}" (${color}).`, 'success');
+      render();
+    }
+
+    function saveCategoryEdit(event, id) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      const existing = state.categories.find((c) => c.id === id);
+      if (!existing) return;
+
+      const name = String(fd.get('name') || existing.name).trim();
+      const color = normalizeHexColor(
+        fd.get('color') || fd.get('colorPicker') || state.editCategoryColor,
+        existing.color || '#6366f1'
+      );
+      const description = String(fd.get('description') || '').trim();
+
+      state.categories = state.categories.map((c) =>
+        c.id === id
+          ? {
+              ...c,
+              name: name || c.name,
+              color,
+              description,
+            }
+          : c
+      );
+      safeSave(STORAGE_KEYS.CATEGORIES, state.categories);
+      state.editingCategoryId = null;
+      showToast(`Updated "${name || existing.name}" color to ${color}.`, 'success');
+      render();
+    }
+
+    function saveAlumnusEdit(event, id) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      const parsedDegrees = String(fd.get('degreesText') || '')
+        .split(',')
+        .map((d) => d.trim().toUpperCase())
+        .filter(Boolean);
+
+      state.alumni = state.alumni.map((a) =>
+        a.id === id
+          ? {
+              ...a,
+              name: String(fd.get('name') || a.name).trim(),
+              schoolId: String(fd.get('schoolId') || a.schoolId),
+              categoryId: String(fd.get('categoryId') || a.categoryId),
+              graduationYear: String(fd.get('graduationYear') || '').trim(),
+              degrees: parsedDegrees,
+              notableWorks: String(fd.get('notableWorks') || '').trim(),
+              overallBio: String(fd.get('overallBio') || a.overallBio).trim(),
+              campusNote: String(fd.get('campusNote') || '').trim(),
+              sourceUrl: sanitizeUrl(fd.get('sourceUrl')),
+              imageUrl: sanitizeUrl(fd.get('imageUrl')),
+              secondaryImageUrl: sanitizeUrl(fd.get('secondaryImageUrl')),
+            }
+          : a
+      );
+      safeSave(STORAGE_KEYS.ALUMNI, state.alumni);
+      state.editingAlumnusId = null;
+      showToast('Saved alumnus profile.', 'success');
+      render();
+    }
+
+    function saveSchoolEdit(event, id) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      state.schools = state.schools.map((s) =>
+        s.id === id
+          ? {
+              ...s,
+              name: String(fd.get('name') || s.name).trim(),
+              shortName: String(fd.get('shortName') || s.shortName).trim(),
+              location: String(fd.get('location') || s.location).trim(),
+              tier: String(fd.get('tier') || s.tier),
+              description: String(fd.get('description') || s.description).trim(),
+              logoUrl: sanitizeUrl(fd.get('logoUrl')),
+            }
+          : s
+      );
+      safeSave(STORAGE_KEYS.SCHOOLS, state.schools);
+      state.editingSchoolId = null;
+      showToast('Saved college profile.', 'success');
+      render();
+    }
+
+    function saveFrontPageSettings(event) {
+      event.preventDefault();
+      const fd = new FormData(event.target);
+      state.homeConfig = {
+        kicker: String(fd.get('kicker') || DEFAULT_HOME.kicker).trim(),
+        headline: String(fd.get('headline') || DEFAULT_HOME.headline).trim(),
+        subheadline: String(fd.get('subheadline') || DEFAULT_HOME.subheadline).trim(),
+        notableTitle: String(fd.get('notableTitle') || DEFAULT_HOME.notableTitle).trim(),
+        notableSubtitle: String(fd.get('notableSubtitle') || DEFAULT_HOME.notableSubtitle).trim(),
+      };
+      safeSave(STORAGE_KEYS.HOME, state.homeConfig);
+
+      const overrideId = String(fd.get('spotlightOverrideId') || '');
+      if (overrideId) {
+        safeSave(STORAGE_KEYS.SPOTLIGHT_OVERRIDE, {
+          dateKey: getNyDateKey(),
+          alumnusId: overrideId,
+        });
+      } else {
+        try {
+          localStorage.removeItem(STORAGE_KEYS.SPOTLIGHT_OVERRIDE);
+        } catch {}
+      }
+
+      showToast('Saved front page settings.', 'success');
+      render();
+    }
+
+    // =========================================================================
+    // Main Render Loop & Bootstrap
+    // =========================================================================
+    function updateActiveNav() {
+      document.querySelectorAll('.nav-link').forEach((btn) => {
+        const target = btn.getAttribute('data-nav');
+        const active =
+          state.route === target ||
+          (target === 'colleges' && state.route === 'college-detail');
+        btn.classList.toggle('ring-2', active);
+        btn.classList.toggle('ring-indigo-500', active);
+      });
+    }
+
+    function render() {
+      updateActiveNav();
+      syncTopSearchInput();
+      const root = document.getElementById('appRoot');
+      if (!root) return;
+
+      switch (state.route) {
+        case 'colleges':
+          root.innerHTML = renderCollegesView();
+          break;
+        case 'college-detail':
+          root.innerHTML = renderCollegeDetailView();
+          break;
+        case 'degrees':
+          root.innerHTML = renderDegreesView();
+          break;
+        case 'fields':
+        case 'categories':
+          root.innerHTML = renderCategoriesView();
+          break;
+        case 'submit':
+          root.innerHTML = renderSubmitView();
+          break;
+        case 'about':
+          root.innerHTML = renderAboutView();
+          break;
+        case 'modview':
+          root.innerHTML = renderModView();
+          break;
+        case 'home':
+        default:
+          root.innerHTML = renderHomeView();
+          break;
+      }
+
+      updateNyClocks();
+    }
+
+    function initApp() {
+      initTheme();
+      state.alumni = safeLoad(STORAGE_KEYS.ALUMNI, DEFAULT_ALUMNI);
+      state.schools = safeLoad(STORAGE_KEYS.SCHOOLS, DEFAULT_SCHOOLS);
+      state.schoolRequests = safeLoad(STORAGE_KEYS.SCHOOL_REQUESTS, []);
+      state.categories = safeLoad(STORAGE_KEYS.CATEGORIES, DEFAULT_CATEGORIES);
+      state.degrees = safeLoad(STORAGE_KEYS.DEGREES, DEFAULT_DEGREES);
+      state.about = safeLoad(STORAGE_KEYS.ABOUT, DEFAULT_ABOUT);
+      state.homeConfig = safeLoad(STORAGE_KEYS.HOME, DEFAULT_HOME);
+      state.sessionNotableOrder = buildSessionNotableOrder(getApprovedAlumni());
+      render();
+      clearInterval(window.__nyClockTimer);
+      window.__nyClockTimer = setInterval(updateNyClocks, 1000);
+    }
+
+    window.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
