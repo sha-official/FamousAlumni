@@ -134,21 +134,21 @@
 <body class="min-h-screen flex flex-col transition-colors duration-200">
   <!-- Top Navigation + Google-style Search Bar on All Pages -->
   <header class="sticky top-0 z-30 fa-surface/95 backdrop-blur border-b">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-      <div class="flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-col lg:flex-row lg:items-center justify-between gap-2.5">
+      <div class="flex items-center justify-between gap-2.5 shrink-0">
         <button
           type="button"
           onclick="navigateTo('home')"
-          class="flex items-center gap-2.5 text-left rounded-xl focus:outline-none focus:ring-2 focus:ring-current p-1 shrink-0"
+          class="flex items-center gap-2 text-left rounded-xl focus:outline-none focus:ring-2 focus:ring-current p-1 shrink-0"
         >
           <span id="brandLogoBadge" class="fa-brand-logo inline-flex items-center justify-center w-9 h-9 rounded-xl fa-accent-bg font-extrabold text-sm shadow-sm">
             FA
           </span>
           <div>
-            <div class="font-bold text-base sm:text-lg tracking-tight leading-none">
+            <div class="font-bold text-base tracking-tight leading-none">
               FamousAlumni<span class="fa-accent-text">.org</span>
             </div>
-            <div class="text-[11px] opacity-70 mt-0.5 hidden sm:block">
+            <div class="text-[11px] opacity-70 mt-0.5 hidden xl:block">
               Notable U.S. Graduates &amp; Campus Context
             </div>
           </div>
@@ -166,10 +166,10 @@
         </button>
       </div>
 
-      <!-- Google-style Top Search Bar (Visible on All Pages) -->
-      <div class="relative flex-1 max-w-xl w-full">
-        <div class="flex items-center rounded-full border fa-subtle px-4 py-2 shadow-xs focus-within:ring-2 focus-within:ring-current transition">
-          <span class="text-sm opacity-65 mr-2.5 select-none" aria-hidden="true">🔍</span>
+      <!-- Google-style Top Search Bar (Visible on All Pages, Full Placeholder Shown) -->
+      <div class="relative flex-1 min-w-0 lg:min-w-[400px] xl:min-w-[455px] max-w-2xl w-full">
+        <div class="flex items-center rounded-full border fa-subtle px-3.5 py-2 shadow-xs focus-within:ring-2 focus-within:ring-current transition">
+          <span class="text-sm opacity-65 mr-2 select-none shrink-0" aria-hidden="true">🔍</span>
           <input
             id="topGoogleSearchInput"
             type="search"
@@ -178,14 +178,14 @@
             onfocus="handleTopSearchFocus()"
             placeholder="Search alumni &amp; colleges (e.g., Megan Lawless, UCLA, MIT)..."
             aria-label="Search alumni and colleges"
-            class="w-full bg-transparent text-sm focus:outline-none"
+            class="w-full min-w-0 bg-transparent text-xs sm:text-[13px] focus:outline-none"
           />
           <button
             type="button"
             id="clearTopSearchBtn"
             onclick="clearTopSearch()"
             aria-label="Clear search"
-            class="hidden ml-2 text-xs opacity-65 hover:opacity-100 font-semibold px-1.5 py-0.5 rounded-full"
+            class="hidden ml-1.5 text-xs opacity-65 hover:opacity-100 font-semibold px-1.5 py-0.5 rounded-full shrink-0"
           >
             ✕
           </button>
@@ -198,12 +198,12 @@
         ></div>
       </div>
 
-      <nav class="flex items-center gap-1 sm:gap-1.5 flex-wrap justify-end">
+      <nav class="flex items-center gap-1 flex-wrap lg:flex-nowrap justify-end shrink-0">
         <button
           type="button"
           onclick="navigateTo('home')"
           data-nav="home"
-          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+          class="nav-link px-2.5 py-2 rounded-lg text-xs font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition whitespace-nowrap"
         >
           Home
         </button>
@@ -211,7 +211,7 @@
           type="button"
           onclick="navigateTo('colleges')"
           data-nav="colleges"
-          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+          class="nav-link px-2.5 py-2 rounded-lg text-xs font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition whitespace-nowrap"
         >
           Colleges
         </button>
@@ -219,7 +219,7 @@
           type="button"
           onclick="navigateTo('degrees')"
           data-nav="degrees"
-          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+          class="nav-link px-2.5 py-2 rounded-lg text-xs font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition whitespace-nowrap"
         >
           Degrees
         </button>
@@ -227,7 +227,7 @@
           type="button"
           onclick="navigateTo('fields')"
           data-nav="fields"
-          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+          class="nav-link px-2.5 py-2 rounded-lg text-xs font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition whitespace-nowrap"
         >
           Field of Alumnus
         </button>
@@ -235,7 +235,7 @@
           type="button"
           onclick="navigateTo('submit')"
           data-nav="submit"
-          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold fa-accent-bg transition shadow-sm"
+          class="nav-link px-3 py-2 rounded-lg text-xs font-semibold fa-accent-bg transition shadow-sm whitespace-nowrap"
         >
           Submit
         </button>
@@ -243,15 +243,15 @@
           type="button"
           onclick="navigateTo('about')"
           data-nav="about"
-          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition"
+          class="nav-link px-2.5 py-2 rounded-lg text-xs font-medium opacity-85 hover:opacity-100 hover:fa-subtle transition whitespace-nowrap"
         >
-          About &amp; Standards
+          About
         </button>
         <button
           type="button"
           onclick="navigateTo('modview')"
           data-nav="modview"
-          class="nav-link px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold border fa-subtle opacity-90 hover:opacity-100 transition"
+          class="nav-link px-2.5 py-2 rounded-lg text-xs font-semibold border fa-subtle opacity-90 hover:opacity-100 transition whitespace-nowrap"
         >
           ModView
         </button>
@@ -261,7 +261,7 @@
           onclick="cycleDisplayMode()"
           aria-label="Cycle display mode"
           title="Cycle mode: Sun (White) → Crescent + Cloud (Blue) → Full Moon (Monotone)"
-          class="hidden lg:inline-flex items-center justify-center px-3 py-2 rounded-full border fa-subtle text-sm opacity-90 hover:opacity-100 transition"
+          class="hidden lg:inline-flex items-center justify-center px-2.5 py-2 rounded-full border fa-subtle text-sm opacity-90 hover:opacity-100 transition shrink-0"
         >
           <span class="mode-icon leading-none">☀️</span>
         </button>
@@ -323,7 +323,6 @@
     const MIN_FULL_GRID = 10;
     const HOME_NOTABLE_LIMIT = 9;
     const DISPLAY_MODES = ['white', 'blue', 'monotone'];
-    // Salted SHA-256 verifier for default credentials (hash computed at runtime)
     const DEFAULT_MOD_USER = 'admin';
     const DEFAULT_MOD_PASS = 'famous2026';
     const DEFAULT_MOD_AUTH_RECORD = {
@@ -403,6 +402,36 @@
       { id: 'georgia-tech', name: 'Georgia Institute of Technology', shortName: 'Georgia Tech', location: 'Atlanta, GA', tier: 'Technical & Institute', incline: 'Engineering, Computer Science, Industrial Design & Robotics', logoUrl: '', description: 'Technological research university in Atlanta recognized for engineering, computing, and innovation.' },
       { id: 'uw', name: 'University of Washington', shortName: 'UW', location: 'Seattle, WA', tier: 'Public Flagship', incline: 'Computer Science, Medicine, Ocean & Atmospheric Sciences', logoUrl: '', description: 'Pacific Northwest flagship public research university with major strengths in computing, health sciences, and engineering.' },
       { id: 'emory', name: 'Emory University', shortName: 'Emory', location: 'Atlanta, GA', tier: 'Private Research', incline: 'Public Health, Medicine, Business & Humanities', logoUrl: '', description: 'Private research university in Atlanta closely partnered with major medical and public health centers.' },
+      { id: 'howard', name: 'Howard University', shortName: 'Howard', location: 'Washington, DC', tier: 'Private Research', incline: 'Law, Political Science, Fine Arts & Medicine', logoUrl: '', description: 'Historic private research university in Washington, D.C. celebrated for leadership in law, arts, and public service.' },
+      { id: 'bu', name: 'Boston University', shortName: 'BU', location: 'Boston, MA', tier: 'Private Research', incline: 'Communications, International Relations, Theater & Sciences', logoUrl: '', description: 'Major private research university in Boston known for communications, performing arts, and international affairs.' },
+      { id: 'uconn', name: 'University of Connecticut', shortName: 'UConn', location: 'Storrs, CT', tier: 'Public Flagship', incline: 'Basketball, Business, Engineering & Health Sciences', logoUrl: '', description: 'Connecticut’s flagship public research university renowned for championship basketball and research.' },
+      { id: 'texas-tech', name: 'Texas Tech University', shortName: 'Texas Tech', location: 'Lubbock, TX', tier: 'Public Flagship', incline: 'Engineering, Business, Agriculture & Athletics', logoUrl: '', description: 'Public research university in West Texas known for engineering, business, and collegiate sports.' },
+      { id: 'tennessee', name: 'University of Tennessee, Knoxville', shortName: 'Tennessee', location: 'Knoxville, TN', tier: 'Public Flagship', incline: 'Communications, Engineering, Business & Athletics', logoUrl: '', description: 'Tennessee’s flagship public land-grant research university with strong athletics and engineering programs.' },
+      { id: 'ole-miss', name: 'University of Mississippi', shortName: 'Ole Miss', location: 'Oxford, MS', tier: 'Public Flagship', incline: 'Accountancy, Law, Southern Studies & Athletics', logoUrl: '', description: 'Mississippi’s flagship public research university known for accountancy, journalism, and college sports.' },
+      { id: 'iowa', name: 'University of Iowa', shortName: 'Iowa', location: 'Iowa City, IA', tier: 'Public Flagship', incline: 'Creative Writing, Health Sciences, Business & Athletics', logoUrl: '', description: 'Public research university famous for the Iowa Writers’ Workshop, medicine, and basketball.' },
+      { id: 'south-carolina', name: 'University of South Carolina', shortName: 'South Carolina', location: 'Columbia, SC', tier: 'Public Flagship', incline: 'International Business, Sport Management & Public Health', logoUrl: '', description: 'South Carolina’s flagship public research university recognized for international business and athletics.' },
+      { id: 'wisconsin', name: 'University of Wisconsin–Madison', shortName: 'UW–Madison', location: 'Madison, WI', tier: 'Public Flagship', incline: 'Engineering, Economics, Life Sciences & Public Policy', logoUrl: '', description: 'Premier public land-grant research university in Madison with deep strengths across sciences and policy.' },
+      { id: 'oberlin', name: 'Oberlin College', shortName: 'Oberlin', location: 'Oberlin, OH', tier: 'Liberal Arts', incline: 'Conservatory Music, Humanities & Social Sciences', logoUrl: '', description: 'Liberal arts college and music conservatory renowned for arts, music, and progressive history.' },
+      { id: 'delaware-state', name: 'Delaware State University', shortName: 'Delaware State', location: 'Dover, DE', tier: 'Public Flagship', incline: 'Natural Sciences, Aviation, Business & Education', logoUrl: '', description: 'Public research university in Dover known for sciences, agriculture, and leadership.' },
+      { id: 'csuf', name: 'California State University, Fullerton', shortName: 'Cal State Fullerton', location: 'Fullerton, CA', tier: 'Public Flagship', incline: 'Theater Arts, Communications, Business & Engineering', logoUrl: '', description: 'Major California public university known for theater arts, communications, and business.' },
+      { id: 'fordham', name: 'Fordham University', shortName: 'Fordham', location: 'New York, NY', tier: 'Private Research', incline: 'Drama, Journalism, Finance & Law', logoUrl: '', description: 'Jesuit research university in New York City with strong ties to theater, media, and finance.' },
+      { id: 'juilliard', name: 'The Juilliard School', shortName: 'Juilliard', location: 'New York, NY', tier: 'Private Research', incline: 'Drama, Music & Dance Conservatory', logoUrl: '', description: 'World-renowned performing arts conservatory at Lincoln Center in New York City.' },
+      { id: 'sarah-lawrence', name: 'Sarah Lawrence College', shortName: 'Sarah Lawrence', location: 'Bronxville, NY', tier: 'Liberal Arts', incline: 'Creative Writing, Theater & Performing Arts', logoUrl: '', description: 'Liberal arts college near New York City famed for tutorial mentorship, writing, and theater.' },
+      { id: 'uva-law-wm', name: 'College of William & Mary', shortName: 'William & Mary', location: 'Williamsburg, VA', tier: 'Public Flagship', incline: 'Government, History, Law & Public Policy', logoUrl: '', description: 'Historic public research university in Virginia known for government, law, and liberal arts.' },
+      { id: 'ecu', name: 'East Carolina University', shortName: 'ECU', location: 'Greenville, NC', tier: 'Public Flagship', incline: 'Theater & Dance, Medicine, Nursing & Education', logoUrl: '', description: 'North Carolina public research university with respected programs in drama, health sciences, and education.' },
+      { id: 'uw-milwaukee', name: 'University of Wisconsin–Milwaukee', shortName: 'UW–Milwaukee', location: 'Milwaukee, WI', tier: 'Public Flagship', incline: 'Computer Science, Architecture, Freshwater Sciences & Arts', logoUrl: '', description: 'Urban public research university in Milwaukee strong in engineering, computing, and architecture.' },
+      { id: 'smu', name: 'Southern Methodist University', shortName: 'SMU', location: 'Dallas, TX', tier: 'Private Research', incline: 'Business, International Studies, Law & Performing Arts', logoUrl: '', description: 'Private research university in Dallas known for Cox Business, international studies, and arts.' },
+      { id: 'wvsu', name: 'West Virginia State University', shortName: 'WVSU', location: 'Institute, WV', tier: 'Public Flagship', incline: 'Mathematics, Chemistry, Education & Public Service', logoUrl: '', description: 'Historic public land-grant university in West Virginia celebrated for STEM and education graduates.' },
+      { id: 'suny-albany', name: 'University at Albany, SUNY', shortName: 'UAlbany', location: 'Albany, NY', tier: 'Public Flagship', incline: 'Public Policy, Journalism, Atmospheric Science & Business', logoUrl: '', description: 'Public research university in New York’s capital known for journalism, policy, and sciences.' },
+      { id: 'kalamazoo', name: 'Kalamazoo College', shortName: 'Kalamazoo', location: 'Kalamazoo, MI', tier: 'Liberal Arts', incline: 'Psychology, International Study & Liberal Arts', logoUrl: '', description: 'Liberal arts college in Michigan known for experiential learning and global study.' },
+      { id: 'bowdoin', name: 'Bowdoin College', shortName: 'Bowdoin', location: 'Brunswick, ME', tier: 'Liberal Arts', incline: 'Government, History, Environmental Studies & Humanities', logoUrl: '', description: 'Prestigious Maine liberal arts college noted for government, history, and public leadership.' },
+      { id: 'davidson', name: 'Davidson College', shortName: 'Davidson', location: 'Davidson, NC', tier: 'Liberal Arts', incline: 'Sociology, Economics, Political Science & Basketball', logoUrl: '', description: 'North Carolina liberal arts college celebrated for academics, honor code, and basketball.' },
+      { id: 'morehouse', name: 'Morehouse College', shortName: 'Morehouse', location: 'Atlanta, GA', tier: 'Liberal Arts', incline: 'Leadership, Business, Humanities & Public Service', logoUrl: '', description: 'Historic liberal arts college in Atlanta renowned for cultivating national and global leaders.' },
+      { id: 'spelman', name: 'Spelman College', shortName: 'Spelman', location: 'Atlanta, GA', tier: 'Liberal Arts', incline: 'STEM, Humanities, Arts & Public Leadership', logoUrl: '', description: 'Leading liberal arts college in Atlanta recognized for excellence in sciences, arts, and leadership.' },
+      { id: 'syra', name: 'Syracuse University', shortName: 'Syracuse', location: 'Syracuse, NY', tier: 'Private Research', incline: 'Broadcast Journalism, Communications, Drama & Sports', logoUrl: '', description: 'Private research university in New York famous for the Newhouse School of Communications and drama.' },
+      { id: 'indiana', name: 'Indiana University Bloomington', shortName: 'Indiana', location: 'Bloomington, IN', tier: 'Public Flagship', incline: 'Music (Jacobs School), Business (Kelley) & Journalism', logoUrl: '', description: 'Indiana’s flagship public university celebrated for the Jacobs School of Music and Kelley Business.' },
+      { id: 'ohio-state', name: 'The Ohio State University', shortName: 'Ohio State', location: 'Columbus, OH', tier: 'Public Flagship', incline: 'Engineering, Business, Medicine & Athletics', logoUrl: '', description: 'Major public land-grant research university in Columbus with vast academic and athletic tradition.' },
+      { id: 'florida', name: 'University of Florida', shortName: 'Florida', location: 'Gainesville, FL', tier: 'Public Flagship', incline: 'Journalism, Engineering, Medicine & Athletics', logoUrl: '', description: 'Florida’s flagship public research university with top programs across communications, STEM, and sports.' },
     ];
 
     const DEFAULT_ALUMNI = [
@@ -423,7 +452,7 @@
       { id: 'a-15', name: 'Tom Morello', schoolId: 'harvard', graduationYear: '1986', degrees: ['BA'], degreeDetail: 'BA in Political Science', categoryId: 'music-arts', notableWorks: 'Rage Against the Machine, Audioslave', overallBio: 'Grammy-winning guitarist, songwriter, and activist known for inventive riff craft.', campusNote: 'Earned a degree in Political Science at Harvard before launching his music career.', sourceUrl: 'https://en.wikipedia.org/wiki/Tom_Morello', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-16', name: 'Steve Ballmer', schoolId: 'harvard', graduationYear: '1977', degrees: ['BA'], degreeDetail: 'BA in Applied Mathematics and Economics', categoryId: 'business-tech', notableWorks: 'Former Microsoft CEO & LA Clippers Owner', overallBio: 'Technology executive, former CEO of Microsoft, and NBA franchise owner.', campusNote: 'Worked on The Harvard Crimson and studied applied math and economics.', sourceUrl: 'https://en.wikipedia.org/wiki/Steve_Ballmer', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-17', name: 'Jeremy Lin', schoolId: 'harvard', graduationYear: '2010', degrees: ['BA'], degreeDetail: 'BA in Economics', categoryId: 'sports', notableWorks: 'NBA Champion & Linsanity Phenomenon', overallBio: 'NBA guard and championship winner who became a global sports headline in 2012.', campusNote: 'Graduated with an Economics degree while starring for Harvard basketball.', sourceUrl: 'https://en.wikipedia.org/wiki/Jeremy_Lin', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-18', name: 'Meryl Streep', schoolId: 'yale', graduationYear: '1975', degrees: ['MFA'], degreeDetail: 'MFA in Acting', categoryId: 'film-tv', notableWorks: 'Kramer vs. Kramer, Sophie’s Choice, The Iron Lady', threeTimeAcademyAwardWinner: true, overallBio: 'Three-time Academy Award winner widely regarded among the most acclaimed actors of her generation.', campusNote: 'Trained at the Yale School of Drama, appearing in numerous stage productions.', sourceUrl: 'https://en.wikipedia.org/wiki/Meryl_Streep', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-18', name: 'Meryl Streep', schoolId: 'yale', graduationYear: '1975', degrees: ['MFA'], degreeDetail: 'MFA in Acting', categoryId: 'film-tv', notableWorks: 'Kramer vs. Kramer, Sophie’s Choice, The Iron Lady', overallBio: 'Three-time Academy Award winner widely regarded among the most acclaimed actors of her generation.', campusNote: 'Trained at the Yale School of Drama, appearing in numerous stage productions.', sourceUrl: 'https://en.wikipedia.org/wiki/Meryl_Streep', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-19', name: 'Paul Newman', schoolId: 'yale', graduationYear: '1954', degrees: ['MFA'], degreeDetail: 'Studies at Yale School of Drama', categoryId: 'film-tv', notableWorks: 'The Hustler, Cool Hand Luke, The Color of Money', overallBio: 'Academy Award-winning actor, racing driver, and philanthropist behind Newman’s Own.', campusNote: 'Studied drama at Yale following his service in the U.S. Navy.', sourceUrl: 'https://en.wikipedia.org/wiki/Paul_Newman', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-20', name: 'Angela Bassett', schoolId: 'yale', graduationYear: '1983', degrees: ['BA', 'MFA'], degreeDetail: 'BA in African American Studies & MFA in Drama', categoryId: 'film-tv', notableWorks: 'What’s Love Got to Do with It, Black Panther', overallBio: 'Golden Globe-winning actress celebrated for commanding performances across film and television.', campusNote: 'Earned both her bachelor’s degree and MFA from Yale.', sourceUrl: 'https://en.wikipedia.org/wiki/Angela_Bassett', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-21', name: 'Jodie Foster', schoolId: 'yale', graduationYear: '1985', degrees: ['BA'], degreeDetail: 'BA in Literature', categoryId: 'film-tv', notableWorks: 'The Accused, The Silence of the Lambs', overallBio: 'Two-time Academy Award-winning actress and director with a decades-long film career.', campusNote: 'Graduated magna cum laude in Literature from Yale University.', sourceUrl: 'https://en.wikipedia.org/wiki/Jodie_Foster', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
@@ -497,7 +526,7 @@
       { id: 'a-89', name: 'Drew Houston', schoolId: 'mit', graduationYear: '2006', degrees: ['BS'], degreeDetail: 'BS in Computer Science', categoryId: 'business-tech', notableWorks: 'Co-founder & CEO of Dropbox', overallBio: 'Software entrepreneur who co-founded cloud storage platform Dropbox.', campusNote: 'Studied computer science at MIT and was a member of Phi Sigma Kappa.', sourceUrl: 'https://en.wikipedia.org/wiki/Drew_Houston', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-90', name: 'Buzz Aldrin', schoolId: 'mit', graduationYear: '1963', degrees: ['SCD'], degreeDetail: 'ScD in Aeronautics and Astronautics', categoryId: 'science-academia', notableWorks: 'Apollo 11 Lunar Module Pilot', overallBio: 'Astronaut and engineer who walked on the Moon during the historic Apollo 11 mission.', campusNote: 'Earned his doctorate in astronautics at MIT with orbital rendezvous research.', sourceUrl: 'https://en.wikipedia.org/wiki/Buzz_Aldrin', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-91', name: 'Kofi Annan', schoolId: 'mit', graduationYear: '1972', degrees: ['MS'], degreeDetail: 'MS in Management (MIT Sloan)', categoryId: 'politics-law', notableWorks: 'Seventh UN Secretary-General & Nobel Laureate', overallBio: 'Diplomat who served as Secretary-General of the United Nations and received the 2001 Nobel Peace Prize.', campusNote: 'Earned his master’s degree at the MIT Sloan School of Management.', sourceUrl: 'https://en.wikipedia.org/wiki/Kofi_Annan', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-92', name: 'Christopher Nolan', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'English Literature Studies', categoryId: 'film-tv', notableWorks: 'Oppenheimer, Inception, The Dark Knight Trilogy', overallBio: 'Academy Award-winning director and screenwriter known for nonlinear narratives and practical filmmaking.', campusNote: 'Associated with prominent film and literature circles.', sourceUrl: 'https://en.wikipedia.org/wiki/Christopher_Nolan', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-92', name: 'Bong Joon-ho', schoolId: 'usc', graduationYear: '', degrees: ['BA'], degreeDetail: 'USC Cinema Lecture & Global Filmmaking Fellow', categoryId: 'film-tv', notableWorks: 'Parasite, Memories of Murder, Snowpiercer', overallBio: 'Academy Award-winning director and screenwriter celebrated for genre-blending social thrillers.', campusNote: 'Engaged closely with USC School of Cinematic Arts retrospectives and student masterclasses.', sourceUrl: 'https://en.wikipedia.org/wiki/Bong_Joon-ho', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-93', name: 'Mindy Kaling', schoolId: 'dartmouth', graduationYear: '2001', degrees: ['BA'], degreeDetail: 'BA in Playwriting and Design', categoryId: 'film-tv', notableWorks: 'The Office, The Mindy Project, Never Have I Ever', overallBio: 'Writer, actress, and producer behind hit comedy series and films.', campusNote: 'Majored in playwriting at Dartmouth and wrote for the campus comic strip.', sourceUrl: 'https://en.wikipedia.org/wiki/Mindy_Kaling', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-94', name: 'Fred Rogers', schoolId: 'dartmouth', graduationYear: '1950', degrees: ['BA'], degreeDetail: 'BA in Music Composition', categoryId: 'film-tv', notableWorks: 'Mister Rogers’ Neighborhood', overallBio: 'Children’s television host, composer, and educator celebrated for compassionate storytelling.', campusNote: 'Studied music composition at Dartmouth College.', sourceUrl: 'https://en.wikipedia.org/wiki/Fred_Rogers', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-95', name: 'Norman Rockwell', schoolId: 'nyu', graduationYear: '', degrees: ['BFA'], degreeDetail: 'Art Students League & NYU Art Studies', categoryId: 'music-arts', notableWorks: 'Saturday Evening Post Covers & Four Freedoms', overallBio: 'Illustrator and painter whose works captured everyday American life across decades.', campusNote: 'Pursued formal art training in New York City.', sourceUrl: 'https://en.wikipedia.org/wiki/Norman_Rockwell', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
@@ -506,36 +535,36 @@
       { id: 'a-98', name: 'Ray Liotta', schoolId: 'uvm', graduationYear: '1978', degrees: ['BFA'], degreeDetail: 'BFA in Acting', categoryId: 'film-tv', notableWorks: 'Goodfellas, Field of Dreams', overallBio: 'Actor remembered for charismatic, intense screen performances in crime and drama films.', campusNote: 'Graduated in acting from the University of Vermont.', sourceUrl: 'https://en.wikipedia.org/wiki/Ray_Liotta', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-99', name: 'John LeClair', schoolId: 'uvm', graduationYear: '', degrees: ['BA'], degreeDetail: 'UVM Men’s Ice Hockey', categoryId: 'sports', notableWorks: 'Stanley Cup Champion & Three-time 50-Goal Scorer', overallBio: 'NHL power forward and Olympic silver medalist who won a Stanley Cup with Montreal.', campusNote: 'Played college ice hockey for the Vermont Catamounts.', sourceUrl: 'https://en.wikipedia.org/wiki/John_LeClair', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-100', name: 'Sam Altman', schoolId: 'stanford', graduationYear: '', degrees: ['BS'], degreeDetail: 'Computer Science Studies at Stanford', categoryId: 'business-tech', notableWorks: 'CEO of OpenAI & Former Y Combinator President', overallBio: 'Technology executive and investor leading frontier AI development and startup backing.', campusNote: 'Studied computer science at Stanford before founding Loopt.', sourceUrl: 'https://en.wikipedia.org/wiki/Sam_Altman', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-101', name: 'Denzel Washington', schoolId: '', graduationYear: '1977', degrees: ['BA'], degreeDetail: 'BA in Drama and Journalism', categoryId: 'film-tv', notableWorks: 'Training Day, Glory, Fences', overallBio: 'Two-time Academy Award-winning actor and director celebrated for commanding dramatic roles.', campusNote: 'Discovered his acting path through student theater and drama studies.', sourceUrl: 'https://en.wikipedia.org/wiki/Denzel_Washington', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-102', name: 'Tom Hanks', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Theater Arts Studies', categoryId: 'film-tv', notableWorks: 'Forrest Gump, Cast Away, Saving Private Ryan', overallBio: 'Two-time Academy Award-winning actor and filmmaker known across drama, comedy, and historical cinema.', campusNote: 'Acted in campus theater productions early in his career.', sourceUrl: 'https://en.wikipedia.org/wiki/Tom_Hanks', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-103', name: 'Viola Davis', schoolId: 'nyu', graduationYear: '', degrees: ['BFA'], degreeDetail: 'Juilliard & NYU Theater Circle', categoryId: 'film-tv', notableWorks: 'Fences, The Help, How to Get Away with Murder', overallBio: 'EGOT-winning actress acclaimed for deeply emotional stage and screen performances.', campusNote: 'Trained in classical and contemporary dramatic arts in New York.', sourceUrl: 'https://en.wikipedia.org/wiki/Viola_Davis', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-104', name: 'Jordan Peele', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Comedy & Sketch Performance', categoryId: 'film-tv', notableWorks: 'Get Out, Nope, Key & Peele', overallBio: 'Academy Award-winning writer, director, and comedian who reshaped modern horror and sketch comedy.', campusNote: 'Built early comedic timing in sketch and improv ensembles.', sourceUrl: 'https://en.wikipedia.org/wiki/Jordan_Peele', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-105', name: 'Amy Poehler', schoolId: 'michigan', graduationYear: '', degrees: ['BA'], degreeDetail: 'Improv & Comedy Ensemble', categoryId: 'film-tv', notableWorks: 'Parks and Recreation, Saturday Night Live', overallBio: 'Emmy and Golden Globe-winning actress, writer, and producer.', campusNote: 'Honed comedic ensemble work before rising on Saturday Night Live.', sourceUrl: 'https://en.wikipedia.org/wiki/Amy_Poehler', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-106', name: 'Tina Fey', schoolId: '', graduationYear: '1992', degrees: ['BA'], degreeDetail: 'BA in Drama', categoryId: 'film-tv', notableWorks: '30 Rock, Mean Girls, SNL', overallBio: 'Emmy-winning comedy writer, actress, and producer.', campusNote: 'Performed in student improv and comedy troupes before joining Second City.', sourceUrl: 'https://en.wikipedia.org/wiki/Tina_Fey', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-107', name: 'Bill Murray', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Pre-Med & Comedy Studies', categoryId: 'film-tv', notableWorks: 'Groundhog Day, Lost in Translation, Ghostbusters', overallBio: 'Cult-classic actor and comedian known for dry wit and unforgettable screen roles.', campusNote: 'Joined Second City comedy troupe early in his career.', sourceUrl: 'https://en.wikipedia.org/wiki/Bill_Murray', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-101', name: 'Denzel Washington', schoolId: 'fordham', graduationYear: '1977', degrees: ['BA'], degreeDetail: 'BA in Drama and Journalism', categoryId: 'film-tv', notableWorks: 'Training Day, Glory, Fences', overallBio: 'Two-time Academy Award-winning actor and director celebrated for commanding dramatic roles.', campusNote: 'Discovered his acting path at Fordham University at Lincoln Center.', sourceUrl: 'https://en.wikipedia.org/wiki/Denzel_Washington', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-102', name: 'Tom Hanks', schoolId: 'csuf', graduationYear: '', degrees: ['BA'], degreeDetail: 'Theater Arts Studies (Cal State Sacramento)', categoryId: 'film-tv', notableWorks: 'Forrest Gump, Cast Away, Saving Private Ryan', overallBio: 'Two-time Academy Award-winning actor and filmmaker known across drama, comedy, and historical cinema.', campusNote: 'Acted in California State University theater productions early in his career.', sourceUrl: 'https://en.wikipedia.org/wiki/Tom_Hanks', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-103', name: 'Viola Davis', schoolId: 'juilliard', graduationYear: '1993', degrees: ['BFA'], degreeDetail: 'Drama Division at The Juilliard School', categoryId: 'film-tv', notableWorks: 'Fences, The Help, How to Get Away with Murder', overallBio: 'EGOT-winning actress acclaimed for deeply emotional stage and screen performances.', campusNote: 'Trained in classical and contemporary dramatic arts at Juilliard.', sourceUrl: 'https://en.wikipedia.org/wiki/Viola_Davis', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-104', name: 'Jordan Peele', schoolId: 'sarah-lawrence', graduationYear: '', degrees: ['BA'], degreeDetail: 'Puppetry & Theater Studies at Sarah Lawrence', categoryId: 'film-tv', notableWorks: 'Get Out, Nope, Key & Peele', overallBio: 'Academy Award-winning writer, director, and comedian who reshaped modern horror and sketch comedy.', campusNote: 'Studied at Sarah Lawrence College before joining Boom Chicago and MADtv.', sourceUrl: 'https://en.wikipedia.org/wiki/Jordan_Peele', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-105', name: 'Amy Poehler', schoolId: 'michigan', graduationYear: '', degrees: ['BA'], degreeDetail: 'Improv & Comedy Ensemble (Boston College BA)', categoryId: 'film-tv', notableWorks: 'Parks and Recreation, Saturday Night Live', overallBio: 'Emmy and Golden Globe-winning actress, writer, and producer.', campusNote: 'Honed comedic ensemble work before rising on Saturday Night Live.', sourceUrl: 'https://en.wikipedia.org/wiki/Amy_Poehler', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-106', name: 'Tina Fey', schoolId: 'duke-alt', graduationYear: '1992', degrees: ['BA'], degreeDetail: 'BA in Drama (University of Virginia)', categoryId: 'film-tv', notableWorks: '30 Rock, Mean Girls, SNL', overallBio: 'Emmy-winning comedy writer, actress, and producer.', campusNote: 'Earned her drama degree at the University of Virginia before joining Second City.', sourceUrl: 'https://en.wikipedia.org/wiki/Tina_Fey', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-107', name: 'Jon Stewart', schoolId: 'uva-law-wm', graduationYear: '1984', degrees: ['BA'], degreeDetail: 'BA in Psychology (William & Mary)', categoryId: 'film-tv', notableWorks: 'The Daily Show, Political Satire & Advocacy', overallBio: 'Multi-Emmy-winning comedian, television host, and writer.', campusNote: 'Played varsity soccer and majored in psychology at William & Mary.', sourceUrl: 'https://en.wikipedia.org/wiki/Jon_Stewart', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-108', name: 'Anne Hathaway', schoolId: 'nyu', graduationYear: '', degrees: ['BA'], degreeDetail: 'English Literature Studies at NYU', categoryId: 'film-tv', notableWorks: 'Les Miserables, The Devil Wears Prada, Interstellar', overallBio: 'Academy Award-winning actress across drama, musical theater, and comedy.', campusNote: 'Studied English at NYU’s Gallatin School.', sourceUrl: 'https://en.wikipedia.org/wiki/Anne_Hathaway', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-109', name: 'Billy Crystal', schoolId: 'nyu', graduationYear: '1970', degrees: ['BFA'], degreeDetail: 'BFA in Film and Television', categoryId: 'film-tv', notableWorks: 'When Harry Met Sally..., City Slickers, Monsters, Inc.', overallBio: 'Emmy-winning comedian, actor, and longtime Oscars host.', campusNote: 'Graduated from NYU’s film and television program.', sourceUrl: 'https://en.wikipedia.org/wiki/Billy_Crystal', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-110', name: 'Whoopi Goldberg', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Theater & Stage Performance', categoryId: 'film-tv', notableWorks: 'Ghost, Sister Act, The View', overallBio: 'EGOT-winning actress, comedian, and television host.', campusNote: 'Developed stage monologues and character work in New York and California.', sourceUrl: 'https://en.wikipedia.org/wiki/Whoopi_Goldberg', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-111', name: 'Chris Rock', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Stand-Up & Screen Comedy', categoryId: 'film-tv', notableWorks: 'Everybody Hates Chris, Top Five, Stand-Up Specials', overallBio: 'Four-time Grammy winner and Emmy-winning comedian, actor, and director.', campusNote: 'Refined sharp observational stand-up in New York comedy clubs.', sourceUrl: 'https://en.wikipedia.org/wiki/Chris_Rock', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-112', name: 'Sandra Bullock', schoolId: '', graduationYear: '', degrees: ['BFA'], degreeDetail: 'Drama Studies at ECU', categoryId: 'film-tv', notableWorks: 'The Blind Side, Gravity, Speed', overallBio: 'Academy Award-winning actress and producer across drama, thriller, and romantic comedy.', campusNote: 'Studied drama and left senior year to pursue acting in New York.', sourceUrl: 'https://en.wikipedia.org/wiki/Sandra_Bullock', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-113', name: 'Idris Elba', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Acting & DJ Production', categoryId: 'film-tv', notableWorks: 'Luther, The Wire, Beasts of No Nation', overallBio: 'Golden Globe-winning actor, producer, and electronic music DJ.', campusNote: 'Trained at the National Youth Music Theatre before screen acting.', sourceUrl: 'https://en.wikipedia.org/wiki/Idris_Elba', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-114', name: 'Emma Stone', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Acting & Comedy Performance', categoryId: 'film-tv', notableWorks: 'La La Land, Poor Things, Easy A', overallBio: 'Two-time Academy Award-winning actress celebrated for expressive range in drama and comedy.', campusNote: 'Started performing in youth theater in Arizona before moving to Los Angeles.', sourceUrl: 'https://en.wikipedia.org/wiki/Emma_Stone', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-115', name: 'Joaquin Phoenix', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Screen Acting', categoryId: 'film-tv', notableWorks: 'Joker, Walk the Line, Gladiator', overallBio: 'Academy Award-winning actor known for immersive, transformative character work.', campusNote: 'Began acting on television as a child alongside his siblings.', sourceUrl: 'https://en.wikipedia.org/wiki/Joaquin_Phoenix', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-116', name: 'Satya Nadella', schoolId: '', graduationYear: '1990', degrees: ['MS'], degreeDetail: 'MS in Computer Science (UWM & Chicago MBA)', categoryId: 'business-tech', notableWorks: 'Chairman & CEO of Microsoft', overallBio: 'Technology executive who led Microsoft’s pivot to cloud computing and enterprise AI.', campusNote: 'Earned his master’s in computer science in Wisconsin and an MBA at Chicago.', sourceUrl: 'https://en.wikipedia.org/wiki/Satya_Nadella', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-110', name: 'Robin Williams', schoolId: 'juilliard', graduationYear: '', degrees: ['BFA'], degreeDetail: 'Advanced Drama Program at Juilliard', categoryId: 'film-tv', notableWorks: 'Good Will Hunting, Dead Poets Society, Aladdin', overallBio: 'Academy Award-winning actor and stand-up legend celebrated for improvisational brilliance.', campusNote: 'Studied in Juilliard’s Advanced Program alongside Christopher Reeve.', sourceUrl: 'https://en.wikipedia.org/wiki/Robin_Williams', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-111', name: 'Jessica Chastain', schoolId: 'juilliard', graduationYear: '2003', degrees: ['BFA'], degreeDetail: 'BFA in Drama (Juilliard)', categoryId: 'film-tv', notableWorks: 'The Eyes of Tammy Faye, Zero Dark Thirty, Interstellar', overallBio: 'Academy Award-winning actress and producer known for intense dramatic performances.', campusNote: 'Attended Juilliard on a scholarship funded by Robin Williams.', sourceUrl: 'https://en.wikipedia.org/wiki/Jessica_Chastain', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-112', name: 'Sandra Bullock', schoolId: 'ecu', graduationYear: '', degrees: ['BFA'], degreeDetail: 'Drama Studies at East Carolina University', categoryId: 'film-tv', notableWorks: 'The Blind Side, Gravity, Speed', overallBio: 'Academy Award-winning actress and producer across drama, thriller, and romantic comedy.', campusNote: 'Studied drama at ECU before moving to New York to pursue stage and screen acting.', sourceUrl: 'https://en.wikipedia.org/wiki/Sandra_Bullock', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-113', name: 'Adam Driver', schoolId: 'juilliard', graduationYear: '2009', degrees: ['BFA'], degreeDetail: 'BFA in Drama (Juilliard)', categoryId: 'film-tv', notableWorks: 'Marriage Story, Star Wars, Paterson', overallBio: 'Academy Award-nominated actor known for intense stage and screen range.', campusNote: 'Enrolled at Juilliard after serving in the U.S. Marine Corps.', sourceUrl: 'https://en.wikipedia.org/wiki/Adam_Driver', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-114', name: 'Kevin Costner', schoolId: 'csuf', graduationYear: '1978', degrees: ['BA'], degreeDetail: 'BA in Marketing and Finance (Cal State Fullerton)', categoryId: 'film-tv', notableWorks: 'Dances with Wolves, Field of Dreams, Yellowstone', overallBio: 'Two-time Academy Award-winning actor, director, and producer.', campusNote: 'Majored in marketing and finance at Cal State Fullerton while taking acting classes.', sourceUrl: 'https://en.wikipedia.org/wiki/Kevin_Costner', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-115', name: 'Bradley Cooper', schoolId: 'georgetown', graduationYear: '1997', degrees: ['BA'], degreeDetail: 'BA in English (Georgetown)', categoryId: 'film-tv', notableWorks: 'A Star Is Born, Silver Linings Playbook, Maestro', overallBio: 'Multi-Academy Award-nominated actor, director, and producer.', campusNote: 'Graduated with honors in English from Georgetown and rowed on the crew team.', sourceUrl: 'https://en.wikipedia.org/wiki/Bradley_Cooper', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-116', name: 'Satya Nadella', schoolId: 'uw-milwaukee', graduationYear: '1990', degrees: ['MS'], degreeDetail: 'MS in Computer Science (UW–Milwaukee & Chicago MBA)', categoryId: 'business-tech', notableWorks: 'Chairman & CEO of Microsoft', overallBio: 'Technology executive who led Microsoft’s pivot to cloud computing and enterprise AI.', campusNote: 'Earned his master’s in computer science at UW–Milwaukee and an MBA at UChicago.', sourceUrl: 'https://en.wikipedia.org/wiki/Satya_Nadella', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-117', name: 'Lisa Su', schoolId: 'mit', graduationYear: '1994', degrees: ['BS', 'MS', 'PHD'], degreeDetail: 'BS, MS & PhD in Electrical Engineering', categoryId: 'business-tech', notableWorks: 'Chair & CEO of AMD', overallBio: 'Semiconductor engineer and executive who led AMD’s data-center and processor turnaround.', campusNote: 'Completed all three electrical engineering degrees at MIT.', sourceUrl: 'https://en.wikipedia.org/wiki/Lisa_Su', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-118', name: 'Reed Hastings', schoolId: 'stanford', graduationYear: '1988', degrees: ['MS'], degreeDetail: 'MS in Computer Science (Bowdoin BA)', categoryId: 'business-tech', notableWorks: 'Co-founder of Netflix', overallBio: 'Tech entrepreneur who co-founded Pure Atria and Netflix, transforming streaming media.', campusNote: 'Earned his master’s in computer science at Stanford.', sourceUrl: 'https://en.wikipedia.org/wiki/Reed_Hastings', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-119', name: 'Brian Chesky', schoolId: 'cmu', graduationYear: '2005', degrees: ['BFA'], degreeDetail: 'BFA in Industrial Design (RISD)', categoryId: 'business-tech', notableWorks: 'Co-founder & CEO of Airbnb', overallBio: 'Industrial designer and entrepreneur who co-founded Airbnb.', campusNote: 'Focused on design and product thinking early in his career.', sourceUrl: 'https://en.wikipedia.org/wiki/Brian_Chesky', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-120', name: 'Patrick Collison', schoolId: 'mit', graduationYear: '', degrees: ['BS'], degreeDetail: 'Mathematics & Computer Science Studies at MIT', categoryId: 'business-tech', notableWorks: 'Co-founder & CEO of Stripe', overallBio: 'Software entrepreneur who co-founded Stripe to build internet payments infrastructure.', campusNote: 'Studied at MIT before launching Stripe with his brother John.', sourceUrl: 'https://en.wikipedia.org/wiki/Patrick_Collison', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-121', name: 'Susan Wojcicki', schoolId: 'harvard', graduationYear: '1990', degrees: ['BA'], degreeDetail: 'BA in History and Literature (Santa Cruz MS & UCLA MBA)', categoryId: 'business-tech', notableWorks: 'Former CEO of YouTube & Early Google Leader', overallBio: 'Technology executive who helped shape early Google and led YouTube for nine years.', campusNote: 'Graduated with honors in History and Literature at Harvard.', sourceUrl: 'https://en.wikipedia.org/wiki/Susan_Wojcicki', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-122', name: 'Beyonce Knowles', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Vocal Performance & Visual Arts', categoryId: 'music-arts', notableWorks: 'Lemonade, Renaissance, Destiny’s Child', overallBio: 'Grammy-winning singer, songwriter, performer, and cultural powerhouse.', campusNote: 'Trained in vocal and dance performance in Houston from childhood.', sourceUrl: 'https://en.wikipedia.org/wiki/Beyonc%C3%A9', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-123', name: 'Taylor Swift', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Songwriting & Music Storytelling', categoryId: 'music-arts', notableWorks: '1989, Folklore, Eras Tour', overallBio: 'Grammy-winning singer-songwriter and global live-music phenomenon.', campusNote: 'Began songwriting and performing in Nashville at a young age.', sourceUrl: 'https://en.wikipedia.org/wiki/Taylor_Swift', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-124', name: 'Kendrick Lamar', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Hip-Hop Lyricism & Composition', categoryId: 'music-arts', notableWorks: 'To Pimp a Butterfly, DAMN. (Pulitzer Prize)', overallBio: 'Pulitzer and Grammy-winning rapper and songwriter known for conceptual albums.', campusNote: 'Developed lyricism and storytelling in Compton before breaking out nationally.', sourceUrl: 'https://en.wikipedia.org/wiki/Kendrick_Lamar', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-122', name: 'Chadwick Boseman', schoolId: 'howard', graduationYear: '2000', degrees: ['BFA'], degreeDetail: 'BFA in Directing (Howard University)', categoryId: 'film-tv', notableWorks: 'Black Panther, 42, Ma Rainey’s Black Bottom', overallBio: 'Acclaimed actor and playwright remembered for iconic portrayals of historical and cultural figures.', campusNote: 'Graduated from Howard University’s College of Fine Arts.', sourceUrl: 'https://en.wikipedia.org/wiki/Chadwick_Boseman', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-123', name: 'Taraji P. Henson', schoolId: 'howard', graduationYear: '1995', degrees: ['BFA'], degreeDetail: 'BFA in Theater Arts (Howard University)', categoryId: 'film-tv', notableWorks: 'Hidden Figures, Empire, Hustle & Flow', overallBio: 'Academy Award-nominated and Golden Globe-winning actress.', campusNote: 'Studied theater arts at Howard University while working multiple jobs.', sourceUrl: 'https://en.wikipedia.org/wiki/Taraji_P._Henson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-124', name: 'Julianne Moore', schoolId: 'bu', graduationYear: '1983', degrees: ['BFA'], degreeDetail: 'BFA in Theater (Boston University)', categoryId: 'film-tv', notableWorks: 'Still Alice, Far from Heaven, Boogie Nights', overallBio: 'Academy Award-winning actress celebrated across independent and studio cinema.', campusNote: 'Earned her BFA from Boston University’s School of Theatre.', sourceUrl: 'https://en.wikipedia.org/wiki/Julianne_Moore', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-125', name: 'Stevie Wonder', schoolId: 'michigan', graduationYear: '', degrees: ['BM'], degreeDetail: 'Keyboard, Harmonica & Soul Composition', categoryId: 'music-arts', notableWorks: 'Songs in the Key of Life, Superstition', overallBio: '25-time Grammy winner and multi-instrumentalist who helped shape modern soul and pop.', campusNote: 'Signed with Motown in Detroit as a child prodigy.', sourceUrl: 'https://en.wikipedia.org/wiki/Stevie_Wonder', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-126', name: 'Yo-Yo Ma', schoolId: 'harvard', graduationYear: '1976', degrees: ['BA'], degreeDetail: 'BA in Humanities', categoryId: 'music-arts', notableWorks: 'Bach Cello Suites, Silk Road Ensemble', overallBio: 'Acclaimed cellist and cultural ambassador across classical, folk, and global music.', campusNote: 'Graduated from Harvard University while maintaining an international concert career.', sourceUrl: 'https://en.wikipedia.org/wiki/Yo-Yo_Ma', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-127', name: 'Lin-Manuel Miranda', schoolId: 'williams', graduationYear: '2002', degrees: ['BA'], degreeDetail: 'BA in Theater Studies (Wesleyan)', categoryId: 'music-arts', notableWorks: 'Hamilton, In the Heights, Moana', overallBio: 'Pulitzer, Tony, and Grammy-winning composer, lyricist, and actor.', campusNote: 'Wrote early drafts of In the Heights in college theater.', sourceUrl: 'https://en.wikipedia.org/wiki/Lin-Manuel_Miranda', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-128', name: 'Serena Williams', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Grand Slam Championship Tennis', categoryId: 'sports', notableWorks: '23-time Grand Slam Singles Champion & 4x Olympic Gold', overallBio: 'Tennis icon with 23 Grand Slam singles titles and four Olympic gold medals.', campusNote: 'Turned pro after intensive family coaching and junior tournament play.', sourceUrl: 'https://en.wikipedia.org/wiki/Serena_Williams', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-129', name: 'Stephen Curry', schoolId: '', graduationYear: '2022', degrees: ['BA'], degreeDetail: 'BA in Sociology (Davidson)', categoryId: 'sports', notableWorks: 'Four-time NBA Champion & Two-time MVP', overallBio: 'NBA guard and all-time three-point leader who helped redefine modern basketball.', campusNote: 'Led a memorable NCAA tournament run before finishing his degree.', sourceUrl: 'https://en.wikipedia.org/wiki/Stephen_Curry', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-130', name: 'Simone Biles', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Olympic & World Gymnastics', categoryId: 'sports', notableWorks: 'Multi-time Olympic Gold Medalist Gymnast', overallBio: 'Decorated gymnast celebrated for unprecedented difficulty in vault, floor, and all-around.', campusNote: 'Trained competitively at the elite level from youth through Olympic cycles.', sourceUrl: 'https://en.wikipedia.org/wiki/Simone_Biles', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-128', name: 'Maya Angelou', schoolId: 'oberlin', graduationYear: '', degrees: ['BA'], degreeDetail: 'Honorary Doctorate & Literary Residencies', categoryId: 'music-arts', notableWorks: 'I Know Why the Caged Bird Sings, Poet & Civil Rights Voice', overallBio: 'Poet, memoirist, and civil rights activist whose works became American literary classics.', campusNote: 'Delivered landmark lectures and residencies across liberal arts campuses.', sourceUrl: 'https://en.wikipedia.org/wiki/Maya_Angelou', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-129', name: 'Stephen Curry', schoolId: 'davidson', graduationYear: '2022', degrees: ['BA'], degreeDetail: 'BA in Sociology (Davidson College)', categoryId: 'sports', notableWorks: 'Four-time NBA Champion & Two-time MVP', overallBio: 'NBA guard and all-time three-point leader who helped redefine modern basketball.', campusNote: 'Led Davidson to the 2008 Elite Eight before returning to finish his sociology degree.', sourceUrl: 'https://en.wikipedia.org/wiki/Stephen_Curry', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-130', name: 'Jesse Owens', schoolId: 'ohio-state', graduationYear: '', degrees: ['BA'], degreeDetail: 'Track & Field at The Ohio State University', categoryId: 'sports', notableWorks: 'Four-time 1936 Olympic Gold Medalist', overallBio: 'Track and field icon who won four gold medals at the 1936 Berlin Olympics.', campusNote: 'Set three world records and tied another within 45 minutes at a Big Ten meet for Ohio State.', sourceUrl: 'https://en.wikipedia.org/wiki/Jesse_Owens', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-131', name: 'Barack Obama', schoolId: 'columbia', graduationYear: '1983', degrees: ['BA', 'JD'], degreeDetail: 'BA in Political Science (Columbia) & JD (Harvard Law)', categoryId: 'politics-law', notableWorks: '44th President of the United States', overallBio: 'Served two terms as U.S. President after serving as a U.S. Senator from Illinois.', campusNote: 'Earned his undergraduate political science degree at Columbia University.', sourceUrl: 'https://en.wikipedia.org/wiki/Barack_Obama', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-132', name: 'Sonia Sotomayor', schoolId: 'princeton', graduationYear: '1976', degrees: ['BA', 'JD'], degreeDetail: 'BA in History (Princeton) & JD (Yale Law)', categoryId: 'politics-law', notableWorks: 'Associate Justice of the U.S. Supreme Court', overallBio: 'Supreme Court Justice and longtime federal judge known for clear judicial opinions.', campusNote: 'Graduated summa cum laude from Princeton and received the Pyne Prize.', sourceUrl: 'https://en.wikipedia.org/wiki/Sonia_Sotomayor', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-133', name: 'Richard Feynman', schoolId: 'mit', graduationYear: '1939', degrees: ['BS', 'PHD'], degreeDetail: 'BS in Physics (MIT) & PhD (Princeton)', categoryId: 'science-academia', notableWorks: 'Nobel Prize in Physics & Quantum Electrodynamics', overallBio: 'Theoretical physicist famous for quantum electrodynamics, Feynman diagrams, and physics lectures.', campusNote: 'Earned his bachelor’s degree at MIT before completing his doctorate at Princeton.', sourceUrl: 'https://en.wikipedia.org/wiki/Richard_Feynman', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
@@ -548,79 +577,109 @@
       { id: 'a-140', name: 'Tim Brown', schoolId: 'notre-dame', graduationYear: '1988', degrees: ['BA'], degreeDetail: 'BA in Marketing', categoryId: 'sports', notableWorks: 'Heisman Trophy Winner & Hall of Fame Wide Receiver', overallBio: 'Hall of Fame wide receiver and return specialist with over 14,000 receiving yards.', campusNote: 'Won the 1987 Heisman Trophy as a wide receiver at Notre Dame.', sourceUrl: 'https://en.wikipedia.org/wiki/Tim_Brown_(wide_receiver)', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-141', name: 'Condoleezza Rice', schoolId: 'notre-dame', graduationYear: '1974', degrees: ['BA'], degreeDetail: 'BA in Political Science (Denver & DU PhD)', categoryId: 'politics-law', notableWorks: '66th U.S. Secretary of State & Stanford Professor', overallBio: 'Political scientist and diplomat who served as U.S. Secretary of State and National Security Advisor.', campusNote: 'Earned her undergraduate degree at age 19 before graduate studies in international relations.', sourceUrl: 'https://en.wikipedia.org/wiki/Condoleezza_Rice', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-142', name: 'Katie Couric', schoolId: 'duke-alt', graduationYear: '1979', degrees: ['BA'], degreeDetail: 'BA in American Studies', categoryId: 'film-tv', notableWorks: 'Today Show, CBS Evening News, Broadcast Journalism', overallBio: 'Emmy-winning journalist and anchor who led major morning and evening news broadcasts.', campusNote: 'Graduated with distinction in American studies and wrote for The Cavalier Daily.', sourceUrl: 'https://en.wikipedia.org/wiki/Katie_Couric', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-143', name: 'Tina Fey-Ref: Ralph Sampson', schoolId: 'duke-alt', graduationYear: '1983', degrees: ['BA'], degreeDetail: 'BA in Speech Communications', categoryId: 'sports', notableWorks: 'Three-time Naismith College Player of the Year & Hall of Famer', overallBio: '7-foot-4 center who dominated college basketball and played in the NBA Finals.', campusNote: 'Led Virginia to the 1981 Final Four while studying speech communications.', sourceUrl: 'https://en.wikipedia.org/wiki/Ralph_Sampson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-144', name: 'Zendaya', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Screen Acting & Pop Performance', categoryId: 'film-tv', notableWorks: 'Euphoria, Dune, Spider-Man', overallBio: 'Two-time Emmy-winning actress and singer known for dramatic depth and blockbuster roles.', campusNote: 'Began performing in Oakland theater before rising on television and film.', sourceUrl: 'https://en.wikipedia.org/wiki/Zendaya', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-143', name: 'Ralph Sampson', schoolId: 'duke-alt', graduationYear: '1983', degrees: ['BA'], degreeDetail: 'BA in Speech Communications', categoryId: 'sports', notableWorks: 'Three-time Naismith College Player of the Year & Hall of Famer', overallBio: '7-foot-4 center who dominated college basketball and played in the NBA Finals.', campusNote: 'Led Virginia to the 1981 Final Four while studying speech communications.', sourceUrl: 'https://en.wikipedia.org/wiki/Ralph_Sampson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-144', name: 'Geena Davis', schoolId: 'bu', graduationYear: '1979', degrees: ['BFA'], degreeDetail: 'BFA in Drama (Boston University)', categoryId: 'film-tv', notableWorks: 'Thelma & Louise, The Accidental Tourist, A League of Their Own', overallBio: 'Academy Award-winning actress and founder of the Geena Davis Institute on Gender in Media.', campusNote: 'Graduated with a BFA in drama from Boston University.', sourceUrl: 'https://en.wikipedia.org/wiki/Geena_Davis', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-145', name: 'Timothee Chalamet', schoolId: 'columbia', graduationYear: '', degrees: ['BA'], degreeDetail: 'Cultural Anthropology Studies at Columbia', categoryId: 'film-tv', notableWorks: 'Dune, Call Me by Your Name, Wonka', overallBio: 'Academy Award-nominated actor recognized for leading dramatic and sci-fi films.', campusNote: 'Studied cultural anthropology at Columbia University early in his film career.', sourceUrl: 'https://en.wikipedia.org/wiki/Timoth%C3%A9e_Chalamet', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-146', name: 'Margot Robbie', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Screen Acting & Film Production', categoryId: 'film-tv', notableWorks: 'Barbie, I, Tonya, The Wolf of Wall Street', overallBio: 'Academy Award-nominated actress and producer behind LuckyChap.', campusNote: 'Built her screen foundation in Australian television drama before Hollywood.', sourceUrl: 'https://en.wikipedia.org/wiki/Margot_Robbie', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-146', name: 'Marisa Tomei', schoolId: 'bu', graduationYear: '', degrees: ['BFA'], degreeDetail: 'Theater Studies at Boston University', categoryId: 'film-tv', notableWorks: 'My Cousin Vinny, The Wrestler, Spider-Man', overallBio: 'Academy Award-winning actress across comedy, drama, and Broadway theater.', campusNote: 'Attended Boston University before landing early television roles.', sourceUrl: 'https://en.wikipedia.org/wiki/Marisa_Tomei', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-147', name: 'Pedro Pascal', schoolId: 'nyu', graduationYear: '1997', degrees: ['BFA'], degreeDetail: 'BFA in Acting (Tisch)', categoryId: 'film-tv', notableWorks: 'The Last of Us, The Mandalorian, Narcos', overallBio: 'Emmy-nominated actor celebrated across prestige television and major franchises.', campusNote: 'Graduated from NYU’s Tisch School of the Arts drama program.', sourceUrl: 'https://en.wikipedia.org/wiki/Pedro_Pascal', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-148', name: 'Florence Pugh', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Dramatic Screen Acting', categoryId: 'film-tv', notableWorks: 'Little Women, Oppenheimer, Midsommar', overallBio: 'Academy Award-nominated actress acclaimed for fearless, emotionally vivid performances.', campusNote: 'Broke out in independent drama before starring in major ensemble films.', sourceUrl: 'https://en.wikipedia.org/wiki/Florence_Pugh', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-149', name: 'Cillian Murphy', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Law Studies & Stage/Screen Acting', categoryId: 'film-tv', notableWorks: 'Oppenheimer, Peaky Blinders, Inception', overallBio: 'Academy Award-winning actor known for intensity and nuanced character portrayals.', campusNote: 'Began in theater and music before turning to film and television.', sourceUrl: 'https://en.wikipedia.org/wiki/Cillian_Murphy', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-150', name: 'Ryan Gosling', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Screen Acting & Music', categoryId: 'film-tv', notableWorks: 'La La Land, Blade Runner 2049, Barbie', overallBio: 'Three-time Academy Award-nominated actor and musician across drama and comedy.', campusNote: 'Started on variety and youth television before moving to indie and studio cinema.', sourceUrl: 'https://en.wikipedia.org/wiki/Ryan_Gosling', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-151', name: 'Rihanna', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Pop Music & Beauty/Fashion Enterprise', categoryId: 'music-arts', notableWorks: 'Umbrella, Diamonds, Fenty Beauty', overallBio: 'Nine-time Grammy-winning recording artist and founder of Fenty Beauty.', campusNote: 'Rose from Barbados to global pop stardom and consumer brand leadership.', sourceUrl: 'https://en.wikipedia.org/wiki/Rihanna', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-152', name: 'Bruno Mars', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Songwriting, Production & Live Showmanship', categoryId: 'music-arts', notableWorks: 'Uptown Funk, 24K Magic, Silk Sonic', overallBio: '15-time Grammy-winning singer, songwriter, multi-instrumentalist, and producer.', campusNote: 'Performed from childhood in Honolulu before writing and recording hit records.', sourceUrl: 'https://en.wikipedia.org/wiki/Bruno_Mars', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-153', name: 'Billie Eilish', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Alternative Pop Songwriting & Production', categoryId: 'music-arts', notableWorks: 'Bad Guy, What Was I Made For?, Happier Than Ever', overallBio: 'Two-time Academy Award and multi-Grammy-winning singer-songwriter.', campusNote: 'Co-wrote and recorded breakout music at home with her brother Finneas.', sourceUrl: 'https://en.wikipedia.org/wiki/Billie_Eilish', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-154', name: 'Drake', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Hip-Hop & R&B Recording Artist', categoryId: 'music-arts', notableWorks: 'Take Care, Nothing Was the Same, Hotline Bling', overallBio: 'Multi-Grammy-winning rapper, singer, and record-setting streaming artist.', campusNote: 'Transitioned from early television acting into chart-topping hip-hop and R&B.', sourceUrl: 'https://en.wikipedia.org/wiki/Drake_(musician)', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-155', name: 'Adele', schoolId: '', graduationYear: '', degrees: ['BM'], degreeDetail: 'BRIT School Performing Arts & Vocal Soul', categoryId: 'music-arts', notableWorks: '21, Rolling in the Deep, Someone Like You', overallBio: '16-time Grammy and Academy Award-winning vocalist and songwriter.', campusNote: 'Developed her vocal craft at the BRIT School in London.', sourceUrl: 'https://en.wikipedia.org/wiki/Adele', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-156', name: 'Patrick Mahomes', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Texas Tech Quarterback & NFL MVP', categoryId: 'sports', notableWorks: 'Three-time Super Bowl Champion & Two-time NFL MVP', overallBio: 'Dynamic NFL quarterback renowned for off-platform throws and postseason runs.', campusNote: 'Set NCAA single-game passing records during his college career in Lubbock.', sourceUrl: 'https://en.wikipedia.org/wiki/Patrick_Mahomes', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-157', name: 'LeBron James', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Four-time NBA Champion & All-Time Scoring Leader', categoryId: 'sports', notableWorks: 'Four-time NBA MVP & Olympic Gold Medalist', overallBio: 'NBA all-time leading scorer, four-time champion, and media/education founder.', campusNote: 'Entered the NBA directly after high school and later founded the I Promise School.', sourceUrl: 'https://en.wikipedia.org/wiki/LeBron_James', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-158', name: 'Shohei Ohtani', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Two-Way Baseball Superstar (Pitcher & Hitter)', categoryId: 'sports', notableWorks: 'Multi-time MLB MVP & World Series Champion', overallBio: 'Rare two-way baseball talent excelling simultaneously as a power hitter and pitcher.', campusNote: 'Starred in Japan’s NPB before becoming an MLB sensation.', sourceUrl: 'https://en.wikipedia.org/wiki/Shohei_Ohtani', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-159', name: 'Caitlin Clark', schoolId: '', graduationYear: '2024', degrees: ['BA'], degreeDetail: 'BA in Marketing (Iowa)', categoryId: 'sports', notableWorks: 'NCAA All-Time Scoring Leader & WNBA Star', overallBio: 'Record-setting basketball guard who drove historic viewership across women’s basketball.', campusNote: 'Graduated with a marketing degree while leading Iowa to back-to-back title games.', sourceUrl: 'https://en.wikipedia.org/wiki/Caitlin_Clark', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-148', name: 'Uzo Aduba', schoolId: 'bu', graduationYear: '2005', degrees: ['BM'], degreeDetail: 'Classical Voice at Boston University', categoryId: 'film-tv', notableWorks: 'Orange Is the New Black, Mrs. America, In Treatment', overallBio: 'Three-time Emmy-winning actress across drama, comedy, and stage.', campusNote: 'Studied classical voice at Boston University and competed in track and field.', sourceUrl: 'https://en.wikipedia.org/wiki/Uzo_Aduba', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-149', name: 'Jason Alexander', schoolId: 'bu', graduationYear: '', degrees: ['BFA'], degreeDetail: 'Theater Studies at Boston University', categoryId: 'film-tv', notableWorks: 'Seinfeld, Broadway Musical Theater', overallBio: 'Tony-winning and multi-Emmy-nominated actor best known as George Costanza on Seinfeld.', campusNote: 'Studied theater at Boston University before launching his Broadway career.', sourceUrl: 'https://en.wikipedia.org/wiki/Jason_Alexander', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-150', name: 'Aaron Sorkin', schoolId: 'syra', graduationYear: '1983', degrees: ['BFA'], degreeDetail: 'BFA in Musical Theater (Syracuse)', categoryId: 'film-tv', notableWorks: 'The Social Network, The West Wing, A Few Good Men', overallBio: 'Academy Award and Emmy-winning screenwriter, playwright, and director.', campusNote: 'Graduated from Syracuse University’s drama department.', sourceUrl: 'https://en.wikipedia.org/wiki/Aaron_Sorkin', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-151', name: 'Bob Costas', schoolId: 'syra', graduationYear: '1974', degrees: ['BA'], degreeDetail: 'Communications Studies at Syracuse (Newhouse)', categoryId: 'film-tv', notableWorks: '29-time Emmy-Winning Sports Broadcaster & Olympic Host', overallBio: 'Iconic sports broadcaster who anchored 12 Olympic Games and major championship broadcasts.', campusNote: 'Began calling Syracuse basketball and minor league baseball games while at Newhouse.', sourceUrl: 'https://en.wikipedia.org/wiki/Bob_Costas', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-152', name: 'Carmelo Anthony', schoolId: 'syra', graduationYear: '', degrees: ['BA'], degreeDetail: 'Syracuse Men’s Basketball', categoryId: 'sports', notableWorks: '2003 NCAA Champion, 10-time NBA All-Star & 3x Olympic Gold', overallBio: 'Scoring forward who led Syracuse to an NCAA championship and won three Olympic gold medals.', campusNote: 'Named Most Outstanding Player of the 2003 NCAA Final Four as a freshman.', sourceUrl: 'https://en.wikipedia.org/wiki/Carmelo_Anthony', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-153', name: 'Jim Brown', schoolId: 'syra', graduationYear: '1957', degrees: ['BA'], degreeDetail: 'BA in Physical Education (Syracuse)', categoryId: 'sports', notableWorks: 'Pro Football Hall of Famer, Three-time NFL MVP & Actor', overallBio: 'Legendary NFL fullback, lacrosse All-American, actor, and civil rights activist.', campusNote: 'Earned varsity letters in football, lacrosse, basketball, and track at Syracuse.', sourceUrl: 'https://en.wikipedia.org/wiki/Jim_Brown', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-154', name: 'Joe Biden', schoolId: 'syra', graduationYear: '1968', degrees: ['JD'], degreeDetail: 'JD from Syracuse University College of Law', categoryId: 'politics-law', notableWorks: '46th President of the United States', overallBio: 'Served as U.S. Senator from Delaware, 47th Vice President, and 46th President.', campusNote: 'Earned his law degree at Syracuse University College of Law.', sourceUrl: 'https://en.wikipedia.org/wiki/Joe_Biden', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-155', name: 'Joshua Bell', schoolId: 'indiana', graduationYear: '1989', degrees: ['BM'], degreeDetail: 'Artist Diploma in Violin (Indiana Jacobs School)', categoryId: 'music-arts', notableWorks: 'Grammy-Winning Concert Violinist & Music Director', overallBio: 'Virtuoso violinist and music director of the Academy of St Martin in the Fields.', campusNote: 'Studied violin at Indiana University’s Jacobs School of Music.', sourceUrl: 'https://en.wikipedia.org/wiki/Joshua_Bell', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-156', name: 'Patrick Mahomes', schoolId: 'texas-tech', graduationYear: '', degrees: ['BA'], degreeDetail: 'Texas Tech Quarterback & Marketing Studies', categoryId: 'sports', notableWorks: 'Three-time Super Bowl Champion & Two-time NFL MVP', overallBio: 'Dynamic NFL quarterback renowned for off-platform throws and postseason runs.', campusNote: 'Set NCAA single-game passing records during his college career at Texas Tech.', sourceUrl: 'https://en.wikipedia.org/wiki/Patrick_Mahomes', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-157', name: 'Mark Cuban', schoolId: 'indiana', graduationYear: '1981', degrees: ['BS'], degreeDetail: 'BS in Management (Indiana Kelley School)', categoryId: 'business-tech', notableWorks: 'Entrepreneur, Shark Tank Investor & Cost Plus Drugs Co-founder', overallBio: 'Technology entrepreneur, investor, and longtime NBA team owner.', campusNote: 'Graduated from Indiana University’s Kelley School of Business.', sourceUrl: 'https://en.wikipedia.org/wiki/Mark_Cuban', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-158', name: 'Isiah Thomas', schoolId: 'indiana', graduationYear: '1987', degrees: ['BA'], degreeDetail: 'BA in Criminal Justice (Indiana)', categoryId: 'sports', notableWorks: 'Two-time NBA Champion & Basketball Hall of Famer', overallBio: 'Hall of Fame point guard who led Indiana to an NCAA title and Detroit to two NBA titles.', campusNote: 'Won the 1981 NCAA championship at Indiana and later completed his degree.', sourceUrl: 'https://en.wikipedia.org/wiki/Isiah_Thomas', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-159', name: 'Caitlin Clark', schoolId: 'iowa', graduationYear: '2024', degrees: ['BA'], degreeDetail: 'BA in Marketing (University of Iowa)', categoryId: 'sports', notableWorks: 'NCAA All-Time Scoring Leader & WNBA Star', overallBio: 'Record-setting basketball guard who drove historic viewership across women’s basketball.', campusNote: 'Graduated with a marketing degree while leading Iowa to back-to-back title games.', sourceUrl: 'https://en.wikipedia.org/wiki/Caitlin_Clark', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-160', name: 'Tim Cook', schoolId: 'duke', graduationYear: '1988', degrees: ['MBA'], degreeDetail: 'MBA from Duke Fuqua School of Business', categoryId: 'business-tech', notableWorks: 'CEO of Apple', overallBio: 'Technology executive leading Apple across hardware, silicon, and services.', campusNote: 'Earned his MBA at Duke University’s Fuqua School of Business.', sourceUrl: 'https://en.wikipedia.org/wiki/Tim_Cook', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-161', name: 'Dario Amodei', schoolId: 'stanford', graduationYear: '2006', degrees: ['BS'], degreeDetail: 'BS in Physics (Stanford) & Princeton PhD', categoryId: 'business-tech', notableWorks: 'Co-founder & CEO of Anthropic', overallBio: 'AI researcher and executive focused on frontier model safety and alignment.', campusNote: 'Earned his undergraduate physics degree at Stanford University.', sourceUrl: 'https://en.wikipedia.org/wiki/Dario_Amodei', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-162', name: 'Whitney Wolfe Herd', schoolId: '', graduationYear: '2010', degrees: ['BA'], degreeDetail: 'BA in International Studies (SMU)', categoryId: 'business-tech', notableWorks: 'Founder of Bumble', overallBio: 'Entrepreneur and executive who founded social and dating platform Bumble.', campusNote: 'Graduated from Southern Methodist University before launching consumer tech ventures.', sourceUrl: 'https://en.wikipedia.org/wiki/Whitney_Wolfe_Herd', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-162', name: 'Whitney Wolfe Herd', schoolId: 'smu', graduationYear: '2010', degrees: ['BA'], degreeDetail: 'BA in International Studies (SMU)', categoryId: 'business-tech', notableWorks: 'Founder of Bumble', overallBio: 'Entrepreneur and executive who founded social and dating platform Bumble.', campusNote: 'Graduated from Southern Methodist University before launching consumer tech ventures.', sourceUrl: 'https://en.wikipedia.org/wiki/Whitney_Wolfe_Herd', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-163', name: 'Gwynne Shotwell', schoolId: 'northwestern', graduationYear: '1988', degrees: ['MS'], degreeDetail: 'BS & MS in Mechanical Engineering and Applied Mathematics', categoryId: 'business-tech', notableWorks: 'President & COO of SpaceX', overallBio: 'Aerospace executive overseeing operations and commercial growth at SpaceX.', campusNote: 'Earned her bachelor’s and master’s engineering degrees at Northwestern.', sourceUrl: 'https://en.wikipedia.org/wiki/Gwynne_Shotwell', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-164', name: 'Fei-Fei Li', schoolId: 'princeton', graduationYear: '1999', degrees: ['BA'], degreeDetail: 'BA in Physics (Princeton) & Caltech PhD', categoryId: 'science-academia', notableWorks: 'ImageNet Creator & Stanford AI Leader', overallBio: 'Computer vision scientist and professor who helped spark deep learning via ImageNet.', campusNote: 'Graduated in physics at Princeton before pursuing doctoral research in vision.', sourceUrl: 'https://en.wikipedia.org/wiki/Fei-Fei_Li', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-165', name: 'Katherine Johnson', schoolId: '', graduationYear: '', degrees: ['BS'], degreeDetail: 'BS in Mathematics and French (WVSU)', categoryId: 'science-academia', notableWorks: 'NASA Orbital Mechanics & Spaceflight Calculations', overallBio: 'Mathematician whose orbital trajectory calculations supported early U.S. spaceflights.', campusNote: 'Graduated summa cum laude in mathematics and French at age 18.', sourceUrl: 'https://en.wikipedia.org/wiki/Katherine_Johnson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-166', name: 'Thurgood Marshall', schoolId: '', graduationYear: '1933', degrees: ['JD'], degreeDetail: 'JD from Howard University School of Law', categoryId: 'politics-law', notableWorks: 'First African-American U.S. Supreme Court Justice', overallBio: 'Civil rights attorney and Supreme Court Justice who argued Brown v. Board of Education.', campusNote: 'Graduated first in his class at Howard University School of Law.', sourceUrl: 'https://en.wikipedia.org/wiki/Thurgood_Marshall', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-165', name: 'Katherine Johnson', schoolId: 'wvsu', graduationYear: '1937', degrees: ['BS'], degreeDetail: 'BS in Mathematics and French (WVSU)', categoryId: 'science-academia', notableWorks: 'NASA Orbital Mechanics & Spaceflight Calculations', overallBio: 'Mathematician whose orbital trajectory calculations supported early U.S. spaceflights.', campusNote: 'Graduated summa cum laude in mathematics and French at West Virginia State University.', sourceUrl: 'https://en.wikipedia.org/wiki/Katherine_Johnson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-166', name: 'Thurgood Marshall', schoolId: 'howard', graduationYear: '1933', degrees: ['JD'], degreeDetail: 'JD from Howard University School of Law', categoryId: 'politics-law', notableWorks: 'First African-American U.S. Supreme Court Justice', overallBio: 'Civil rights attorney and Supreme Court Justice who argued Brown v. Board of Education.', campusNote: 'Graduated first in his class at Howard University School of Law.', sourceUrl: 'https://en.wikipedia.org/wiki/Thurgood_Marshall', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-167', name: 'Sandra Day O’Connor', schoolId: 'stanford', graduationYear: '1952', degrees: ['JD'], degreeDetail: 'JD from Stanford Law School (Stanford BA)', categoryId: 'politics-law', notableWorks: 'First Female U.S. Supreme Court Justice', overallBio: 'Jurist who served as the first woman on the Supreme Court of the United States.', campusNote: 'Graduated near the top of her class at Stanford Law School.', sourceUrl: 'https://en.wikipedia.org/wiki/Sandra_Day_O%27Connor', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-168', name: 'John F. Kennedy', schoolId: 'harvard', graduationYear: '1940', degrees: ['BA'], degreeDetail: 'BA in Government', categoryId: 'politics-law', notableWorks: '35th President of the United States', overallBio: 'Served as U.S. Representative, U.S. Senator, and 35th President of the United States.', campusNote: 'Graduated cum laude from Harvard College and wrote Why England Slept.', sourceUrl: 'https://en.wikipedia.org/wiki/John_F._Kennedy', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-169', name: 'RuPaul', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Performing Arts & Television Hosting', categoryId: 'film-tv', notableWorks: 'RuPaul’s Drag Race & Pop Culture Icon', overallBio: 'Multi-Emmy-winning television host, performer, and cultural entrepreneur.', campusNote: 'Built a distinctive performance and television presence across New York and Los Angeles.', sourceUrl: 'https://en.wikipedia.org/wiki/RuPaul', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-169', name: 'Phylicia Rashad', schoolId: 'howard', graduationYear: '1970', degrees: ['BFA'], degreeDetail: 'BFA in Fine Arts (Howard University)', categoryId: 'film-tv', notableWorks: 'The Cosby Show, A Raisin in the Sun (Tony Winner)', overallBio: 'Tony-winning actress, director, and former Dean of Howard’s Chadwick A. Boseman College of Fine Arts.', campusNote: 'Graduated magna cum laude from Howard University.', sourceUrl: 'https://en.wikipedia.org/wiki/Phylicia_Rashad', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-170', name: 'Aubrey Plaza', schoolId: 'nyu', graduationYear: '2006', degrees: ['BFA'], degreeDetail: 'BFA in Film and Television Production (Tisch)', categoryId: 'film-tv', notableWorks: 'Parks and Recreation, The White Lotus, Emily the Criminal', overallBio: 'Actress and producer known for deadpan humor and sharp dramatic turns.', campusNote: 'Graduated from NYU Tisch and performed with Upright Citizens Brigade.', sourceUrl: 'https://en.wikipedia.org/wiki/Aubrey_Plaza', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-171', name: 'Oscar Isaac', schoolId: '', graduationYear: '2005', degrees: ['BFA'], degreeDetail: 'Drama Studies at Juilliard', categoryId: 'film-tv', notableWorks: 'Dune, Star Wars, Inside Llewyn Davis', overallBio: 'Golden Globe-winning actor celebrated for range across indie drama and major sci-fi.', campusNote: 'Trained in drama at Juilliard after early music and theater work.', sourceUrl: 'https://en.wikipedia.org/wiki/Oscar_Isaac', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-171', name: 'Oscar Isaac', schoolId: 'juilliard', graduationYear: '2005', degrees: ['BFA'], degreeDetail: 'BFA in Drama (Juilliard)', categoryId: 'film-tv', notableWorks: 'Dune, Star Wars, Inside Llewyn Davis', overallBio: 'Golden Globe-winning actor celebrated for range across indie drama and major sci-fi.', campusNote: 'Trained in drama at Juilliard after early music and theater work.', sourceUrl: 'https://en.wikipedia.org/wiki/Oscar_Isaac', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-172', name: 'Lupita Nyong’o', schoolId: 'yale', graduationYear: '2012', degrees: ['MFA'], degreeDetail: 'MFA in Acting (Hampshire BA)', categoryId: 'film-tv', notableWorks: '12 Years a Slave, Us, Black Panther', overallBio: 'Academy Award-winning actress and author recognized for commanding screen presence.', campusNote: 'Earned her MFA in acting at the Yale School of Drama.', sourceUrl: 'https://en.wikipedia.org/wiki/Lupita_Nyong%27o', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-173', name: 'Post Malone', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Hip-Hop, Pop & Country Crossover Recording', categoryId: 'music-arts', notableWorks: 'Circles, Sunflower, Rockstar', overallBio: 'Diamond-certified recording artist known for genre-blending melodies and live shows.', campusNote: 'Rose from independent releases to chart-topping global albums.', sourceUrl: 'https://en.wikipedia.org/wiki/Post_Malone', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-174', name: 'Olivia Rodrigo', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Pop/Rock Songwriting & Screen Acting', categoryId: 'music-arts', notableWorks: 'SOUR, GUTS, drivers license', overallBio: 'Multi-Grammy-winning singer-songwriter and actor.', campusNote: 'Broke out on television before releasing chart-topping songwriting albums.', sourceUrl: 'https://en.wikipedia.org/wiki/Olivia_Rodrigo', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-175', name: 'JHU-Ref: Woodrow Wilson', schoolId: 'princeton', graduationYear: '1879', degrees: ['BA', 'PHD'], degreeDetail: 'BA (Princeton) & PhD in Political Science (Johns Hopkins)', categoryId: 'politics-law', notableWorks: '28th U.S. President & Princeton President', overallBio: 'Political scientist and statesman who served as Princeton president and 28th U.S. President.', campusNote: 'Earned his undergraduate degree at Princeton and his PhD at Johns Hopkins.', sourceUrl: 'https://en.wikipedia.org/wiki/Woodrow_Wilson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-173', name: 'J. Cole', schoolId: 'fordham', graduationYear: '2007', degrees: ['BA'], degreeDetail: 'Communications & Business Studies in NYC', categoryId: 'music-arts', notableWorks: '2014 Forest Hills Drive, The Off-Season, Dreamville', overallBio: 'Grammy-winning rapper, producer, and record label founder.', campusNote: 'Graduated magna cum laude in New York City before launching Dreamville.', sourceUrl: 'https://en.wikipedia.org/wiki/J._Cole', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-174', name: 'Rivers Cuomo', schoolId: 'harvard', graduationYear: '2006', degrees: ['BA'], degreeDetail: 'BA in English (Harvard University)', categoryId: 'music-arts', notableWorks: 'Weezer Lead Vocalist & Songwriter', overallBio: 'Grammy-winning rock songwriter, guitarist, and frontman of Weezer.', campusNote: 'Completed his English degree at Harvard between touring and album cycles.', sourceUrl: 'https://en.wikipedia.org/wiki/Rivers_Cuomo', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-175', name: 'Woodrow Wilson', schoolId: 'princeton', graduationYear: '1879', degrees: ['BA', 'PHD'], degreeDetail: 'BA (Princeton) & PhD in Political Science (Johns Hopkins)', categoryId: 'politics-law', notableWorks: '28th U.S. President & Princeton President', overallBio: 'Political scientist and statesman who served as Princeton president and 28th U.S. President.', campusNote: 'Earned his undergraduate degree at Princeton and his PhD at Johns Hopkins.', sourceUrl: 'https://en.wikipedia.org/wiki/Woodrow_Wilson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-176', name: 'Jimmy Carter', schoolId: 'georgia-tech', graduationYear: '', degrees: ['BS'], degreeDetail: 'Engineering Studies (Georgia Tech) & Naval Academy BS', categoryId: 'politics-law', notableWorks: '39th U.S. President & Nobel Peace Prize Laureate', overallBio: 'Statesman and humanitarian who served as U.S. President and founded the Carter Center.', campusNote: 'Took engineering coursework at Georgia Tech prior to entering the U.S. Naval Academy.', sourceUrl: 'https://en.wikipedia.org/wiki/Jimmy_Carter', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-177', name: 'Chris Bosh', schoolId: 'georgia-tech', graduationYear: '', degrees: ['BS'], degreeDetail: 'Computer Science & Graphic Design at Georgia Tech', categoryId: 'sports', notableWorks: 'Two-time NBA Champion & 11-time All-Star', overallBio: 'Hall of Fame forward and two-time NBA champion with the Miami Heat.', campusNote: 'Starred in college basketball while studying computer science and graphic design at Georgia Tech.', sourceUrl: 'https://en.wikipedia.org/wiki/Chris_Bosh', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-178', name: 'Brandon Roy', schoolId: 'uw', graduationYear: '2006', degrees: ['BA'], degreeDetail: 'BA in American Ethnic Studies', categoryId: 'sports', notableWorks: 'NBA Rookie of the Year & Three-time All-Star', overallBio: 'Smooth-scoring NBA guard celebrated for clutch play and leadership.', campusNote: 'Led the Washington Huskies to the Sweet 16 while earning his degree at UW.', sourceUrl: 'https://en.wikipedia.org/wiki/Brandon_Roy', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-179', name: 'Kelsey Plum', schoolId: 'uw', graduationYear: '2017', degrees: ['BA'], degreeDetail: 'BA in Communications', categoryId: 'sports', notableWorks: 'WNBA Champion, Olympic Gold Medalist & Scoring Leader', overallBio: 'Sharpshooting guard and multiple-time WNBA champion and Olympic gold medalist.', campusNote: 'Set the NCAA women’s career scoring record at the University of Washington.', sourceUrl: 'https://en.wikipedia.org/wiki/Kelsey_Plum', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-180', name: 'Joel McHale', schoolId: 'uw', graduationYear: '1995', degrees: ['BA'], degreeDetail: 'BA in History (UW MFA Acting)', categoryId: 'film-tv', notableWorks: 'Community, The Soup, Animal Control', overallBio: 'Actor, comedian, and host best known for playing Jeff Winger on Community.', campusNote: 'Earned his bachelor’s degree in history at UW before completing his acting MFA.', sourceUrl: 'https://en.wikipedia.org/wiki/Joel_McHale', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-181', name: 'Ed Helms', schoolId: 'oberlin', graduationYear: '1996', degrees: ['BA'], degreeDetail: 'BA in Technology and Society (Oberlin)', categoryId: 'film-tv', notableWorks: 'The Office, The Hangover, The Daily Show', overallBio: 'Actor and comedian known for Andy Bernard in The Office and studio comedy roles.', campusNote: 'Studied technology and society and developed comedy chops in college.', sourceUrl: 'https://en.wikipedia.org/wiki/Ed_Helms', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-182', name: 'Sacha Baron Cohen', schoolId: '', graduationYear: '1993', degrees: ['BA'], degreeDetail: 'BA in History', categoryId: 'film-tv', notableWorks: 'Borat, Ali G, The Trial of the Chicago 7', overallBio: 'Comedian, actor, and writer known for character-driven satire and dramatic roles.', campusNote: 'Acted in campus theatrical productions while studying history.', sourceUrl: 'https://en.wikipedia.org/wiki/Sacha_Baron_Cohen', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-181', name: 'Ed Helms', schoolId: 'oberlin', graduationYear: '1996', degrees: ['BA'], degreeDetail: 'BA in Technology and Society (Oberlin)', categoryId: 'film-tv', notableWorks: 'The Office, The Hangover, The Daily Show', overallBio: 'Actor and comedian known for Andy Bernard in The Office and studio comedy roles.', campusNote: 'Studied technology and society and developed comedy chops at Oberlin College.', sourceUrl: 'https://en.wikipedia.org/wiki/Ed_Helms', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-182', name: 'Avery Brooks', schoolId: 'oberlin', graduationYear: '1970', degrees: ['BA'], degreeDetail: 'Theater & Music Studies (Oberlin & Rutgers MFA)', categoryId: 'film-tv', notableWorks: 'Star Trek: Deep Space Nine, Spenser: For Hire', overallBio: 'Actor, opera singer, and theater professor best known as Captain Benjamin Sisko.', campusNote: 'Studied music and drama at Oberlin College before earning his MFA.', sourceUrl: 'https://en.wikipedia.org/wiki/Avery_Brooks', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-183', name: 'Regina King', schoolId: 'usc', graduationYear: '', degrees: ['BA'], degreeDetail: 'Acting & Film Studies at USC', categoryId: 'film-tv', notableWorks: 'If Beale Street Could Talk, Watchmen, Ray', overallBio: 'Academy Award and four-time Emmy-winning actress and director.', campusNote: 'Began her screen career early while studying at USC.', sourceUrl: 'https://en.wikipedia.org/wiki/Regina_King', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-184', name: 'Sterling K. Brown', schoolId: 'stanford', graduationYear: '1998', degrees: ['BA'], degreeDetail: 'BA in Drama (NYU Tisch MFA)', categoryId: 'film-tv', notableWorks: 'This Is Us, The People v. O.J. Simpson, American Fiction', overallBio: 'Multi-Emmy-winning actor acclaimed for emotional depth across television and film.', campusNote: 'Earned his undergraduate degree in drama at Stanford before attending NYU Tisch.', sourceUrl: 'https://en.wikipedia.org/wiki/Sterling_K._Brown', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-185', name: 'Awkwafina', schoolId: '', graduationYear: '2011', degrees: ['BA'], degreeDetail: 'BA in Journalism and Women’s Studies (SUNY Albany)', categoryId: 'film-tv', notableWorks: 'The Farewell, Crazy Rich Asians, Shang-Chi', overallBio: 'Golden Globe-winning actress, comedian, and rapper.', campusNote: 'Graduated from SUNY Albany and built an early music and comedy following online.', sourceUrl: 'https://en.wikipedia.org/wiki/Awkwafina', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-186', name: 'Steven Yeun', schoolId: '', graduationYear: '2005', degrees: ['BA'], degreeDetail: 'BA in Psychology (Kalamazoo College)', categoryId: 'film-tv', notableWorks: 'Minari, Beef, The Walking Dead', overallBio: 'Academy Award-nominated and Emmy-winning actor across independent film and prestige TV.', campusNote: 'Performed with comedy groups in Chicago after graduating from Kalamazoo College.', sourceUrl: 'https://en.wikipedia.org/wiki/Steven_Yeun', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-187', name: 'Sandra Oh', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'National Theatre School & Screen Drama', categoryId: 'film-tv', notableWorks: 'Killing Eve, Grey’s Anatomy, Sideways', overallBio: 'Golden Globe-winning actress celebrated for leading dramatic series and feature films.', campusNote: 'Trained in classical and contemporary drama before breaking out in film and TV.', sourceUrl: 'https://en.wikipedia.org/wiki/Sandra_Oh', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-185', name: 'Awkwafina', schoolId: 'suny-albany', graduationYear: '2011', degrees: ['BA'], degreeDetail: 'BA in Journalism and Women’s Studies (UAlbany)', categoryId: 'film-tv', notableWorks: 'The Farewell, Crazy Rich Asians, Shang-Chi', overallBio: 'Golden Globe-winning actress, comedian, and rapper.', campusNote: 'Graduated from University at Albany, SUNY before building an early music and comedy following.', sourceUrl: 'https://en.wikipedia.org/wiki/Awkwafina', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-186', name: 'Steven Yeun', schoolId: 'kalamazoo', graduationYear: '2005', degrees: ['BA'], degreeDetail: 'BA in Psychology (Kalamazoo College)', categoryId: 'film-tv', notableWorks: 'Minari, Beef, The Walking Dead', overallBio: 'Academy Award-nominated and Emmy-winning actor across independent film and prestige TV.', campusNote: 'Performed with comedy groups in Chicago after graduating from Kalamazoo College.', sourceUrl: 'https://en.wikipedia.org/wiki/Steven_Yeun', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-187', name: 'Bryan Cranston', schoolId: 'csuf', graduationYear: '', degrees: ['BA'], degreeDetail: 'Police Science & Theater Arts in Southern California', categoryId: 'film-tv', notableWorks: 'Breaking Bad, Malcolm in the Middle, Trumbo', overallBio: 'Six-time Emmy and two-time Tony-winning actor acclaimed for Breaking Bad.', campusNote: 'Transitioned from criminal justice coursework into community and campus theater.', sourceUrl: 'https://en.wikipedia.org/wiki/Bryan_Cranston', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-188', name: 'Ke Huy Quan', schoolId: 'usc', graduationYear: '1987', degrees: ['BA'], degreeDetail: 'BA in Film Production (USC)', categoryId: 'film-tv', notableWorks: 'Everything Everywhere All at Once, Indiana Jones, The Goonies', overallBio: 'Academy Award-winning actor who returned to cinema with an acclaimed comeback performance.', campusNote: 'Graduated from USC’s School of Cinematic Arts.', sourceUrl: 'https://en.wikipedia.org/wiki/Ke_Huy_Quan', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-189', name: 'Cynthia Erivo', schoolId: '', graduationYear: '2010', degrees: ['BA'], degreeDetail: 'Musical Theatre (RADA)', categoryId: 'music-arts', notableWorks: 'The Color Purple, Wicked, Harriet', overallBio: 'Tony, Emmy, and Grammy-winning actress and vocalist.', campusNote: 'Trained in musical theater at the Royal Academy of Dramatic Art.', sourceUrl: 'https://en.wikipedia.org/wiki/Cynthia_Erivo', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-190', name: 'H.E.R.', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'R&B Songwriting, Guitar & Vocals', categoryId: 'music-arts', notableWorks: 'I Can’t Breathe, H.E.R., Fight for You', overallBio: 'Academy Award and multiple-Grammy-winning singer-songwriter and multi-instrumentalist.', campusNote: 'Began performing on stage and television at an early age in California.', sourceUrl: 'https://en.wikipedia.org/wiki/H.E.R._(musician)', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-191', name: 'Frank Ocean', schoolId: 'unc', graduationYear: '', degrees: ['BA'], degreeDetail: 'University Studies & R&B/Art Pop Songwriting', categoryId: 'music-arts', notableWorks: 'Channel Orange, Blonde', overallBio: 'Grammy-winning singer-songwriter known for introspective lyricism and sonic detail.', campusNote: 'Attended the University of New Orleans before developing his recording catalog.', sourceUrl: 'https://en.wikipedia.org/wiki/Frank_Ocean', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-192', name: 'Tyler, the Creator', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Hip-Hop Production, Design & Live Festivals', categoryId: 'music-arts', notableWorks: 'IGOR, Flower Boy, Call Me If You Get Lost', overallBio: 'Grammy-winning rapper, producer, designer, and festival founder.', campusNote: 'Built an independent creative collective and visual identity in Los Angeles.', sourceUrl: 'https://en.wikipedia.org/wiki/Tyler,_the_Creator', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-193', name: 'SZA', schoolId: '', graduationYear: '2012', degrees: ['BA'], degreeDetail: 'BA in Marine Biology Studies (Delaware State)', categoryId: 'music-arts', notableWorks: 'Ctrl, SOS, Kill Bill', overallBio: 'Grammy-winning singer-songwriter known for candid R&B and genre-blending hits.', campusNote: 'Attended Delaware State University before focusing full-time on music.', sourceUrl: 'https://en.wikipedia.org/wiki/SZA', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-194', name: 'Doja Cat', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Pop/Hip-Hop Performance & Production', categoryId: 'music-arts', notableWorks: 'Planet Her, Scarlet, Say So', overallBio: 'Grammy-winning recording artist and performer known for pop-rap crossovers.', campusNote: 'Developed her songwriting and production style in Los Angeles.', sourceUrl: 'https://en.wikipedia.org/wiki/Doja_Cat', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-195', name: 'Sabrina Carpenter', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Pop Songwriting & Screen Acting', categoryId: 'music-arts', notableWorks: 'Short n’ Sweet, Espresso, Please Please Please', overallBio: 'Grammy-winning pop singer-songwriter and actor.', campusNote: 'Balanced early television acting roles with pop songwriting and touring.', sourceUrl: 'https://en.wikipedia.org/wiki/Sabrina_Carpenter', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-196', name: 'Pharrell Williams', schoolId: '', graduationYear: '', degrees: ['BA'], degreeDetail: 'Music Production, Fashion & Creative Direction', categoryId: 'music-arts', notableWorks: 'Happy, Get Lucky, The Neptunes', overallBio: '13-time Grammy-winning producer, artist, and fashion creative director.', campusNote: 'Started producing hits out of Virginia Beach before becoming a global music force.', sourceUrl: 'https://en.wikipedia.org/wiki/Pharrell_Williams', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-189', name: 'Audra McDonald', schoolId: 'juilliard', graduationYear: '1993', degrees: ['BM'], degreeDetail: 'BM in Classical Voice (Juilliard)', categoryId: 'music-arts', notableWorks: 'Six-time Tony Winner, Carousel, The Good Fight', overallBio: 'Record-setting six-time Tony Award-winning actress and soprano.', campusNote: 'Earned her Bachelor of Music in classical voice at The Juilliard School.', sourceUrl: 'https://en.wikipedia.org/wiki/Audra_McDonald', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-190', name: 'Jon Batiste', schoolId: 'juilliard', graduationYear: '2011', degrees: ['BM', 'MM'], degreeDetail: 'BM & MM in Jazz Piano (Juilliard)', categoryId: 'music-arts', notableWorks: 'We Are (Album of the Year), Soul (Oscar Winner)', overallBio: 'Academy Award and multi-Grammy-winning pianist, singer, and composer.', campusNote: 'Earned both bachelor’s and master’s degrees in jazz studies at Juilliard.', sourceUrl: 'https://en.wikipedia.org/wiki/Jon_Batiste', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-191', name: 'Frank Ocean', schoolId: 'unc', graduationYear: '', degrees: ['BA'], degreeDetail: 'University Studies & R&B/Art Pop Songwriting', categoryId: 'music-arts', notableWorks: 'Channel Orange, Blonde', overallBio: 'Grammy-winning singer-songwriter known for introspective lyricism and sonic detail.', campusNote: 'Pursued college studies before developing his acclaimed recording catalog.', sourceUrl: 'https://en.wikipedia.org/wiki/Frank_Ocean', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-192', name: 'Wynton Marsalis', schoolId: 'juilliard', graduationYear: '', degrees: ['BM'], degreeDetail: 'Trumpet & Classical/Jazz Performance at Juilliard', categoryId: 'music-arts', notableWorks: 'Nine-time Grammy Winner & Pulitzer Prize in Music', overallBio: 'Trumpeter, composer, and artistic director of Jazz at Lincoln Center.', campusNote: 'Studied classical trumpet at Juilliard while launching his Grammy-winning career.', sourceUrl: 'https://en.wikipedia.org/wiki/Wynton_Marsalis', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-193', name: 'SZA', schoolId: 'delaware-state', graduationYear: '2012', degrees: ['BA'], degreeDetail: 'Marine Biology Studies at Delaware State University', categoryId: 'music-arts', notableWorks: 'Ctrl, SOS, Kill Bill', overallBio: 'Grammy-winning singer-songwriter known for candid R&B and genre-blending hits.', campusNote: 'Attended Delaware State University before focusing full-time on music.', sourceUrl: 'https://en.wikipedia.org/wiki/SZA', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-194', name: 'Stacey Abrams', schoolId: 'spelman', graduationYear: '1995', degrees: ['BA', 'JD'], degreeDetail: 'BA in Interdisciplinary Studies (Spelman) & JD (Yale Law)', categoryId: 'politics-law', notableWorks: 'Voting Rights Advocate, Author & Former Georgia House Minority Leader', overallBio: 'Attorney, bestselling author, and political leader.', campusNote: 'Graduated magna cum laude from Spelman College before attending UT Austin and Yale Law.', sourceUrl: 'https://en.wikipedia.org/wiki/Stacey_Abrams', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-195', name: 'Martin Luther King Jr.', schoolId: 'morehouse', graduationYear: '1948', degrees: ['BA', 'PHD'], degreeDetail: 'BA in Sociology (Morehouse) & PhD (Boston University)', categoryId: 'politics-law', notableWorks: 'Civil Rights Leader & 1964 Nobel Peace Prize Laureate', overallBio: 'Minister and civil rights leader whose nonviolent leadership transformed American democracy.', campusNote: 'Entered Morehouse College at age 15 and graduated with a sociology degree in 1948.', sourceUrl: 'https://en.wikipedia.org/wiki/Martin_Luther_King_Jr.', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-196', name: 'Samuel L. Jackson', schoolId: 'morehouse', graduationYear: '1972', degrees: ['BA'], degreeDetail: 'BA in Dramatic Arts (Morehouse College)', categoryId: 'film-tv', notableWorks: 'Pulp Fiction, The Avengers, Django Unchained', overallBio: 'Academy Honorary Award-winning actor among the highest-grossing box office stars in cinema history.', campusNote: 'Co-founded the Just Us Theater while studying dramatic arts at Morehouse.', sourceUrl: 'https://en.wikipedia.org/wiki/Samuel_L._Jackson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-197', name: 'Jayson Tatum', schoolId: 'duke', graduationYear: '', degrees: ['BA'], degreeDetail: 'Duke Men’s Basketball', categoryId: 'sports', notableWorks: 'NBA Champion & Multiple-time All-NBA Forward', overallBio: 'NBA champion and Olympic gold medalist known for all-around scoring and defense.', campusNote: 'Played standout freshman basketball at Duke before entering the NBA.', sourceUrl: 'https://en.wikipedia.org/wiki/Jayson_Tatum', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-198', name: 'Zion Williamson', schoolId: 'duke', graduationYear: '', degrees: ['BA'], degreeDetail: 'Duke Men’s Basketball', categoryId: 'sports', notableWorks: 'ACC Player of the Year & Two-time NBA All-Star', overallBio: 'Explosive forward known for high-efficiency scoring and rim athleticism.', campusNote: 'Swept major college player honors in his freshman season at Duke.', sourceUrl: 'https://en.wikipedia.org/wiki/Zion_Williamson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-199', name: 'A’ja Wilson', schoolId: '', graduationYear: '2018', degrees: ['BA'], degreeDetail: 'BA in Interdisciplinary Studies (South Carolina)', categoryId: 'sports', notableWorks: 'Multi-time WNBA MVP, Champion & Olympic Gold Medalist', overallBio: 'Dominant two-way basketball star with WNBA championships, MVP awards, and Olympic gold.', campusNote: 'Led South Carolina to an NCAA national title and earned her degree in 2018.', sourceUrl: 'https://en.wikipedia.org/wiki/A%27ja_Wilson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-200', name: 'Breanna Stewart', schoolId: '', graduationYear: '2016', degrees: ['BA'], degreeDetail: 'BA in Sociology (UConn)', categoryId: 'sports', notableWorks: 'Four-time NCAA Champion, WNBA MVP & Olympic Gold', overallBio: 'Versatile forward with four college titles, multiple WNBA championships, and Olympic gold.', campusNote: 'Won four straight NCAA championships at UConn and earned Most Outstanding Player each year.', sourceUrl: 'https://en.wikipedia.org/wiki/Breanna_Stewart', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-201', name: 'Diana Taurasi', schoolId: '', graduationYear: '2004', degrees: ['BA'], degreeDetail: 'BA in Sociology (UConn)', categoryId: 'sports', notableWorks: 'Three-time WNBA Champion, MVP & Six-time Olympic Gold', overallBio: 'All-time WNBA scoring leader and six-time Olympic gold medalist.', campusNote: 'Led UConn to three consecutive national titles from 2002 to 2004.', sourceUrl: 'https://en.wikipedia.org/wiki/Diana_Taurasi', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-202', name: 'Peyton Manning', schoolId: '', graduationYear: '1997', degrees: ['BA'], degreeDetail: 'BA in Speech Communications (Tennessee)', categoryId: 'sports', notableWorks: 'Two-time Super Bowl Champion & Five-time NFL MVP', overallBio: 'Hall of Fame quarterback and record five-time NFL MVP.', campusNote: 'Graduated in three years with a speech communications degree at Tennessee.', sourceUrl: 'https://en.wikipedia.org/wiki/Peyton_Manning', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-203', name: 'Eli Manning', schoolId: '', graduationYear: '2004', degrees: ['BA'], degreeDetail: 'BA in Marketing (Ole Miss)', categoryId: 'sports', notableWorks: 'Two-time Super Bowl Champion & Two-time Super Bowl MVP', overallBio: 'Two-time Super Bowl MVP quarterback who led memorable championship drives.', campusNote: 'Earned his marketing degree at Ole Miss while setting passing records.', sourceUrl: 'https://en.wikipedia.org/wiki/Eli_Manning', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-199', name: 'A’ja Wilson', schoolId: 'south-carolina', graduationYear: '2018', degrees: ['BA'], degreeDetail: 'BA in Mass Communications (South Carolina)', categoryId: 'sports', notableWorks: 'Multi-time WNBA MVP, Champion & Olympic Gold Medalist', overallBio: 'Dominant two-way basketball star with WNBA championships, MVP awards, and Olympic gold.', campusNote: 'Led South Carolina to an NCAA national title and earned her degree in 2018.', sourceUrl: 'https://en.wikipedia.org/wiki/A%27ja_Wilson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-200', name: 'Breanna Stewart', schoolId: 'uconn', graduationYear: '2016', degrees: ['BA'], degreeDetail: 'BA in Sociology (UConn)', categoryId: 'sports', notableWorks: 'Four-time NCAA Champion, WNBA MVP & Olympic Gold', overallBio: 'Versatile forward with four college titles, multiple WNBA championships, and Olympic gold.', campusNote: 'Won four straight NCAA championships at UConn and earned Most Outstanding Player each year.', sourceUrl: 'https://en.wikipedia.org/wiki/Breanna_Stewart', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-201', name: 'Diana Taurasi', schoolId: 'uconn', graduationYear: '2004', degrees: ['BA'], degreeDetail: 'BA in Sociology (UConn)', categoryId: 'sports', notableWorks: 'Three-time WNBA Champion, MVP & Six-time Olympic Gold', overallBio: 'All-time WNBA scoring leader and six-time Olympic gold medalist.', campusNote: 'Led UConn to three consecutive national titles from 2002 to 2004.', sourceUrl: 'https://en.wikipedia.org/wiki/Diana_Taurasi', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-202', name: 'Peyton Manning', schoolId: 'tennessee', graduationYear: '1997', degrees: ['BA'], degreeDetail: 'BA in Speech Communications (Tennessee)', categoryId: 'sports', notableWorks: 'Two-time Super Bowl Champion & Five-time NFL MVP', overallBio: 'Hall of Fame quarterback and record five-time NFL MVP.', campusNote: 'Graduated in three years with a speech communications degree at Tennessee.', sourceUrl: 'https://en.wikipedia.org/wiki/Peyton_Manning', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-203', name: 'Eli Manning', schoolId: 'ole-miss', graduationYear: '2004', degrees: ['BA'], degreeDetail: 'BA in Marketing (Ole Miss)', categoryId: 'sports', notableWorks: 'Two-time Super Bowl Champion & Two-time Super Bowl MVP', overallBio: 'Two-time Super Bowl MVP quarterback who led memorable championship drives.', campusNote: 'Earned his marketing degree at Ole Miss while setting passing records.', sourceUrl: 'https://en.wikipedia.org/wiki/Eli_Manning', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-204', name: 'Aaron Rodgers', schoolId: 'berkeley', graduationYear: '', degrees: ['BA'], degreeDetail: 'Cal Football & Quarterback Play', categoryId: 'sports', notableWorks: 'Super Bowl Champion & Four-time NFL MVP', overallBio: 'Four-time NFL MVP quarterback renowned for arm talent and efficiency.', campusNote: 'Set single-season completion percentage marks at UC Berkeley.', sourceUrl: 'https://en.wikipedia.org/wiki/Aaron_Rodgers', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-205', name: 'Christian McCaffrey', schoolId: 'stanford', graduationYear: '', degrees: ['BA'], degreeDetail: 'Stanford Football & All-Purpose Back', categoryId: 'sports', notableWorks: 'NFL Offensive Player of the Year & All-Pro RB', overallBio: 'Dynamic running back and pass-catcher known for versatility and vision.', campusNote: 'Set the NCAA all-purpose yardage single-season record at Stanford.', sourceUrl: 'https://en.wikipedia.org/wiki/Christian_McCaffrey', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-206', name: 'Maya Lin', schoolId: 'yale', graduationYear: '1981', degrees: ['BA', 'MARCH'], degreeDetail: 'BA in Architecture & MArch at Yale', categoryId: 'music-arts', notableWorks: 'Vietnam Veterans Memorial Designer & Sculptor', overallBio: 'Architect and artist who designed the Vietnam Veterans Memorial as an undergraduate.', campusNote: 'Created the winning memorial design while an architecture student at Yale.', sourceUrl: 'https://en.wikipedia.org/wiki/Maya_Lin', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-207', name: 'Virgil Abloh', schoolId: '', graduationYear: '2002', degrees: ['BS', 'MARCH'], degreeDetail: 'BS in Civil Engineering (Wisconsin) & MArch (IIT)', categoryId: 'music-arts', notableWorks: 'Off-White Founder & Louis Vuitton Menswear Artistic Director', overallBio: 'Designer, DJ, and creative director who bridged streetwear, architecture, and luxury fashion.', campusNote: 'Earned a civil engineering degree in Wisconsin and a master’s in architecture at IIT.', sourceUrl: 'https://en.wikipedia.org/wiki/Virgil_Abloh', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-208', name: 'Katalin Kariko', schoolId: '', graduationYear: '1982', degrees: ['PHD'], degreeDetail: 'PhD in Biochemistry (Szeged)', categoryId: 'science-academia', notableWorks: '2023 Nobel Prize in Physiology or Medicine (mRNA)', overallBio: 'Biochemist whose nucleoside-modified mRNA research enabled rapid mRNA vaccines.', campusNote: 'Conducted decades of foundational RNA research before receiving the Nobel Prize.', sourceUrl: 'https://en.wikipedia.org/wiki/Katalin_Karik%C3%B3', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-207', name: 'Virgil Abloh', schoolId: 'wisconsin', graduationYear: '2002', degrees: ['BS', 'MARCH'], degreeDetail: 'BS in Civil Engineering (UW–Madison) & MArch (IIT)', categoryId: 'music-arts', notableWorks: 'Off-White Founder & Louis Vuitton Menswear Artistic Director', overallBio: 'Designer, DJ, and creative director who bridged streetwear, architecture, and luxury fashion.', campusNote: 'Earned a civil engineering degree at UW–Madison and a master’s in architecture at IIT.', sourceUrl: 'https://en.wikipedia.org/wiki/Virgil_Abloh', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-208', name: 'Jack Kilby', schoolId: 'wisconsin', graduationYear: '1950', degrees: ['MS'], degreeDetail: 'MS in Electrical Engineering (UW–Milwaukee & UIUC BS)', categoryId: 'science-academia', notableWorks: 'Nobel Prize in Physics & Integrated Circuit Co-Inventor', overallBio: 'Electrical engineer awarded the Nobel Prize in Physics for co-inventing the integrated circuit.', campusNote: 'Completed his master’s in electrical engineering in Wisconsin while working in electronics.', sourceUrl: 'https://en.wikipedia.org/wiki/Jack_Kilby', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-209', name: 'Neil deGrasse Tyson', schoolId: 'harvard', graduationYear: '1980', degrees: ['BA'], degreeDetail: 'BA in Physics (Harvard) & PhD in Astrophysics (Columbia)', categoryId: 'science-academia', notableWorks: 'Hayden Planetarium Director & Astrophysics Communicator', overallBio: 'Astrophysicist, author, and science communicator who brings cosmology to broad audiences.', campusNote: 'Majored in physics at Harvard and rowed on the crew team.', sourceUrl: 'https://en.wikipedia.org/wiki/Neil_deGrasse_Tyson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-210', name: 'Ruth Simmons', schoolId: '', graduationYear: '1973', degrees: ['PHD'], degreeDetail: 'PhD in Romance Languages & Literatures (Harvard)', categoryId: 'science-academia', notableWorks: 'First Black President of an Ivy League Institution (Brown)', overallBio: 'Higher-education leader and scholar who served as president of Brown, Smith, and Prairie View A&M.', campusNote: 'Earned her doctorate at Harvard before leading major university transformations.', sourceUrl: 'https://en.wikipedia.org/wiki/Ruth_J._Simmons', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-211', name: 'Kamala Harris', schoolId: '', graduationYear: '1986', degrees: ['BA', 'JD'], degreeDetail: 'BA in Political Science & Economics (Howard) & JD (UC Law SF)', categoryId: 'politics-law', notableWorks: '49th Vice President of the United States', overallBio: 'Attorney and public official who served as District Attorney, Attorney General, U.S. Senator, and Vice President.', campusNote: 'Graduated from Howard University before earning her law degree in California.', sourceUrl: 'https://en.wikipedia.org/wiki/Kamala_Harris', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-210', name: 'Ruth Simmons', schoolId: 'harvard', graduationYear: '1973', degrees: ['PHD'], degreeDetail: 'PhD in Romance Languages & Literatures (Harvard)', categoryId: 'science-academia', notableWorks: 'First Black President of an Ivy League Institution (Brown)', overallBio: 'Higher-education leader and scholar who served as president of Brown, Smith, and Prairie View A&M.', campusNote: 'Earned her doctorate at Harvard before leading major university transformations.', sourceUrl: 'https://en.wikipedia.org/wiki/Ruth_J._Simmons', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-211', name: 'Kamala Harris', schoolId: 'howard', graduationYear: '1986', degrees: ['BA', 'JD'], degreeDetail: 'BA in Political Science & Economics (Howard) & JD (UC Law SF)', categoryId: 'politics-law', notableWorks: '49th Vice President of the United States', overallBio: 'Attorney and public official who served as District Attorney, Attorney General, U.S. Senator, and Vice President.', campusNote: 'Graduated from Howard University before earning her law degree in California.', sourceUrl: 'https://en.wikipedia.org/wiki/Kamala_Harris', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-212', name: 'Cory Booker', schoolId: 'stanford', graduationYear: '1991', degrees: ['BA'], degreeDetail: 'BA in Political Science (Stanford) & JD (Yale Law)', categoryId: 'politics-law', notableWorks: 'U.S. Senator from New Jersey & Former Newark Mayor', overallBio: 'Politician and attorney serving in the U.S. Senate after serving as mayor of Newark.', campusNote: 'Played football and earned his undergraduate degree at Stanford University.', sourceUrl: 'https://en.wikipedia.org/wiki/Cory_Booker', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-213', name: 'Alexandria Ocasio-Cortez', schoolId: '', graduationYear: '2011', degrees: ['BA'], degreeDetail: 'BA in International Relations and Economics (Boston University)', categoryId: 'politics-law', notableWorks: 'U.S. Representative for New York’s 14th District', overallBio: 'Congresswoman representing New York’s 14th congressional district.', campusNote: 'Graduated cum laude with degrees in international relations and economics at Boston University.', sourceUrl: 'https://en.wikipedia.org/wiki/Alexandria_Ocasio-Cortez', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-213', name: 'Alexandria Ocasio-Cortez', schoolId: 'bu', graduationYear: '2011', degrees: ['BA'], degreeDetail: 'BA in International Relations and Economics (Boston University)', categoryId: 'politics-law', notableWorks: 'U.S. Representative for New York’s 14th District', overallBio: 'Congresswoman representing New York’s 14th congressional district.', campusNote: 'Graduated cum laude with degrees in international relations and economics at Boston University.', sourceUrl: 'https://en.wikipedia.org/wiki/Alexandria_Ocasio-Cortez', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
       { id: 'a-214', name: 'Mellody Hobson', schoolId: 'princeton', graduationYear: '1991', degrees: ['BA'], degreeDetail: 'BA from Princeton School of Public and International Affairs', categoryId: 'business-tech', notableWorks: 'Co-CEO & President of Ariel Investments', overallBio: 'Investment executive, corporate board leader, and financial literacy advocate.', campusNote: 'Graduated from Princeton University and later returned to serve on its board.', sourceUrl: 'https://en.wikipedia.org/wiki/Mellody_Hobson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
-      { id: 'a-215', name: 'Kenneth Chenault', schoolId: '', graduationYear: '1973', degrees: ['BA', 'JD'], degreeDetail: 'BA in History (Bowdoin) & JD (Harvard Law)', categoryId: 'business-tech', notableWorks: 'Former Chairman & CEO of American Express & General Catalyst Leader', overallBio: 'Business executive who led American Express for 17 years and advises growth-stage companies.', campusNote: 'Graduated magna cum laude in history at Bowdoin before attending Harvard Law.', sourceUrl: 'https://en.wikipedia.org/wiki/Kenneth_Chenault', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-215', name: 'Kenneth Chenault', schoolId: 'bowdoin', graduationYear: '1973', degrees: ['BA', 'JD'], degreeDetail: 'BA in History (Bowdoin) & JD (Harvard Law)', categoryId: 'business-tech', notableWorks: 'Former Chairman & CEO of American Express & General Catalyst Leader', overallBio: 'Business executive who led American Express for 17 years and advises growth-stage companies.', campusNote: 'Graduated magna cum laude in history at Bowdoin before attending Harvard Law.', sourceUrl: 'https://en.wikipedia.org/wiki/Kenneth_Chenault', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-216', name: 'Ray Allen', schoolId: 'uconn', graduationYear: '', degrees: ['BA'], degreeDetail: 'UConn Men’s Basketball', categoryId: 'sports', notableWorks: 'Two-time NBA Champion, 10-time All-Star & Hall of Famer', overallBio: 'Hall of Fame shooting guard celebrated for championship three-point shooting and work ethic.', campusNote: 'Named Big East Player of the Year during his standout career at UConn.', sourceUrl: 'https://en.wikipedia.org/wiki/Ray_Allen', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-217', name: 'Sue Bird', schoolId: 'uconn', graduationYear: '2002', degrees: ['BA'], degreeDetail: 'BA in Communications (UConn)', categoryId: 'sports', notableWorks: 'Four-time WNBA Champion & Five-time Olympic Gold Medalist', overallBio: 'All-time WNBA assists leader, four-time champion, and five-time Olympic gold medalist.', campusNote: 'Won two NCAA national championships at UConn with a 114–4 career record.', sourceUrl: 'https://en.wikipedia.org/wiki/Sue_Bird', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-218', name: 'Maya Moore', schoolId: 'uconn', graduationYear: '2011', degrees: ['BA'], degreeDetail: 'BA in Individualized Study (UConn)', categoryId: 'sports', notableWorks: 'Four-time WNBA Champion, MVP & Justice Reform Advocate', overallBio: 'Hall of Fame basketball forward who won two NCAA titles, four WNBA titles, and two Olympic golds.', campusNote: 'Graduated with a 3.7 GPA and received Academic All-America of the Year honors at UConn.', sourceUrl: 'https://en.wikipedia.org/wiki/Maya_Moore', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-219', name: 'Kemba Walker', schoolId: 'uconn', graduationYear: '2011', degrees: ['BA'], degreeDetail: 'BA in Sociology (UConn)', categoryId: 'sports', notableWorks: '2011 NCAA Champion & Four-time NBA All-Star', overallBio: 'Explosive NBA point guard remembered for leading UConn’s 2011 Big East and NCAA title run.', campusNote: 'Earned Most Outstanding Player of the 2011 NCAA Final Four and graduated in three years.', sourceUrl: 'https://en.wikipedia.org/wiki/Kemba_Walker', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-220', name: 'Paige Bueckers', schoolId: 'uconn', graduationYear: '2025', degrees: ['BA'], degreeDetail: 'BA in Human Development and Family Sciences (UConn)', categoryId: 'sports', notableWorks: 'NCAA Champion, National Player of the Year & WNBA No. 1 Pick', overallBio: 'All-American guard celebrated for court vision, clutch scoring, and leadership.', campusNote: 'Led UConn to a national championship while earning Academic All-America honors.', sourceUrl: 'https://en.wikipedia.org/wiki/Paige_Bueckers', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-221', name: 'Michael Bloomberg', schoolId: 'jhu', graduationYear: '1964', degrees: ['BS'], degreeDetail: 'BS in Electrical Engineering (Johns Hopkins & Harvard MBA)', categoryId: 'business-tech', notableWorks: 'Founder of Bloomberg L.P. & 108th Mayor of New York City', overallBio: 'Financial data entrepreneur, philanthropist, and three-term Mayor of New York City.', campusNote: 'Earned his electrical engineering degree at Johns Hopkins University.', sourceUrl: 'https://en.wikipedia.org/wiki/Michael_Bloomberg', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-222', name: 'Rachel Carson', schoolId: 'jhu', graduationYear: '1932', degrees: ['MA'], degreeDetail: 'MA in Zoology (Johns Hopkins)', categoryId: 'science-academia', notableWorks: 'Silent Spring & Modern Environmental Science', overallBio: 'Marine biologist and conservation author whose writing sparked modern environmental policy.', campusNote: 'Earned her master’s degree in zoology at Johns Hopkins University.', sourceUrl: 'https://en.wikipedia.org/wiki/Rachel_Carson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-223', name: 'Wes Craven', schoolId: 'jhu', graduationYear: '1964', degrees: ['MA'], degreeDetail: 'MA in Philosophy and Writing (Johns Hopkins)', categoryId: 'film-tv', notableWorks: 'A Nightmare on Elm Street, Scream', overallBio: 'Filmmaker and writer who reinvented modern horror cinema.', campusNote: 'Completed his master’s degree in philosophy and writing at Johns Hopkins.', sourceUrl: 'https://en.wikipedia.org/wiki/Wes_Craven', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-224', name: 'Allen Iverson', schoolId: 'georgetown', graduationYear: '', degrees: ['BA'], degreeDetail: 'Georgetown Men’s Basketball', categoryId: 'sports', notableWorks: 'NBA MVP, 11-time All-Star & Hall of Famer', overallBio: 'Cultural icon and scoring guard who won NBA MVP and four scoring titles.', campusNote: 'Named Big East Defensive Player of the Year twice for the Georgetown Hoyas.', sourceUrl: 'https://en.wikipedia.org/wiki/Allen_Iverson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-225', name: 'Patrick Ewing', schoolId: 'georgetown', graduationYear: '1985', degrees: ['BA'], degreeDetail: 'BA in Fine Arts (Georgetown)', categoryId: 'sports', notableWorks: '1984 NCAA Champion, Two-time Olympic Gold & Hall of Famer', overallBio: 'Dominant NBA center and 11-time All-Star who anchored the New York Knicks.', campusNote: 'Led Georgetown to three NCAA championship games and earned a fine arts degree.', sourceUrl: 'https://en.wikipedia.org/wiki/Patrick_Ewing', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-226', name: 'Dikembe Mutombo', schoolId: 'georgetown', graduationYear: '1991', degrees: ['BA'], degreeDetail: 'BA in Linguistics and Diplomacy (Georgetown)', categoryId: 'sports', notableWorks: 'Four-time NBA Defensive Player of the Year & Humanitarian', overallBio: 'Hall of Fame shot-blocking center and global humanitarian.', campusNote: 'Spoke nine languages and earned dual degrees in linguistics and diplomacy at Georgetown.', sourceUrl: 'https://en.wikipedia.org/wiki/Dikembe_Mutombo', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-227', name: 'Bill Clinton', schoolId: 'georgetown', graduationYear: '1968', degrees: ['BS', 'JD'], degreeDetail: 'BS in Foreign Service (Georgetown) & JD (Yale Law)', categoryId: 'politics-law', notableWorks: '42nd President of the United States', overallBio: 'Served as Governor of Arkansas and two terms as 42nd President of the United States.', campusNote: 'Earned his BS in Foreign Service at Georgetown and won a Rhodes Scholarship.', sourceUrl: 'https://en.wikipedia.org/wiki/Bill_Clinton', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-228', name: 'Dierks Bentley', schoolId: 'vanderbilt', graduationYear: '1997', degrees: ['BA'], degreeDetail: 'BA in English (Vanderbilt)', categoryId: 'music-arts', notableWorks: 'What Was I Thinkin’, Drunk on a Plane, Country Star', overallBio: 'Multi-platinum country singer-songwriter and Grand Ole Opry member.', campusNote: 'Transferred to Vanderbilt in Nashville to study English and immerse himself in Music Row.', sourceUrl: 'https://en.wikipedia.org/wiki/Dierks_Bentley', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-229', name: 'Rosanne Cash', schoolId: 'vanderbilt', graduationYear: '', degrees: ['BA'], degreeDetail: 'English & Drama Studies at Vanderbilt', categoryId: 'music-arts', notableWorks: 'Four-time Grammy-Winning Singer-Songwriter & Author', overallBio: 'Acclaimed singer-songwriter across country, folk, and Americana.', campusNote: 'Studied English and drama at Vanderbilt University.', sourceUrl: 'https://en.wikipedia.org/wiki/Rosanne_Cash', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-230', name: 'Dansby Swanson', schoolId: 'vanderbilt', graduationYear: '', degrees: ['BA'], degreeDetail: 'Vanderbilt Baseball & Human Organizational Development', categoryId: 'sports', notableWorks: 'World Series Champion, Two-time All-Star & Gold Glove SS', overallBio: 'MLB shortstop and College World Series Most Outstanding Player.', campusNote: 'Led Vanderbilt to its first baseball national championship in 2014.', sourceUrl: 'https://en.wikipedia.org/wiki/Dansby_Swanson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-231', name: 'Stephen Sondheim', schoolId: 'williams', graduationYear: '1950', degrees: ['BA'], degreeDetail: 'BA in Music (Williams College)', categoryId: 'music-arts', notableWorks: 'Sweeney Todd, Into the Woods, Company, Sunday in the Park with George', overallBio: 'Pulitzer, eight-time Tony, and Academy Award-winning composer and lyricist.', campusNote: 'Graduated magna cum laude in music at Williams College.', sourceUrl: 'https://en.wikipedia.org/wiki/Stephen_Sondheim', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-232', name: 'Elia Kazan', schoolId: 'williams', graduationYear: '1930', degrees: ['BA'], degreeDetail: 'BA in English (Williams College & Yale Drama)', categoryId: 'film-tv', notableWorks: 'On the Waterfront, A Streetcar Named Desire, East of Eden', overallBio: 'Two-time Academy Award-winning film and theater director.', campusNote: 'Graduated cum laude from Williams College before studying at Yale.', sourceUrl: 'https://en.wikipedia.org/wiki/Elia_Kazan', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-233', name: 'Bernie Sanders', schoolId: 'chicago', graduationYear: '1964', degrees: ['BA'], degreeDetail: 'BA in Political Science (University of Chicago)', categoryId: 'politics-law', notableWorks: 'U.S. Senator from Vermont & Former Mayor of Burlington', overallBio: 'Long-serving U.S. Senator from Vermont and two-time presidential candidate.', campusNote: 'Earned his political science degree at the University of Chicago before moving to Vermont.', sourceUrl: 'https://en.wikipedia.org/wiki/Bernie_Sanders', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-234', name: 'Satya & Philip Glass', schoolId: 'chicago', graduationYear: '1956', degrees: ['BA'], degreeDetail: 'BA in Mathematics and Philosophy (UChicago & Juilliard)', categoryId: 'music-arts', notableWorks: 'Einstein on the Beach, The Hours, Minimalist Composition', overallBio: 'Oscar-nominated composer Philip Glass, one of the most influential figures in contemporary music.', campusNote: 'Entered the University of Chicago at age 15 to study mathematics and philosophy.', sourceUrl: 'https://en.wikipedia.org/wiki/Philip_Glass', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-235', name: 'Sanjay Gupta', schoolId: 'michigan', graduationYear: '1993', degrees: ['BS', 'MD'], degreeDetail: 'BS in Biomedical Sciences & MD (University of Michigan)', categoryId: 'science-academia', notableWorks: 'Neurosurgeon & Chief Medical Correspondent', overallBio: 'Practicing neurosurgeon, Emory faculty member, and Emmy-winning medical journalist.', campusNote: 'Completed both his undergraduate degree and medical school at the University of Michigan.', sourceUrl: 'https://en.wikipedia.org/wiki/Sanjay_Gupta', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-236', name: 'Bobby Jones', schoolId: 'georgia-tech', graduationYear: '1922', degrees: ['BS'], degreeDetail: 'BS in Mechanical Engineering (Georgia Tech, Harvard BA & Emory Law)', categoryId: 'sports', notableWorks: 'Golf Grand Slam Winner & Masters Tournament Co-Founder', overallBio: 'Legendary amateur golfer who won all four major championships in 1930 and co-founded Augusta National.', campusNote: 'Earned an engineering degree at Georgia Tech, English at Harvard, and studied law at Emory.', sourceUrl: 'https://en.wikipedia.org/wiki/Bobby_Jones_(golfer)', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-237', name: 'Calvin Johnson', schoolId: 'georgia-tech', graduationYear: '', degrees: ['BS'], degreeDetail: 'Building Construction & Georgia Tech Football', categoryId: 'sports', notableWorks: 'Pro Football Hall of Famer & Single-Season Receiving Yards Record', overallBio: 'Hall of Fame wide receiver known as "Megatron" for unmatched size, speed, and catch radius.', campusNote: 'Won the Biletnikoff Award as a standout receiver at Georgia Tech.', sourceUrl: 'https://en.wikipedia.org/wiki/Calvin_Johnson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-238', name: 'Emmitt Smith', schoolId: 'florida', graduationYear: '1996', degrees: ['BA'], degreeDetail: 'BA in Public Recreation (University of Florida)', categoryId: 'sports', notableWorks: 'NFL All-Time Rushing Leader & Three-time Super Bowl Champion', overallBio: 'Hall of Fame running back and the NFL’s all-time leading rusher.', campusNote: 'Starred for the Florida Gators and later returned to earn his bachelor’s degree.', sourceUrl: 'https://en.wikipedia.org/wiki/Emmitt_Smith', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-239', name: 'Erin Andrews', schoolId: 'florida', graduationYear: '2000', degrees: ['BA'], degreeDetail: 'BA in Telecommunications (University of Florida)', categoryId: 'film-tv', notableWorks: 'Sports Broadcaster & Television Host', overallBio: 'Lead NFL sideline reporter and television host.', campusNote: 'Graduated from UF’s College of Journalism and Communications.', sourceUrl: 'https://en.wikipedia.org/wiki/Erin_Andrews', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-240', name: 'J.K. Simmons', schoolId: 'ohio-state', graduationYear: '', degrees: ['BM'], degreeDetail: 'Music Composition Studies & Stage/Screen Acting', categoryId: 'film-tv', notableWorks: 'Whiplash, Spider-Man, Juno', overallBio: 'Academy Award-winning actor celebrated across drama, comedy, and voice acting.', campusNote: 'Studied music composition before building an acclaimed Broadway and film career.', sourceUrl: 'https://en.wikipedia.org/wiki/J._K._Simmons', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-241', name: 'Jack Nicklaus', schoolId: 'ohio-state', graduationYear: '', degrees: ['BA'], degreeDetail: 'Pre-Pharmacy & Ohio State Golf', categoryId: 'sports', notableWorks: '18-time Major Golf Champion', overallBio: 'Record 18-time major championship winner widely regarded as golf’s greatest champion.', campusNote: 'Won two U.S. Amateur titles and an NCAA championship while attending Ohio State.', sourceUrl: 'https://en.wikipedia.org/wiki/Jack_Nicklaus', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-242', name: 'Rainn Wilson', schoolId: 'uw', graduationYear: '1986', degrees: ['BA'], degreeDetail: 'BA in Drama (UW & NYU Tisch MFA)', categoryId: 'film-tv', notableWorks: 'The Office, Six Feet Under, SoulPancake', overallBio: 'Actor, comedian, and author best known as Dwight Schrute on The Office.', campusNote: 'Earned his undergraduate drama degree at the University of Washington.', sourceUrl: 'https://en.wikipedia.org/wiki/Rainn_Wilson', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-243', name: 'Kenny G', schoolId: 'uw', graduationYear: '1978', degrees: ['BA'], degreeDetail: 'BA in Accounting (University of Washington)', categoryId: 'music-arts', notableWorks: 'Grammy-Winning Saxophonist & Instrumental Recording Artist', overallBio: 'Best-selling instrumental musician who graduated magna cum laude in accounting.', campusNote: 'Played in UW’s marching band and graduated magna cum laude in accounting.', sourceUrl: 'https://en.wikipedia.org/wiki/Kenny_G', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-244', name: 'Reed Hastings & Peter Thiel', schoolId: 'stanford', graduationYear: '1992', degrees: ['BA', 'JD'], degreeDetail: 'BA in Philosophy & JD (Stanford Law School)', categoryId: 'business-tech', notableWorks: 'Peter Thiel — PayPal Co-founder & Founders Fund', overallBio: 'Technology entrepreneur and venture capitalist who co-founded PayPal and Palantir.', campusNote: 'Earned both his undergraduate philosophy degree and law degree at Stanford.', sourceUrl: 'https://en.wikipedia.org/wiki/Peter_Thiel', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
+      { id: 'a-245', name: 'Tiger & Michelle Wie West', schoolId: 'stanford', graduationYear: '2012', degrees: ['BA'], degreeDetail: 'BA in Communications (Stanford University)', categoryId: 'sports', notableWorks: 'U.S. Women’s Open Champion & Five-time LPGA Winner', overallBio: 'Major-winning professional golfer who balanced LPGA tour play with full-time Stanford coursework.', campusNote: 'Graduated from Stanford University with a degree in communications.', sourceUrl: 'https://en.wikipedia.org/wiki/Michelle_Wie_West', imageUrl: '', secondaryImageUrl: '', status: 'approved', featuredDaily: false },
     ];
 
     const state = {
@@ -639,6 +698,7 @@
       schoolFieldFilter: 'all',
       degreeFilter: 'all',
       categoryFilter: 'all',
+      leaderboardSearch: '',
       topSearchQuery: '',
       modTab: 'queue',
       modQueueSearch: '',
@@ -714,7 +774,7 @@
         banner.classList.add('hidden');
       }, 2800);
     }
-// ... existing code ... -->
+
     function generateRandomSalt() {
       if (window.crypto && window.crypto.getRandomValues) {
         const bytes = new Uint8Array(12);
@@ -802,6 +862,41 @@
       );
     }
 
+    function formatSchoolOptionLabel(school) {
+      return `${school.name} (${school.shortName})`;
+    }
+
+    function resolveSchoolIdFromInput(rawInput, fallbackSchoolId = '') {
+      const val = String(rawInput || '').trim();
+      if (!val) return '';
+      const lower = val.toLowerCase();
+      const exactLabel = state.schools.find(
+        (s) => formatSchoolOptionLabel(s).toLowerCase() === lower
+      );
+      if (exactLabel) return exactLabel.id;
+      const exactNameOrShort = state.schools.find(
+        (s) => s.name.toLowerCase() === lower || s.shortName.toLowerCase() === lower
+      );
+      if (exactNameOrShort) return exactNameOrShort.id;
+      const partial = state.schools.find(
+        (s) =>
+          s.name.toLowerCase().includes(lower) ||
+          s.shortName.toLowerCase().includes(lower)
+      );
+      if (partial) return partial.id;
+      return fallbackSchoolId;
+    }
+
+    function renderSchoolDatalist(listId) {
+      return `
+        <datalist id="${escapeHtml(listId)}">
+          ${state.schools
+            .map((s) => `<option value="${escapeHtml(formatSchoolOptionLabel(s))}"></option>`)
+            .join('')}
+        </datalist>
+      `;
+    }
+
     function getCategoryById(id) {
       return (
         state.categories.find((c) => c.id === id) ||
@@ -818,6 +913,29 @@
       return state.alumni.filter(
         (a) => a.schoolId === schoolId && (!approvedOnly || a.status === 'approved')
       );
+    }
+
+    function getUniversityLeaderboardData() {
+      const approved = getApprovedAlumni();
+      const totalApproved = approved.length;
+      const countsBySchool = new Map();
+      approved.forEach((a) => {
+        if (!a.schoolId) return;
+        countsBySchool.set(a.schoolId, (countsBySchool.get(a.schoolId) || 0) + 1);
+      });
+
+      return state.schools
+        .map((school) => {
+          const count = countsBySchool.get(school.id) || 0;
+          const pct = totalApproved > 0 ? (count / totalApproved) * 100 : 0;
+          return {
+            school,
+            count,
+            pct,
+            pctFormatted: pct.toFixed(1),
+          };
+        })
+        .sort((a, b) => b.count - a.count || a.school.name.localeCompare(b.school.name));
     }
 
     function getInitials(name) {
@@ -1178,6 +1296,14 @@
 
     function renderHomeView() {
       const approved = getApprovedAlumni();
+      const pending = getPendingAlumni();
+      const totalEntries = approved.length + pending.length;
+      const approvedRate = totalEntries > 0 ? ((approved.length / totalEntries) * 100).toFixed(1) : '0.0';
+      const pendingRate = totalEntries > 0 ? ((pending.length / totalEntries) * 100).toFixed(1) : '0.0';
+      const leaderboard = getUniversityLeaderboardData();
+      const top5Schools = leaderboard.slice(0, 5);
+      const topCount = top5Schools[0]?.count || 1;
+
       const homeCfg = { ...DEFAULT_HOME, ...(state.homeConfig || {}) };
       const spotlight = getDailySpotlight(approved);
 
@@ -1290,6 +1416,295 @@
               ${notableList.map((person) => renderAlumnusCard(person)).join('')}
             </div>
           </section>
+
+          <!-- Live Directory Status Dashboard (Below Notable Alumni) -->
+          <section aria-label="Directory Moderation & Entries Dashboard" class="fa-surface border rounded-3xl p-6 sm:p-7 space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="fa-pill inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider">
+                  Live Directory Status
+                </span>
+                <h2 class="text-xl sm:text-2xl font-extrabold mt-1">Entries Approved &amp; Review Queue Dashboard</h2>
+              </div>
+              <span class="text-xs font-mono opacity-75">Updates live on submission, approval &amp; edits</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="rounded-2xl border fa-subtle p-4 space-y-1.5">
+                <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider opacity-75">
+                  <span>Entries Approved</span>
+                  <span class="text-emerald-600 font-mono">${approvedRate}%</span>
+                </div>
+                <div class="text-3xl font-extrabold tracking-tight">${approved.length.toLocaleString()}</div>
+                <div class="text-xs opacity-75">Published &amp; verified in directory</div>
+              </div>
+
+              <div class="rounded-2xl border fa-subtle p-4 space-y-1.5">
+                <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider opacity-75">
+                  <span>Entries Pending</span>
+                  <span class="text-amber-600 font-mono">${pendingRate}%</span>
+                </div>
+                <div class="text-3xl font-extrabold tracking-tight">${pending.length.toLocaleString()}</div>
+                <div class="text-xs opacity-75">Awaiting ModView verification</div>
+              </div>
+
+              <div class="rounded-2xl border fa-subtle p-4 space-y-1.5">
+                <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider opacity-75">
+                  <span>Total Indexed Entries</span>
+                  <span class="fa-accent-text font-mono">100%</span>
+                </div>
+                <div class="text-3xl font-extrabold tracking-tight">${totalEntries.toLocaleString()}</div>
+                <div class="text-xs opacity-75">Combined approved + pending submissions</div>
+              </div>
+
+              <div class="rounded-2xl border fa-subtle p-4 space-y-1.5">
+                <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider opacity-75">
+                  <span>U.S. Colleges Tracked</span>
+                  <span class="fa-accent-text font-mono">${state.schoolRequests.filter((r) => r.status === 'pending').length} req</span>
+                </div>
+                <div class="text-3xl font-extrabold tracking-tight">${state.schools.length.toLocaleString()}</div>
+                <div class="text-xs opacity-75">Across ${SCHOOL_TIERS.length} institutional tiers</div>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between text-xs font-semibold opacity-80">
+                <span>Approved (${approved.length}) vs. Pending (${pending.length}) Ratio</span>
+                <span class="font-mono">${approvedRate}% Approved</span>
+              </div>
+              <div class="h-3 w-full rounded-full overflow-hidden fa-subtle flex">
+                <div style="width: ${approvedRate}%; background-color: #059669;" class="h-full transition-all duration-300" title="Approved: ${approved.length} (${approvedRate}%)"></div>
+                <div style="width: ${pendingRate}%; background-color: #d97706;" class="h-full transition-all duration-300" title="Pending: ${pending.length} (${pendingRate}%)"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Top 5 Universities Leaderboard (Below Dashboard) -->
+          <section aria-label="Top 5 Universities Leaderboard" class="fa-surface border rounded-3xl p-6 sm:p-7 space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+              <div>
+                <span class="fa-pill inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider">
+                  University Rankings by Indexed Alumni
+                </span>
+                <h2 class="text-xl sm:text-2xl font-extrabold mt-1">Top 5 Universities Leaderboard</h2>
+                <p class="text-xs sm:text-sm opacity-75 mt-0.5">
+                  Live share of total approved alumni (${approved.length.toLocaleString()} total) across U.S. campuses.
+                </p>
+              </div>
+              <button
+                type="button"
+                onclick="navigateTo('leaderboard')"
+                class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold self-start shrink-0 shadow-xs"
+              >
+                View Full University Leaderboard (${leaderboard.length}) →
+              </button>
+            </div>
+
+            <div class="space-y-3">
+              ${top5Schools
+                .map((row, idx) => {
+                  const barWidth = topCount > 0 ? Math.max(4, (row.count / topCount) * 100) : 0;
+                  const rankBadge = idx === 0 ? '🥇 #1' : idx === 1 ? '🥈 #2' : idx === 2 ? '🥉 #3' : `#${idx + 1}`;
+                  return `
+                    <div
+                      onclick="navigateTo('college-detail', { schoolId: '${escapeHtml(row.school.id)}' })"
+                      class="cursor-pointer rounded-2xl border fa-subtle p-4 hover:ring-2 hover:ring-blue-500/40 transition space-y-2"
+                    >
+                      <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-2.5 min-w-0">
+                          <span class="px-2.5 py-1 rounded-lg fa-surface border text-xs font-extrabold shrink-0">${rankBadge}</span>
+                          <div class="min-w-0">
+                            <div class="font-bold text-sm sm:text-base truncate">${escapeHtml(row.school.name)} <span class="opacity-70 font-normal">(${escapeHtml(row.school.shortName)})</span></div>
+                            <div class="text-xs opacity-70 truncate">${escapeHtml(row.school.tier)} • ${escapeHtml(row.school.location)}</div>
+                          </div>
+                        </div>
+                        <div class="text-right shrink-0">
+                          <div class="font-extrabold text-sm sm:text-base">${row.count.toLocaleString()} <span class="text-xs font-medium opacity-75">alumni</span></div>
+                          <div class="text-xs font-mono font-semibold fa-accent-text">${row.pctFormatted}% of directory</div>
+                        </div>
+                      </div>
+                      <div class="h-2.5 w-full rounded-full overflow-hidden fa-surface border">
+                        <div style="width: ${barWidth.toFixed(1)}%;" class="h-full fa-accent-bg transition-all duration-300"></div>
+                      </div>
+                    </div>
+                  `;
+                })
+                .join('')}
+            </div>
+
+            <div class="pt-2 border-t border-slate-200/15 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span class="opacity-75">Want to see every U.S. university’s live count and percentage share?</span>
+              <button
+                type="button"
+                onclick="navigateTo('leaderboard')"
+                class="font-bold fa-accent-text hover:underline"
+              >
+                Open Full University Leadership &amp; Leaderboard Page →
+              </button>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    function renderLeaderboardView() {
+      const approved = getApprovedAlumni();
+      const pending = getPendingAlumni();
+      const leaderboard = getUniversityLeaderboardData().map((row, idx) => ({
+        ...row,
+        rank: idx + 1,
+      }));
+      const topCount = leaderboard[0]?.count || 1;
+      const activeSchoolsCount = leaderboard.filter((r) => r.count > 0).length;
+      const q = state.leaderboardSearch.trim().toLowerCase();
+      const filteredLeaderboard = leaderboard.filter(
+        (row) =>
+          !q ||
+          row.school.name.toLowerCase().includes(q) ||
+          row.school.shortName.toLowerCase().includes(q) ||
+          row.school.tier.toLowerCase().includes(q) ||
+          row.school.location.toLowerCase().includes(q) ||
+          `#${row.rank}` === q
+      );
+
+      return `
+        <div class="space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <span class="fa-pill inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                Live Institutional Leadership Standings
+              </span>
+              <h1 class="text-2xl sm:text-3xl font-extrabold mt-2">University Alumni Leadership Board</h1>
+              <p class="text-xs sm:text-sm opacity-75 mt-1">
+                Real-time ranking of all ${leaderboard.length} indexed U.S. colleges by approved alumni count and directory share.
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button
+                type="button"
+                onclick="navigateTo('home')"
+                class="px-3.5 py-2 rounded-xl border fa-subtle text-xs font-semibold"
+              >
+                ← Back to Home
+              </button>
+              <button
+                type="button"
+                onclick="navigateTo('submit')"
+                class="px-3.5 py-2 rounded-xl fa-accent-bg text-xs font-semibold"
+              >
+                + Add Alumnus
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="fa-surface border rounded-2xl p-4">
+              <div class="text-xs font-bold uppercase tracking-wider opacity-70">Total Approved Alumni</div>
+              <div class="text-2xl sm:text-3xl font-extrabold mt-1">${approved.length.toLocaleString()}</div>
+              <div class="text-xs opacity-70 mt-0.5">${pending.length} pending in ModView queue</div>
+            </div>
+            <div class="fa-surface border rounded-2xl p-4">
+              <div class="text-xs font-bold uppercase tracking-wider opacity-70">Represented Campuses</div>
+              <div class="text-2xl sm:text-3xl font-extrabold mt-1">${activeSchoolsCount} / ${leaderboard.length}</div>
+              <div class="text-xs opacity-70 mt-0.5">${leaderboard.length > 0 ? ((activeSchoolsCount / leaderboard.length) * 100).toFixed(1) : '0.0'}% of tracked colleges</div>
+            </div>
+            <div class="fa-surface border rounded-2xl p-4">
+              <div class="text-xs font-bold uppercase tracking-wider opacity-70">#1 Leading University</div>
+              <div class="text-lg sm:text-xl font-extrabold mt-1 truncate">${escapeHtml(leaderboard[0]?.school.shortName || '—')}</div>
+              <div class="text-xs font-mono fa-accent-text mt-0.5">
+                ${leaderboard[0] ? `${leaderboard[0].count} alumni (${leaderboard[0].pctFormatted}%)` : '0 alumni'}
+              </div>
+            </div>
+          </div>
+
+          <!-- Leaderboard University Rank Search Bar -->
+          <div class="fa-surface border rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="relative flex-1 max-w-xl">
+              <input
+                id="leaderboardSearchInput"
+                type="search"
+                value="${escapeHtml(state.leaderboardSearch)}"
+                oninput="handleModSearchInput(this, 'leaderboardSearch')"
+                placeholder="Search university to find its rank (e.g., UCLA, Stanford, UVM, #12)..."
+                aria-label="Search university rank in leaderboard"
+                class="w-full px-4 py-2.5 rounded-xl border fa-subtle text-sm"
+              />
+            </div>
+            <div class="flex items-center gap-3 text-xs">
+              <span class="opacity-75">Showing <strong>${filteredLeaderboard.length}</strong> of ${leaderboard.length} universities</span>
+              ${
+                state.leaderboardSearch.trim()
+                  ? `
+                    <button
+                      type="button"
+                      onclick="state.leaderboardSearch = ''; render();"
+                      class="px-3 py-1.5 rounded-xl border fa-subtle font-semibold fa-accent-text"
+                    >
+                      Clear Search
+                    </button>
+                  `
+                  : ''
+              }
+            </div>
+          </div>
+
+          <div class="fa-surface border rounded-3xl overflow-hidden">
+            <div class="px-5 py-3.5 border-b border-slate-200/15 flex items-center justify-between text-xs font-bold uppercase tracking-wider opacity-75">
+              <span>Rank &amp; Institution</span>
+              <span>Approved Alumni &amp; Share (%)</span>
+            </div>
+            <div class="divide-y divide-slate-200/15">
+              ${
+                filteredLeaderboard.length
+                  ? filteredLeaderboard
+                      .map((row) => {
+                        const relBar = topCount > 0 && row.count > 0 ? Math.max(3, (row.count / topCount) * 100) : 0;
+                        return `
+                          <div
+                            onclick="navigateTo('college-detail', { schoolId: '${escapeHtml(row.school.id)}' })"
+                            class="cursor-pointer px-5 py-4 hover:fa-subtle transition space-y-2"
+                          >
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                              <div class="flex items-center gap-3 min-w-0">
+                                <span class="w-10 h-8 rounded-xl border fa-subtle inline-flex items-center justify-center text-xs font-extrabold shrink-0">
+                                  #${row.rank}
+                                </span>
+                                <div class="min-w-0">
+                                  <div class="font-bold text-sm truncate">
+                                    ${escapeHtml(row.school.name)} <span class="opacity-70 font-normal">(${escapeHtml(row.school.shortName)})</span>
+                                  </div>
+                                  <div class="text-xs opacity-70 truncate">${escapeHtml(row.school.tier)} • ${escapeHtml(row.school.location)}</div>
+                                </div>
+                              </div>
+                              <div class="flex items-center gap-4 shrink-0">
+                                <div class="text-right">
+                                  <div class="font-extrabold text-sm">${row.count.toLocaleString()} alumni</div>
+                                  <div class="text-xs font-mono font-semibold fa-accent-text">${row.pctFormatted}%</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="h-2 w-full rounded-full overflow-hidden fa-subtle">
+                              <div style="width: ${relBar.toFixed(1)}%;" class="h-full fa-accent-bg transition-all duration-300"></div>
+                            </div>
+                          </div>
+                        `;
+                      })
+                      .join('')
+                  : `
+                    <div class="p-8 text-center space-y-3">
+                      <p class="text-sm opacity-75">No universities matched "${escapeHtml(state.leaderboardSearch)}".</p>
+                      <button
+                        type="button"
+                        onclick="state.leaderboardSearch = ''; render();"
+                        class="px-4 py-2 rounded-xl fa-accent-bg text-xs font-semibold"
+                      >
+                        Reset Leaderboard Search
+                      </button>
+                    </div>
+                  `
+              }
+            </div>
+          </div>
         </div>
       `;
     }
@@ -1506,39 +1921,119 @@
       `;
     }
 
-    function renderCategoriesView() {
+    function renderCollegeDetailView() {
+      const school = getSchoolById(state.selectedSchoolId || state.schools[0]?.id);
+      const members = getSchoolAlumni(school.id, true);
+      const total = members.length;
+      const counts = new Map();
+      members.forEach((m) => {
+        counts.set(m.categoryId, (counts.get(m.categoryId) || 0) + 1);
+      });
+
+      const segments = Array.from(counts.entries())
+        .map(([catId, count]) => {
+          const cat = getCategoryById(catId);
+          const pct = ((count / total) * 100).toFixed(1);
+          return `
+            <div
+              style="width: ${pct}%; background-color: ${escapeHtml(cat.color || '#2563eb')};"
+              class="h-full transition-opacity hover:opacity-85 cursor-pointer"
+              onmouseenter="showBarSegmentTooltip(event, '${escapeHtml(cat.name)}', '${pct}', ${count})"
+              onmousemove="moveBarSegmentTooltip(event)"
+              onmouseleave="hideBarSegmentTooltip()"
+            ></div>
+          `;
+        })
+        .join('');
+
+      return `
+        <div class="space-y-6">
+          <div class="flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onclick="navigateTo('colleges')"
+              class="px-3.5 py-2 rounded-xl border fa-subtle text-xs font-semibold"
+            >
+              ← All Colleges
+            </button>
+            <button
+              type="button"
+              onclick="navigateTo('submit')"
+              class="px-3.5 py-2 rounded-xl fa-accent-bg text-xs font-semibold"
+            >
+              + Suggest Alumnus for ${escapeHtml(school.shortName)}
+            </button>
+          </div>
+
+          <div class="fa-surface border rounded-3xl p-6 sm:p-8 space-y-4">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <span class="fa-pill px-3 py-1 rounded-full text-xs font-bold">${escapeHtml(school.tier)}</span>
+                <h1 class="text-2xl sm:text-3xl font-extrabold mt-2">${escapeHtml(school.name)} (${escapeHtml(school.shortName)})</h1>
+                <p class="text-xs sm:text-sm opacity-75 mt-1">${escapeHtml(school.location)} • ${total} approved alumni</p>
+              </div>
+            </div>
+            ${
+              school.incline
+                ? `<div class="text-xs sm:text-sm font-semibold fa-accent-text">Institutional Incline: ${escapeHtml(school.incline)}</div>`
+                : ''
+            }
+            <p class="text-sm opacity-85 leading-relaxed">${escapeHtml(school.description)}</p>
+            <div class="space-y-2 pt-2">
+              <div class="text-xs font-bold uppercase tracking-wider opacity-70">Field Breakdown (Hover bar segments)</div>
+              <div class="h-3.5 w-full rounded-full overflow-hidden fa-subtle flex">
+                ${total > 0 ? segments : `<div class="w-full h-full opacity-30"></div>`}
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            ${
+              members.length
+                ? members.map((person) => renderAlumnusCard(person)).join('')
+                : `<div class="col-span-full fa-surface border rounded-2xl p-8 text-center text-sm opacity-75">No approved alumni listed for ${escapeHtml(school.name)} yet.</div>`
+            }
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDegreesView() {
       const approved = getApprovedAlumni();
       const filtered = approved.filter(
-        (a) => state.categoryFilter === 'all' || a.categoryId === state.categoryFilter
+        (a) =>
+          state.degreeFilter === 'all' ||
+          (a.degrees || []).map((d) => d.toUpperCase()).includes(state.degreeFilter.toUpperCase())
       );
 
       return `
         <div class="space-y-6">
           <div>
-            <h1 class="text-2xl sm:text-3xl font-extrabold">Field of Alumnus</h1>
-            <p class="text-xs sm:text-sm opacity-75 mt-1">Explore notable graduates organized by career field and custom category colors.</p>
+            <h1 class="text-2xl sm:text-3xl font-extrabold">Alumni by Degree Credential</h1>
+            <p class="text-xs sm:text-sm opacity-75 mt-1">Filter notable graduates by undergraduate, master’s, doctoral, and professional degrees.</p>
           </div>
 
           <div class="flex flex-wrap gap-2">
             <button
               type="button"
-              onclick="state.categoryFilter='all'; render();"
-              class="px-3.5 py-2 rounded-xl text-xs font-semibold border ${state.categoryFilter === 'all' ? 'fa-accent-bg' : 'fa-subtle'}"
+              onclick="state.degreeFilter='all'; render();"
+              class="px-3.5 py-2 rounded-xl text-xs font-semibold border ${state.degreeFilter === 'all' ? 'fa-accent-bg' : 'fa-subtle'}"
             >
-              All Fields (${approved.length})
+              All Degrees (${approved.length})
             </button>
-            ${state.categories
-              .map((cat) => {
-                const count = approved.filter((a) => a.categoryId === cat.id).length;
-                const active = state.categoryFilter === cat.id;
+            ${state.degrees
+              .map((deg) => {
+                const count = approved.filter((a) =>
+                  (a.degrees || []).map((d) => d.toUpperCase()).includes(deg.code.toUpperCase())
+                ).length;
+                const active = state.degreeFilter.toUpperCase() === deg.code.toUpperCase();
                 return `
                   <button
                     type="button"
-                    onclick="state.categoryFilter='${escapeHtml(cat.id)}'; render();"
-                    class="px-3.5 py-2 rounded-xl text-xs font-semibold border inline-flex items-center gap-2 ${active ? 'fa-accent-bg' : 'fa-subtle'}"
+                    onclick="state.degreeFilter='${escapeHtml(deg.code)}'; render();"
+                    class="px-3.5 py-2 rounded-xl text-xs font-semibold border ${active ? 'fa-accent-bg' : 'fa-subtle'}"
                   >
-                    <span class="w-2.5 h-2.5 rounded-full" style="background-color: ${escapeHtml(cat.color || '#2563eb')};"></span>
-                    <span>${escapeHtml(cat.name)} (${count})</span>
+                    ${escapeHtml(deg.code)} — ${escapeHtml(deg.label)} (${count})
                   </button>
                 `;
               })
@@ -1906,6 +2401,23 @@
       }
     }
 
+    function handleModSearchInput(inputEl, stateKey) {
+      const start = inputEl.selectionStart;
+      const end = inputEl.selectionEnd;
+      const inputId = inputEl.id;
+      state[stateKey] = inputEl.value;
+      render();
+      if (inputId) {
+        const nextEl = document.getElementById(inputId);
+        if (nextEl) {
+          nextEl.focus();
+          if (typeof start === 'number' && typeof end === 'number') {
+            nextEl.setSelectionRange(start, end);
+          }
+        }
+      }
+    }
+
     function renderModView() {
       if (!state.isModAuthenticated) {
         return `
@@ -2003,9 +2515,10 @@
         return `
           <div class="space-y-4">
             <input
+              id="modQueueSearchInput"
               type="search"
               value="${escapeHtml(state.modQueueSearch)}"
-              oninput="state.modQueueSearch = this.value; render();"
+              oninput="handleModSearchInput(this, 'modQueueSearch')"
               placeholder="Search review queue..."
               aria-label="Search review queue"
               class="w-full max-w-md px-3.5 py-2 rounded-xl border fa-subtle text-sm"
@@ -2102,9 +2615,10 @@
           <div class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <input
+                id="modAlumniSearchInput"
                 type="search"
                 value="${escapeHtml(state.modAlumniSearch)}"
-                oninput="state.modAlumniSearch = this.value; render();"
+                oninput="handleModSearchInput(this, 'modAlumniSearch')"
                 placeholder="Search approved alumni..."
                 aria-label="Search approved alumni"
                 class="w-full max-w-md px-3.5 py-2 rounded-xl border fa-subtle text-sm"
@@ -2125,9 +2639,17 @@
                     <div class="text-xs font-bold uppercase tracking-wider fa-accent-text">Add Approved Alumnus</div>
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <input name="name" required placeholder="Full Name *" class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
-                      <select name="schoolId" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
-                        ${state.schools.map((s) => `<option value="${escapeHtml(s.id)}">${escapeHtml(s.name)}</option>`).join('')}
-                      </select>
+                      <div>
+                        <input
+                          name="schoolSearch"
+                          list="modAddSchoolOptions"
+                          value="${escapeHtml(state.schools[0] ? formatSchoolOptionLabel(state.schools[0]) : '')}"
+                          placeholder="Search or select college..."
+                          aria-label="College"
+                          class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm"
+                        />
+                        ${renderSchoolDatalist('modAddSchoolOptions')}
+                      </div>
                       <select name="categoryId" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
                         ${state.categories.map((c) => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.name)}</option>`).join('')}
                       </select>
@@ -2205,9 +2727,17 @@
                             <form onsubmit="saveModAlumnusEdit(event, '${escapeHtml(person.id)}')" class="pt-3 border-t border-slate-200/15 space-y-3">
                               <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                 <input name="name" value="${escapeHtml(person.name)}" required class="px-3 py-2 rounded-xl border fa-subtle text-sm" />
-                                <select name="schoolId" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
-                                  ${state.schools.map((s) => `<option value="${escapeHtml(s.id)}" ${s.id === person.schoolId ? 'selected' : ''}>${escapeHtml(s.name)}</option>`).join('')}
-                                </select>
+                                <div>
+                                  <input
+                                    name="schoolSearch"
+                                    list="modEditSchoolOptions-${escapeHtml(person.id)}"
+                                    value="${escapeHtml(state.schools.some((s) => s.id === person.schoolId) ? formatSchoolOptionLabel(school) : '')}"
+                                    placeholder="Type to search college..."
+                                    aria-label="College"
+                                    class="w-full px-3 py-2 rounded-xl border fa-subtle text-sm"
+                                  />
+                                  ${renderSchoolDatalist(`modEditSchoolOptions-${person.id}`)}
+                                </div>
                                 <select name="categoryId" class="px-3 py-2 rounded-xl border fa-subtle text-sm">
                                   ${state.categories.map((c) => `<option value="${escapeHtml(c.id)}" ${c.id === person.categoryId ? 'selected' : ''}>${escapeHtml(c.name)}</option>`).join('')}
                                 </select>
@@ -2252,9 +2782,10 @@
           <div class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <input
+                id="modSchoolsSearchInput"
                 type="search"
                 value="${escapeHtml(state.modSchoolsSearch)}"
-                oninput="state.modSchoolsSearch = this.value; render();"
+                oninput="handleModSearchInput(this, 'modSchoolsSearch')"
                 placeholder="Search colleges..."
                 aria-label="Search colleges"
                 class="w-full max-w-md px-3.5 py-2 rounded-xl border fa-subtle text-sm"
@@ -2367,9 +2898,10 @@
           <div class="space-y-4">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <input
+                id="modCategoriesSearchInput"
                 type="search"
                 value="${escapeHtml(state.modCategoriesSearch)}"
-                oninput="state.modCategoriesSearch = this.value; render();"
+                oninput="handleModSearchInput(this, 'modCategoriesSearch')"
                 placeholder="Search Field of Alumnus categories..."
                 aria-label="Search categories"
                 class="w-full max-w-md px-3.5 py-2 rounded-xl border fa-subtle text-sm"
@@ -2849,10 +3381,16 @@
         .map((d) => d.trim().toUpperCase())
         .filter(Boolean);
 
+      const schoolSearchRaw = String(fd.get('schoolSearch') || '').trim();
+      const resolvedSchoolId = resolveSchoolIdFromInput(
+        schoolSearchRaw,
+        state.schools[0]?.id || 'ucla'
+      );
+
       state.alumni.unshift({
         id: `a-${Date.now()}`,
         name: String(fd.get('name') || '').trim(),
-        schoolId: String(fd.get('schoolId') || state.schools[0]?.id || 'ucla'),
+        schoolId: resolvedSchoolId,
         graduationYear: String(fd.get('graduationYear') || '').trim(),
         degrees,
         degreeDetail: degrees.join(', '),
@@ -2879,7 +3417,10 @@
       if (!person) return;
       const fd = new FormData(event.target);
       person.name = String(fd.get('name') || person.name).trim();
-      person.schoolId = String(fd.get('schoolId') || person.schoolId);
+      const schoolSearchRaw = String(fd.get('schoolSearch') || '').trim();
+      person.schoolId = schoolSearchRaw
+        ? resolveSchoolIdFromInput(schoolSearchRaw, person.schoolId)
+        : '';
       person.categoryId = String(fd.get('categoryId') || person.categoryId);
       person.graduationYear = String(fd.get('graduationYear') || '').trim();
       person.degreeDetail = String(fd.get('degreeDetail') || '').trim();
@@ -3061,6 +3602,8 @@
         root.innerHTML = renderCollegesView();
       } else if (state.route === 'college-detail') {
         root.innerHTML = renderCollegeDetailView();
+      } else if (state.route === 'leaderboard') {
+        root.innerHTML = renderLeaderboardView();
       } else if (state.route === 'degrees') {
         root.innerHTML = renderDegreesView();
       } else if (state.route === 'fields') {
